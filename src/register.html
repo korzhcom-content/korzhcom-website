@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//cdn.korzh.com/metroui/v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Korzh.com - Tools from Developers for Developers</title>
+</head>
+<body class="d-flex flex-justify-center flex-align-center h-100 login-body m4-cloak">
+<div data-role="html-container" data-insert-mode="replace" data-html-source="appbar.html"></div>
+
+    <div class="bg-white shadow-3">
+        <div class="row">
+            <div class="cell-md-6 pt-10 pb-10 d-none d-block-md" style="background: #4c67d4">
+                <div class="h-100 d-flex flex-column flex-align-center flex-justify-center">
+                    <img src="images/Analytics%20process_Two%20Color.svg" alt="">
+                    <h1 class="text-center fg-white">Welcome<br/> to <a class="fg-white no-decor" href="index">Korzh.com</a></h1>
+                </div>
+            </div>
+            <div class="cell-md-6">
+                <div class="p-10">
+                    <h2 class="text-bold d-flex">Register</h2>
+                    <form action="/login" method="post" class="mt-4">
+                        <input type="hidden" name="vi" value="">
+                        <input type="hidden" name="intent" value="">
+                        <input type="hidden" name="ptag" value="">
+
+                        <input class="input-large" type="text" data-role="input" placeholder="User Email" data-prepend="<span class='mif-envelop'/>">
+                        <input class="input-large mt-2" type="text" data-role="input" placeholder="User Name" data-prepend="<span class='mif-user'/>">
+                        <input class="input-large mt-2" type="password" data-role="input" placeholder="Password" data-prepend="<span class='mif-lock'/>">
+
+<!--                        <div class="mt-4">-->
+<!--                            <input data-role="checkbox" type="checkbox" data-caption="I agree with the <a href='/terms-of-use'>Terms of use</a> and the <a href='/privacy'>Privacy Policy</a>.<br/>I also agree to receive email communications from Korzh.com.<br/> Consent may be withdrawn at any time."/>-->
+<!--                        </div>-->
+
+                        <div class="mt-4">
+                            <div class="row flex-align-center">
+                                <button class="button info" type="submit">REGISTER</button>
+                                <a href="login" class="ml-auto reduce-2 no-wrap">Already have an account? Sign-in!</a>
+                            </div>
+                        </div>
+
+                        <div class="reduce-3 mt-4" style="max-width: 340px;">
+                            By clicking Register, you agree to our <a href="/terms-of-use">Terms of use</a> and our <a href="/privacy">Privacy Policy</a>.
+                            Also, you agree to receive email communications from <a href="index">Korzh.com</a>.
+                            Consent may be withdrawn at any time.
+                        </div>
+                    </form>
+                </div>
+
+                <hr class="mb-4 mt-8-minus"/>
+
+                <div class="text-center">
+                    <p class="text-bold">REGISTER WITH</p>
+                    <button class="button w-33 m-1" style="background: #333333; color: #ffffff"><span class="mif-github mr-2"></span> GitHub</button>
+                    <button class="button w-33 m-1" style="background: #00acee; color: #ffffff"><span class="mif-twitter mr-2"></span> Twitter</button>
+                    <button class="button w-33 m-1" style="background: #3b5998; color: #ffffff"><span class="mif-facebook mr-2"></span> Facebook</button>
+                    <button class="button w-33 m-1"><span class="mif-google mr-2"></span> Google</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="//cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

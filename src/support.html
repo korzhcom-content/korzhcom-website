@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//cdn.korzh.com/metroui/v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Korzh.com - Tools from Developers for Developers</title>
+</head>
+<body class="d-flex flex-column m4-cloak">
+<div data-role="html-container" data-insert-mode="replace" data-html-source="appbar.html"></div>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid">
+        <div class="container">
+            <h2 class="text-bold mt-4 ml-2">New support request</h2>
+            <hr class="mb-10">
+            <div class="row">
+                <div class="cell-md-8">
+                    <div>
+                        <form action="/account/Ticket/Create" method="post">
+                            <div class="row">
+                                <div class="cell-md-6">
+                                    <div class="p-2">
+                                        <label>Category *</label>
+                                        <select data-role="select" data-filter="false" data-add-empty-value="true" data-use-placeholder="true" data-placeholder="[Select Category]">
+                                            <option>Technical question</option>
+                                            <option>Presales inquiry</option>
+                                            <option>General feedback</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="cell-md-6">
+                                    <div class="p-2">
+                                        <label>Product *</label>
+                                        <select data-role="select" data-filter="false" data-add-empty-value="true" data-use-placeholder="true" data-placeholder="[Select Product]">
+                                            <optgroup label="EasyQuery for .NET Framework 4.x">
+                                                <option value="1">EasyQuery for ASP.NET</option>
+                                                <option value="2">EasyQuery WinForms</option>
+                                                <option value="3">EasyQuery WPF</option>
+                                                <option value="4">EasyQuery Silverlight</option>
+                                            </optgroup>
+                                            <optgroup label="EasyQuery for .NET Core">
+                                                <option value="301">EasyQuery for ASP.NET Core</option>
+                                            </optgroup>
+                                            <optgroup label="Localizer">
+                                                <option value="6">Localizer Pro</option>
+                                                <option value="7">Localizer Standard</option>
+                                            </optgroup>
+                                            <optgroup label="SimpleQuery">
+                                                <option value="8">SimpleQuery Pro</option>
+                                                <option value="9">SimpleQuery Standard</option>
+                                            </optgroup>
+                                            <optgroup label="MetroUI">
+                                                <option value="324">MetroUI support subscription</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="cell-md-12 p-2">
+                                    <label for="">Subject *</label>
+                                    <input type="text" data-role="input" name=""/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="cell-md-12 p-2">
+                                    <label for="">Details *</label>
+                                    <textarea data-role="textarea" name="" data-auto-size="false" data-max-height="300" class="scrollbar-type-1" style="height: 300px;"></textarea>
+                                    <div class="text-small text-right">You can use <a href="https://guides.github.com/features/mastering-markdown/">GitHub Flavored Markdown</a> here ↑</div>
+                                </div>
+                            </div>
+                            <p class="remark m-2">
+                                If you need to add an attachment, you will be able to do it after submiting the ticket.
+                            </p>
+                            <div class="p-2">
+                                <button class="button info" type="submit">SUBMIT REQUEST</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="cell-md-4">
+                    <div class="p-10 bg-light h-100 ml-2 border-radius-20 no-overflow">
+                        <img src="images/Team%20work_Two%20Color.svg" alt="">
+                        To send a request, please indicate the category of the question, the product to which this question refers. To get a quality answer, describe the problem in detail.
+                        <p class="mt-2">The project team will respond much faster.</p>
+                        <p class="mt-2">If you have purchased a license or support, you will receive a response much faster.</p>
+                        <p class="mt-4 text-bold">Sincerely, the project team!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+<div data-role="html-container" data-method="get" data-html-source="footer.html" data-insert-mode="replace"></div>
+
+<script src="//cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

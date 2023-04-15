@@ -1,0 +1,401 @@
+:root {
+    --secondary-color: #a1bae7;
+    --third-color: #9abd91;
+}
+
+body {
+    //padding-top: 50px;
+    min-height: 100vh;
+}
+
+.hero-section {
+    padding: 120px 0;
+}
+
+.hero-section__header {
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.hero-section__subheader {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.top-customers {
+    filter: grayscale(100%);
+    img {
+        margin: 4px;
+        transform: scale(.8);
+    }
+}
+
+.part-number {
+    position: absolute;
+    font-size: 64px;
+    bottom: -10px;
+    right: 10px;
+    color: #e6e8ea;
+    opacity: .3;
+}
+
+.part-button {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+}
+
+.preview_image {
+    padding: 0 40px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.bracket {
+    font-size: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    font-weight: lighter;
+    line-height: 260px;
+}
+
+.box-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 140px 20px 0;
+
+    img {
+        height: 120px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+.why-box {
+    //background:
+    //        url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
+    //        url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
+    //        linear-gradient(240deg, rgb(70, 140, 255), rgb(0, 101, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(0, 101, 255);
+    //color: #ffffff;
+    padding: 80px 0 100px;
+    background-color: var(--secondary-color);
+
+    img {
+        position: absolute;
+        z-index: 0;
+        width: 100px;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.easy-js {
+    padding: 40px 0 40px;
+    background-color: #ffccea;
+}
+
+.localizer-js {
+    padding: 40px 0;
+    background-color: var(--third-color);
+}
+
+.customers-box {
+    padding: 40px 0 100px;
+
+    img:not(:hover) {
+        filter: grayscale(100%);
+        opacity: .5;
+        transform: scale(.7);
+    }
+
+    img {
+        margin: 10px;
+        transition: all .1s linear;
+    }
+}
+
+footer {
+    background: #172b4d;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 20px 0;
+
+    hr {
+        background: #3b4b68;
+    }
+
+    .footer__menu {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        list-style: none inside;
+        font-size: 12px;
+        margin: 20px 0;
+
+        li {
+            margin: 0 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+    }
+
+    .mute-text {
+        color: #7f8c97!important;
+    }
+}
+
+.hero-section, .metroui-hero {
+    background:
+            url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
+            url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
+            linear-gradient(240deg, rgb(70, 140, 255), rgb(0, 101, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(0, 101, 255);
+    //background: linear-gradient(60deg, rgb(82, 67, 170), rgb(70, 140, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+    padding: 0;
+
+    img {
+        //background-color: #fff;
+    }
+}
+
+.metroui-hero {
+    padding: 0;
+}
+
+.smaller-text {
+    font-size: 14px;
+}
+
+.easyquery-hero {
+    background:
+            url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
+            url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
+
+            linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+    padding: 0px 0 0px;
+}
+
+.login-body {
+    background:
+            url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
+            url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
+
+            linear-gradient(60deg, rgb(82, 67, 170), rgb(70, 140, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+}
+
+.localizer-hero {
+    background:
+            url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
+            url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
+
+            linear-gradient(60deg, rgb(43, 75, 10), rgb(191, 246, 142)) 0% 0% / auto repeat scroll padding-box border-box rgb(43, 75, 10);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+    padding: 0;
+}
+
+.easyreport-hero {
+    background:
+            url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
+            url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
+
+            linear-gradient(60deg, rgb(121,46,120), rgb(211, 142, 246)) 0% 0% / auto repeat scroll padding-box border-box rgb(121,46,120);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+    padding: 0;
+}
+
+.easyquery-color {
+    background: linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+}
+
+.localizer-color {
+    background: linear-gradient(60deg, rgb(43, 75, 10), rgb(191, 246, 142)) 0% 0% / auto repeat scroll padding-box border-box rgb(43, 75, 10);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+}
+
+.metroui-color {
+    background: linear-gradient(60deg, rgb(82, 67, 170), rgb(70, 140, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+}
+
+.easy-report-images {
+    img {
+        border: 1px solid #efefef;
+    }
+}
+
+.metro-in-action {
+    .work-box {
+        height: 280px;
+        overflow: hidden;
+        border: 1px solid #efefef;
+        margin: 4px;
+    }
+}
+
+.metroui-screens {
+    background-color: rgb(123, 171, 255);
+    padding: 40px 0;
+    color: #ffffff;
+    .img-wrap {
+        height: 160px;
+        overflow: hidden;
+    }
+}
+
+.price {
+    font-size: 48px;
+}
+
+.price-table {
+    td:not(:first-child) {
+        text-align: center;
+    }
+}
+
+.license-price {
+    background-color: #efefef;
+    padding: 40px 0;
+}
+
+.hours-count {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.more-question {
+    padding: 10px 0 40px;
+}
+
+.login-body {
+    padding: 10px;
+}
+
+.question {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.answer {
+
+}
+
+.scrollable-container {
+    overflow-x: auto;
+    table {
+        width: auto;
+        min-width: 100%;
+    }
+}
+
+.feature-check {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 0;
+    font-size: 48px;
+    color:rgb(211, 142, 246);
+    opacity: .2;
+}
+
+.step-number {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 64px;
+    z-index: 0;
+    color: #efefef;
+    font-weight: bold;
+}
+
+.easyquery-editions-bg {
+    background-color: rgb(121,46,120);
+    color: #ffffff;
+    padding: 40px 0;
+}
+.easyquery-editions-tabs {
+    li {
+        &.active {
+            background-color: rgb(141, 56, 140) !important;
+            border: none!important;
+        }
+        a {
+            color: #fff!important;
+        }
+    }
+}
+
+.localizer-features {
+    .feature-check {
+        color: #73cc23;
+    }
+}
+
+.app-bar-menu {
+    li:not(.no-hover):hover {
+        //background-color: #2278ff!important;
+        //color: #fff!important;
+    }
+}
+
+.easyquery-menu {
+    .app-bar-menu {
+        li:not(.no-hover):hover {
+            background-color: #b04bb0!important;
+            color: #fff!important;
+        }
+    }
+}
+.easyjs-menu {
+    .app-bar-menu {
+        li:not(.no-hover):hover {
+            background-color: #b36cc9!important;
+            color: #fff!important;
+        }
+    }
+}
+.easyreport-menu {
+    .app-bar-menu {
+        li:not(.no-hover):hover {
+            background-color: #b26cc9!important;
+            color: #fff!important;
+        }
+    }
+}
+.localizer-menu {
+    .app-bar-menu {
+        li:not(.no-hover):hover {
+            background-color: #8bba60!important;
+            color: #fff!important;
+        }
+    }
+}
+.login-menu {
+    .app-bar-menu {
+        li:not(.no-hover):hover {
+            background-color: #4978e7!important;
+            color: #fff!important;
+        }
+    }
+}
+
+.hero-block {
+    padding: 40px 0;
+}

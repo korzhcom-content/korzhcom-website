@@ -1,0 +1,35 @@
+{
+  "name": "@olton/korzh-site",
+  "description": "Korzh.com",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "funding": [
+    {
+      "type": "paypal",
+      "url": "serhii@pimenov.com.ua"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/metroui"
+    },
+    {
+      "type": "subscription",
+      "url": "https://korzh.com/metroui#licensing"
+    }
+  ],
+  "license": "MIT",
+  "author": "Serhii Pimenov <serhii@pimenov.com.ua> (https://pimenov.com.ua)",
+  "browserslist": [
+    "last 1 Chrome versions",
+    "last 1 Firefox versions",
+    "last 1 Opera versions",
+    "last 1 Edge versions"
+  ],
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
