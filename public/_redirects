@@ -1,0 +1,7 @@
+/support					/account/ticket/create
+/query-builder-net			/easyquery
+/query-builder-net-asp		/easyquery
+/query-builder-net			/easyquery
+/ersk/*						/easy-report-starter-kit/:splat
+/easyquery/winforms			/easyquery
+/easyquery/vcl				/easyquery
