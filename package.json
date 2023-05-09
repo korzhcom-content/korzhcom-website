@@ -1,35 +1,24 @@
 {
-  "name": "@olton/korzh-site",
-  "description": "Korzh.com",
+  "name": "Korzh.com website",
+  "version": "1.0.0",
+  "description": "",
   "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "funding": [
-    {
-      "type": "paypal",
-      "url": "serhii@pimenov.com.ua"
-    },
-    {
-      "type": "patreon",
-      "url": "https://www.patreon.com/metroui"
-    },
-    {
-      "type": "subscription",
-      "url": "https://korzh.com/metroui#licensing"
-    }
-  ],
-  "license": "MIT",
-  "author": "Serhii Pimenov <serhii@pimenov.com.ua> (https://pimenov.com.ua)",
-  "browserslist": [
-    "last 1 Chrome versions",
-    "last 1 Firefox versions",
-    "last 1 Opera versions",
-    "last 1 Edge versions"
-  ],
   "scripts": {
+    "watch": "webpack watch --mode=development --config ./scripts/webpack.config.js",
+    "build": "webpack --mode=production --config ./scripts/webpack.config.js"
+  },
+  "keywords": [],
+  "author": "Korzh.com",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-  },
-  "devDependencies": {
+    "@easydata/core": "^1.3.6",
+    "@easydata/ui": "^1.3.6"
   }
 }
