@@ -22,7 +22,7 @@ export interface AuthResult {
     accountId?: number;
 }
 
-export let endpoint = 'https:/korzh.com/api/account';
+export let endpoint = 'https://korzh.com/api/account';
 
 export function registerAccount(descriptor: AuthRequest) : Promise<AuthResult> {
     const http = new HttpClient();
