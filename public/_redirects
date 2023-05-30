@@ -1,4 +1,5 @@
-/support					/account/ticket/create
+/account                    https://account.korzh.com
+/support					https://account.korzh.com/ticket/create
 /query-builder-net			/easyquery
 /query-builder-net-asp		/easyquery
 /query-builder-net			/easyquery
