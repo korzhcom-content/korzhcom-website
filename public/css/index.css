@@ -151,7 +151,7 @@ footer .mute-text {
   padding: 0;
 }
 .easyreport-hero {
-  background: url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box, url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box, linear-gradient(60deg, #792e78, #d38ef6) 0% 0% / auto repeat scroll padding-box border-box #792e78;
+  background: url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box, url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box, linear-gradient(60deg, #e11d54, #a60e4d) 0% 0% / auto repeat scroll padding-box border-box #e11d54;
   background-blend-mode: normal, normal;
   color: #ffffff;
   padding: 0;
@@ -278,8 +278,3 @@ footer .mute-text {
   padding: 40px 0;
 }
 /*# sourceMappingURL=index.css.map */
-
-
-.kdlg-header {
-  width: 100%;
-}
