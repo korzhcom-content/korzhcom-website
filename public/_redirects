@@ -1,6 +1,6 @@
-/easyquery/docs/*                   https://korzh.aistant.com/proxy/easyquery-dotnet/:splat  200
-/easyquery/javascript/docs/*        https://korzh.aistant.com/proxy/easyquery-javascript/:splat  200
-/easy-report-starter-kit/docs/*     https://korzh.aistant.com/proxy/ersk/:splat  200
+/easyquery/docs/*                   https://korzh.aistant.com/proxy/easyquery-dotnet/:splat  200!
+/easyquery/javascript/docs/*        https://korzh.aistant.com/proxy/easyquery-javascript/:splat  200!
+/easy-report-starter-kit/docs/*     https://korzh.aistant.com/proxy/ersk/:splat  200!
 
 /account                    https://account.korzh.com
 /support					https://account.korzh.com/ticket/create
