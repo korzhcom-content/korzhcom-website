@@ -1,3 +1,4 @@
+/easyquery/doc/*            https://korzh.aistant.com/proxy/easyquery-dotnet/:splat  200
 /account                    https://account.korzh.com
 /support					https://account.korzh.com/ticket/create
 /query-builder-net			/easyquery
