@@ -277,4 +277,11 @@ footer .mute-text {
 .hero-block {
   padding: 40px 0;
 }
+.select .option-list a {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 14px;
+  white-space: nowrap;
+}
 /*# sourceMappingURL=index.css.map */
