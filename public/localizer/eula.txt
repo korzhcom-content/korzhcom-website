@@ -1,0 +1,52 @@
+READ CAREFULLY BEFORE INSTALLING THE SOFTWARE.
+
+By installing the Localizer library (referred also as PRODUCT or "The software"), you are accepting this License Agreement. 
+
+LICENSE AGREEMENT
+-----------------
+
+I. GENERAL PROVISIONS/OWNERSHIP
+All copyrights to Localizer (referred as PRODUCT) are exclusively owned by Korzh.com (referred as AUTHOR).
+The AUTHOR represents and warrants that the PRODUCT and each part and component of the PRODUCT was (or will be) developed by the AUTHOR or its employees or with permission from the original authors and that no parts of the PRODUCT are or were copied from the work of any other person or company without permission for redistribution.
+The AUTHOR represents and warrants that it is the legal owner of and has full right, title and interest in the PRODUCT, and that AUTHOR currently is the legal owner of distribution rights for the PRODUCT.  AUTHOR further warrants to you that AUTHOR has any and all necessary authority to (i) enter into this License Agreement and (ii) make any and all grants, rights and/or licenses contained herein.
+
+II. LICENSING
+AUTHOR grants to you (as a person or company) a non-exclusive license to make and use copies of the PRODUCT in the manner provided below.  The PRODUCT is licensed, not sold.
+
+There are three possible types of license for PRODUCT: Evaluation License, Registered License (single or site) and Source Code License (signle or site).
+
+II-1 Evaluation License
+AUTHOR grants to you a personal, non-exclusive license to install the PRODUCT for evaluation purposes.    
+The Localizer evaluation version may be freely distributed, provided the distribution package is not modified. No person or company may charge a fee for the distribution of the PRODUCT without written permission from the copyright holder. You may not distribute any portion of your or third-party products generated using evaluation version of the PRODUCT.
+
+II-2 Registered license
+After you have purchased the license for the PRODUCT you get a registration code enabling the registered copy. From that time you are licensed to use the PRODUCT only on one computer and by only one developer at the same time. License owner may make a second copy for his or her exclusive use on a second computer (e.g. at home) but the main requirement must be satisfied: only one copy of the PRODUCT must be used at the same time. 
+To remove this restriction you can purchase SITE LICENSE, which grants you (as license owner) the right to install the PRODUCT on any number of computer which belongs to one company and the right to use it by any number of users (developers) who works on that company.
+You may not duplicate the PRODUCT in whole or in part, except that you may make copies of the SOFTWARE for backup or archival purposes.  
+
+II-3 Source Code License
+You can purchase source code license for the PRODUCT (sold separately and is provided with site license too). This type of license gives you an access to source code of Localizer library. You can use provided source code to build your own software products and then distribute created products in binary code without any limitation but neither the source code nor modified source code of the PRODUCT may be distributed by you to any third party. The PRODUCT source code must be protected as your own and you expressly and unequivocally agree to be bound by the acts of your employees and agents.  You may modify the PRODUCT source code, however such modifications do not constitute ownership of the source code. Modifications to the PRODUCT source code may not be sold, transferred or published in any manner whatsoever. Licensing of the PRODUCT source code does not constitute a transfer of ownership under the terms of this agreement, and the PRODUCT remains owned and copyrighted by AUTHOR.   
+
+
+III. DISTRIBUTION RIGHTS
+Either Registered License or Source Code License grants its owner the rights to freely distribute any of PRODUCT parts that are designated as "redistributable" with his/her software products generated using Localizer.
+The list of redistributable parts of the PRODUCT is limited by the following items:
+ - Language Manager program that is installed together with Localizer or can be downloaded separately for Korzh.com web-site;
+ - any data files created by Localizer for example language files (e.g. program.de.lng) or resource DLL files (e.g. program.EN or programname.UK).
+
+You have a royalty-free, fully paid-up, worldwide right to distribute the portions of the PRODUCT designated as "redistributable" only if: 
+(1) You have purchased a Registered or Source Code License for the PRODUCT and have received a registration code for the PRODUCT or/and get an access to protected 
+web-page that allow you to download PRODUCT source code;
+(2) You distribute only the portions of the PRODUCT designated as "redistributable";
+(3) Your software product may not, in the reasonable opinion of AUTHOR, directly compete in form and function with Localizer;
+(4) You agree to indemnify AUTHOR from any and all claims or lawsuits including lawyer's fees that can arise or result from the use or distribution of your software product(s) that created using Localizer.
+(5) You distribute the "redistributable" parts of PRODUCT only in conjunction with your own software product(s) which has(have) reasonably significant functional additions to basic functionality provided by Localizer;
+
+Any type of license (including evaluation license) allows you to distribute (print, publish, post on forums or newsgroups, etc) any code examples that use Localizer API (Application Programming Interface) including sample projects installed with Localizer.
+
+IV. TERMINATION OF THE AGREEMENT
+AUTHOR may terminate this license agreement if you (as license owner) fail to comply with the terms and conditions of this agreement and do not cure any failure to comply within thirty (30) days from notice by AUTHOR. In such event, you must destroy all copies of the PRODUCT.  You may terminate this license at any time by destroying all copies of the PRODUCT. 
+
+V. LIMITED WARRANTY 
+PRODUCT is distributed "AS IS". The AUTHOR expressly disclaims any warranty for the PRODUCT either express or implied. The AUTHOR is not liable for any damage, caused by use or inability to use the PRODUCT. 
+

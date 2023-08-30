@@ -26,13 +26,11 @@
 /easyquery/docs/javascript/javascript-query-builder-with-nodejs	/easyquery/javascript/docs/getting-started/javascript-query-builder-with-nodejs
 /easyquery/screenshots.jsp	/easyquery
 /easyquery/usecase/easyquery-entity-framework-entity-SQL	/easyquery/docs/use-cases/building-dynamic-queries-with-easyquery-and-entity-framework
-/admin/account/register	/admin
 /easyquery/vcl	/easyquery
 /easyquery/changelog-*	/easyquery/docs/changelog
 /delphi /localizer
 /__gazdablogpost____default~net-tricks~a3b1afdfc5554dc0893f30c476104c0f	/blog/aspnet-identity-migrate-membership-passwords
 /query-builder-net	/easyquery
-/docs/*	/docs
 /blog/dependency-Injection-explanation-in-simple-words	/blog/dependency-injection-explanation-in-simple-words
 /blogs/dotnnet-stories/aspnet-identity-store-user-data-in-claims	/blog/add-extra-user-claims-aspnet-core-webapp
 /easyquery/docs/getting-started/version-5-x	/easyquery/docs/getting-started/asp-net-core
@@ -49,7 +47,8 @@
 /easyquery/docs/getting-started/new-data-model	/easyquery/docs/getting-started/working-with-data-model
 /delphi/eq	/easyquery
 /easyquery/docs/getting-started/asp-net-mvc	/easyquery/docs/getting-started/asp-net-4-mvc-or-webforms
-/easyquery/LICENSE.txt	/static/easyquery/eula.txt
+/easyquery/LICENSE.txt	/easyquery/eula.txt
+/localizer/LICENSE.txt	/localizer/eula.txt
 /blogs/rus/why_yuschenko.html	/blogs/dotnet-stories
 /easyquery/docs/common-queries/gridview-filtering-with-easyquery-aspnet-webforms	/easyquery/docs/use-cases/gridview-filtering-with-easyquery-aspnet-webforms
 /easyquery/docs/javascript*	/easyquery/javascript/docs/getting-started:splat
