@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="//cdn.korzh.com/metroui/v4/css/metro-all.min.css">
     <link rel="stylesheet" href="//cdn.korzh.com/ed/1.4.11/easydata.css" />
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
     <title>EASYREPORT STARTER KIT :: Korzh.com - Tools from Developers for Developers</title>
 </head>
 <body class="m4-cloak">
-<div data-role="html-container" data-insert-mode="replace" data-html-source="appbar.html"></div>
+<div data-role="html-container" data-insert-mode="replace" data-html-source="/appbar.html"></div>
 
 <br/>
 <br/>
@@ -37,13 +37,10 @@
                 </div>
                 <div class="row mt-10">
                     <div class="cell-4">
-                        <a href="https://korzh.com/easyquery#get-started" class="button w-100 fg-white text-bold warning large" >GET IT NOW!</a>
+                        <a href="#licensing" class="button w-100 fg-white text-bold warning large" >GET IT NOW!</a>
                     </div>
                     <div class="cell-4 pl-1 pr-1">
-                        <a href="https://korzh.com/demo/easyquery-asp-net-core-razor" class="button w-100 fg-white text-bold warning large" >Live Demo</a>
-                    </div>
-                    <div class="cell-4">
-                        <a href="#licensing" class="button w-100 fg-white text-bold warning large" >Buy License</a>
+                        <a href="https://demo.korzh.com/easyquery-asp-net-core-razor" class="button w-100 fg-white text-bold warning large" >Live Demo</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +49,7 @@
 
             <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center hero-images">
                 <div class="">
-                    <img src="images/easy-report-1.png" alt="" class="shadow-3">
+                    <img src="/images/easy-report-1.png" alt="" class="shadow-3">
                 </div>
             </div>
         </div>
@@ -156,22 +153,22 @@
             <div class="cell-lg-6 easy-report-images">
                 <div class="row" data-role="lightbox">
                     <div class="cell-6 p-2">
-                        <img src="images/01_s.png" alt="">
+                        <img src="/images/01_s.png" alt="">
                     </div>
                     <div class="cell-6 p-2">
-                        <img src="images/04_s.png" alt="">
+                        <img src="/images/04_s.png" alt="">
                     </div>
                     <div class="cell-6 p-2">
-                        <img src="images/02_s.png" alt="">
+                        <img src="/images/02_s.png" alt="">
                     </div>
                     <div class="cell-6 p-2">
-                        <img src="images/03_s.png" alt="">
+                        <img src="/images/03_s.png" alt="">
                     </div>
                     <div class="cell-6 p-2">
-                        <img src="images/05_s.png" alt="">
+                        <img src="/images/05_s.png" alt="">
                     </div>
                     <div class="cell-6 p-2">
-                        <img src="images/06_s.png" alt="">
+                        <img src="/images/06_s.png" alt="">
                     </div>
                 </div>
             </div>
@@ -249,7 +246,7 @@
                     <td><span class="mif-checkmark fg-green"></span></td>
                 </tr>
                 <tr>
-                    <td><a href="easyquery#licensing">EasyQuery ASP.NET Core Company</a> license</td>
+                    <td><a href="/easyquery#licensing">EasyQuery ASP.NET Core Company</a> license</td>
                     <td><span class="mif-cross fg-red"></span></td>
                     <td><span class="mif-checkmark fg-green"></span></td>
                 </tr>
@@ -323,7 +320,7 @@
 
             <div class="question">We are resellers. Do you have any special offers for resellers?</div>
             <div class="answer">
-                <p> Yes, we do. Please visit <a href="/support/resellers">Reseller's FAQ</a> page for the details</p>
+                <p> Yes, we do. Please visit <a href="/resellers">Reseller's FAQ</a> page for the details</p>
             </div>
         </div>
     </div>
@@ -335,14 +332,14 @@
 
 <section class="container-fluid more-question">
     <div class="container">
-        <div data-role="html-container" data-method="get" data-html-source="more-questions.html" data-insert-mode="replace"></div>
+        <div data-role="html-container" data-method="get" data-html-source="/more-questions.html" data-insert-mode="replace"></div>
     </div>
 </section>
 
-<div data-role="html-container" data-method="get" data-html-source="footer.html" data-insert-mode="replace"></div>
+<div data-role="html-container" data-method="get" data-html-source="/footer.html" data-insert-mode="replace"></div>
 
 <script src="//cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
-<script src="js/index.js"></script>
+<script src="/js/index.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", (event) => {
         document.getElementById('GetERSKBtn').addEventListener("click", (event) => {
@@ -363,7 +360,7 @@
                 },
                 afterRegisterTitle: 'Please check your Inbox',
                 afterRegisterBody: `<div>We sent an email to <strong>{{email}}</strong>. You will find the download link there. </div>` +
-                                    '<div style="margin-top:20px;font-size:0.9em">NB: Don\'t forgot to check your SPAM folder ' +
+                                    '<div style="margin-top:20px;font-size:0.9em">NB: Don\'t forget to check your SPAM folder ' +
                                     'if the message does not arrive within the next 5 minutes and mark it as "Not Spam" if it\'s there.</div>',
                 autoSignIn: true,
                 data: {
