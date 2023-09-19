@@ -64,7 +64,7 @@
 
 /download/*							https://cdn.korzh.com/download/:splat
 
-/account                    https://account.korzh.com
+/account/*                  https://account.korzh.com/:splat
 /support					https://account.korzh.com/ticket/create
 /login                      https://account.korzh.com
 /demo/*                     https://demo.korzh.com/:splat
