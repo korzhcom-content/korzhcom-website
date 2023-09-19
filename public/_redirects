@@ -67,4 +67,4 @@
 /account                    https://account.korzh.com
 /support					https://account.korzh.com/ticket/create
 /login                      https://account.korzh.com
-/demo/*                     https://demo.korzh.com/:splat  200!
+/demo/*                     https://demo.korzh.com/:splat
