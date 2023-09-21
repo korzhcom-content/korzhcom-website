@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[881],{5040:o=>{o.exports=JSON.parse('{"permalink":"/blog/tags/asp-net-core","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Korzh.com Blog","blogTitle":"Korzh.com Blog"}')}}]);

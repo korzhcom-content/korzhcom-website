@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[713],{3457:e=>{e.exports=JSON.parse('[{"label":"ASP-NET-CORE","permalink":"/blog/tags/asp-net-core","count":1},{"label":"JAVASCRIPT","permalink":"/blog/tags/javascript","count":1},{"label":"TYPESCRIPT","permalink":"/blog/tags/typescript","count":1}]')}}]);
