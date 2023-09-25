@@ -29,5 +29,12 @@ module.exports = {
 	  cleanOnceBeforeBuildPatterns: [],
       cleanAfterEveryBuildPatterns: ['*.LICENSE.txt'],
     })
-  ]	
+  ],
+  devServer: {
+    static: {
+      directory: path.join(path.resolve(__dirname, '../public')),
+    },
+    compress: false,
+    port: 9000,
+  },
 };
