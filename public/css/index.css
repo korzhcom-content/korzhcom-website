@@ -284,4 +284,7 @@ footer .mute-text {
   font-size: 14px;
   white-space: nowrap;
 }
+.kdlg-header {
+  width: 100%!important;
+}
 /*# sourceMappingURL=index.css.map */
