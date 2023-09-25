@@ -2,3 +2,5 @@
 node_modules
 dist
 app-client.min.js
+# Local Netlify folder
+.netlify
