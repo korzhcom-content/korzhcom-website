@@ -31,6 +31,16 @@ module.exports = {
     })
   ],
   devServer: {
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/$/, to: '/index.html' },
+        { from: /^\/metroui/, to: '/metroui.html' },
+        { from: /^\/localizer/, to: '/localizer.html' },
+        { from: /^\/easyquery/, to: '/easyquery.html' },
+        { from: /^\/easy-report-starter-kit/, to: '/easy-report-starter-kit.html' },
+        { from: /./, to: '/404.html' },
+      ],
+    },
     static: {
       directory: path.join(path.resolve(__dirname, '../public')),
     },
