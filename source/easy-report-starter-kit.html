@@ -1,20 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="//cdn.korzh.com/metroui/v4/css/metro-all.min.css">
-    <link rel="stylesheet" href="//cdn.korzh.com/ed/1.4.11/easydata.css" />
-    <link rel="stylesheet" href="/css/index.css">
-    <title>EASYREPORT STARTER KIT :: Korzh.com - Tools from Developers for Developers</title>
-</head>
-<body class="m4-cloak">
-<div data-role="html-container" data-insert-mode="replace" data-html-source="/appbar.html"></div>
-
-<br/>
-<br/>
+---
+title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developers
+---
 
 <section class="container-fluid bg-light easyreport-hero hero-block">
     <div class="container">
@@ -332,50 +318,5 @@
 <br/>
 
 <section class="container-fluid more-question">
-    <div class="container">
-        <div data-role="html-container" data-method="get" data-html-source="/more-questions.html" data-insert-mode="replace"></div>
-    </div>
+    {% include more-questions.html %}
 </section>
-
-<div data-role="html-container" data-method="get" data-html-source="/footer.html" data-insert-mode="replace"></div>
-
-<script src="//cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
-<script src="/js/index.js"></script>
-<!--
-<script>
-    document.addEventListener("DOMContentLoaded", (event) => {
-        document.getElementById('GetERSKBtn').addEventListener("click", (event) => {
-            GAZDA_CLIENT.ui.showAuthDialog({
-                registerForm: {
-                    title: 'Download EasyReport Starter Kit',         
-                    introHtml: 'Please provide your email address to get the download link and instructions on how to set up and run ERSK solution',
-                    askPassword: false,
-                    askConsent: true,
-                    submitButtonText: 'Get ERSK Community',
-                    consentLabelHtml: 'I agree with the <a href="/terms-of-use">Terms of Use</a> and the <a href="/privacy">Privacy Policy</a>.<br />' +
-                                        'I also agree to receive email communications from Korzh.com. Consent may be withdrawn at any time.',
-                },
-                loginForm: {
-                    submitButtonText: 'Sign in to get ERSK',                        
-                    askPassword: false,
-                    askConsent: false,
-                },
-                afterRegisterTitle: 'Please check your Inbox',
-                afterRegisterBody: `<div>We sent an email to <strong>{{email}}</strong>. You will find the download link there. </div>` +
-                                    '<div style="margin-top:20px;font-size:0.9em">NB: Don\'t forget to check your SPAM folder ' +
-                                    'if the message does not arrive within the next 5 minutes and mark it as "Not Spam" if it\'s there.</div>',
-                autoSignIn: true,
-                data: {
-                    intent: 'get-perk',
-                    ctag: 'ERSK-FREE',
-                    diid: 774
-                }
-            });
-            return false;
-        });
-    })
-</script>
--->
-
-</body>
-</html>
