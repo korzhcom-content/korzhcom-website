@@ -21,7 +21,7 @@ module.exports = {
       type: 'var'
     },
     filename: 'app-client.min.js',
-    path: path.resolve(__dirname, '../public/js'),
+    path: path.resolve(__dirname, '../source/js'),
   },
   plugins: [
     new CleanWebpackPlugin({
@@ -42,7 +42,7 @@ module.exports = {
       ],
     },
     static: {
-      directory: path.join(path.resolve(__dirname, '../public')),
+      directory: path.join(path.resolve(__dirname, '../source')),
     },
     compress: false,
     port: 9000,
