@@ -42,7 +42,7 @@ module.exports = {
       ],
     },
     static: {
-      directory: path.join(path.resolve(__dirname, '../source')),
+      directory: path.join(path.resolve(__dirname, '../_site')),
     },
     compress: false,
     port: 9000,
