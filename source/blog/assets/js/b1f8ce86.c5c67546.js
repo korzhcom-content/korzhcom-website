@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[1234],{3398:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/web-service","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Korzh.com Blog","blogTitle":"Korzh.com Blog"}')}}]);

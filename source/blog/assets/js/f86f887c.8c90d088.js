@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[1277],{9818:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/resources","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Korzh\'s Blog","blogTitle":"Korzh\'s Blog"}')}}]);
