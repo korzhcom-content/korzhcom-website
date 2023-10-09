@@ -1,0 +1,110 @@
+.c-brand {
+    margin: 0 !important;
+}
+
+.c-desktop-logo {
+    margin-top: 20px;
+}
+
+.c-desktop-logo-inverse {
+    margin-top: 10px;
+}
+
+.c-layout-header .c-topbar {
+    padding-top: 10px;
+}
+
+.c-content-feature-5 .c-photo {
+    right: -60px;
+    top: 10px;
+}
+
+.c-content-box.c-size-lg.k-title-box {
+    padding: 180px 0;
+}
+
+.c-layout-footer.c-layout-footer-2 {
+    background-image: url("/images/bg_footer_2.jpg");
+}
+
+.c-content-client-logos-1 .c-logos {
+    padding: 0;
+}
+
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-light > .nav.navbar-nav > li .dropdown-menu > li > h4 {
+    color: #000000;
+}
+.c-layout-header .c-navbar .c-mega-menu.c-fonts-bold > .nav.navbar-nav > li .dropdown-menu > li > h4 {
+    font-weight: 800;
+}
+.c-layout-header .c-navbar .c-mega-menu.c-fonts-uppercase > .nav.navbar-nav > li .dropdown-menu > li > h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li .dropdown-menu > li > h4 {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 10px 25px;
+}
+
+.c-content-feature-5 .c-text {
+    width: 62%;
+    font-weight: 400;
+}
+
+.c-content-client-logos-1 .c-logos .row > div {
+    padding: 14px 0;
+}
+
+.c-content-client-logos-1 .c-img-pos {
+    margin-left: -150px;
+}
+
+.c-content-client-logos-1 .c-img-pos:not(:hover) {  
+    -webkit-filter: grayscale(100%);  
+    -webkit-filter: grayscale(1);  
+    filter: grayscale(100%);  
+ 
+    filter: url('/images/gray.svg#grayscale');  
+    filter: gray; 
+    opacity: 0.5; 
+}
+
+.k-block-download-trial {
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block; 
+    margin-top: 50px; 
+    text-align:center;
+}
+
+.k-btn-download-trial, .k-block-download-trial a {
+    width: 200px;
+}
+
+.c-content-media-1 .c-title {
+    margin: 0;
+}
+
+.c-content-media-1.krh-blogpost h3 {
+    color: #3f444a;
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 35px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.c-content-media-1.krh-blogpost p, .c-content-media-1.krh-blogpost li {
+    font-size: 21px;
+    line-height: 31px;
+    margin-bottom: 10px;
+}
+
+.c-content-media-1.krh-blogpost {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+}
+
