@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[7612],{8840:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/project-template","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Korzh\'s Blog","blogTitle":"Korzh\'s Blog"}')}}]);

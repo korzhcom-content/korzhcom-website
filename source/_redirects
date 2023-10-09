@@ -13,7 +13,6 @@
 /easyquery/docs/how-to/add-columns-and-conditions-by-code	/easyquery/docs/how-to/add-columns-conditions-with-code
 /easyquery/docs/fundamentals/what-is-easyquery	/easyquery/docs/introduction
 /easyquery/dotnet	/easyquery
-/localizer/docs	http://docs.korzh.com/localizer/index
 /easyquery/javascript/docs/getting-started-query-builder-php	/easyquery/javascript/docs/getting-started/query-builder-php
 /news/easyquery-version-*	/news/easyquery-version-:splat
 /easyquery/purchase*	/easyquery/licensing:splat
@@ -68,3 +67,4 @@
 /support			https://account.korzh.com/ticket/create
 /login				https://account.korzh.com
 /demo/*				https://demo.korzh.com/:splat
+/admin/*			https://admin.korzh.com/:splat

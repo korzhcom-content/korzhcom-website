@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[9423],{5667:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/top-level-statements","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Korzh\'s Blog","blogTitle":"Korzh\'s Blog"}')}}]);
