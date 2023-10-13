@@ -77,7 +77,11 @@ function getTrial(){
     })
 }
 
-
+window.onpageshow = function (event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
 
 $(()=>{
     $("body").on("click", "a[slow-loading]", function() {
