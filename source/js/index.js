@@ -78,8 +78,8 @@ function getTrial(){
 }
 
 
+$(".overlay").remove()
 $(()=>{
-    $(".overlay").remove()
     $("body").on("click", "a[slow-loading]", function() {
         Metro.activity.open({
                     type: "cycle",
