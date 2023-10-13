@@ -78,17 +78,14 @@ function getTrial(){
 }
 
 
-window.addEventListener('load', () => {
-    document.querySelectorAll('[slow-loading]')
-        .forEach(link => 
-            link.addEventListener('click', function(){
-                Metro.activity.open({
+$(()=>{
+    $(".overlay").remove()
+    $("body").on("click", "a[slow-loading]", function() {
+        Metro.activity.open({
                     type: "cycle",
-                    overlayColor: "#000",
-                    overlayAlpha: .3,
-                    autoHide: 5000,
-                    text: `<div class="mt-2 text-small">Loading...</div>`
+                    overlayColor: "#fff",
+                    overlayAlpha: .6,
+                    text: '<div class="mt-2 text-small">Loading...</div>'
                 })
-            })
-        )
+    })
 })
