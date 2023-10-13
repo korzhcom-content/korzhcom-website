@@ -78,15 +78,14 @@ function getTrial(){
 }
 
 
-$(".overlay").remove()
+
 $(()=>{
     $("body").on("click", "a[slow-loading]", function() {
         Metro.activity.open({
-                    type: "cycle",
-                    overlayColor: "#fff",
-                    overlayAlpha: .6,
-                    autoHide: 5000,
-                    text: '<div class="mt-2 text-small">Loading...</div>'
-                })
+            type: "cycle",
+            overlayColor: "#fff",
+            overlayAlpha: .6,
+            text: '<div class="mt-2 text-small">Loading...</div>'
+        })
     })
 })
