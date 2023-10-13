@@ -86,6 +86,7 @@ window.addEventListener('load', () => {
                     type: "cycle",
                     overlayColor: "#000",
                     overlayAlpha: .3,
+                    autoHide: 5000,
                     text: `<div class="mt-2 text-small">Loading...</div>`
                 })
             })
