@@ -76,3 +76,18 @@ function getTrial(){
         ]
     })
 }
+
+
+window.addEventListener('load', () => {
+    document.querySelectorAll('[slow-loading]')
+        .forEach(link => 
+            link.addEventListener('click', function(){
+                Metro.activity.open({
+                    type: "cycle",
+                    overlayColor: "#000",
+                    overlayAlpha: .3,
+                    text: `<div class="mt-2 text-small">Loading...</div>`
+                })
+            })
+        )
+})
