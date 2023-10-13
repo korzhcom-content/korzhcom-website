@@ -85,6 +85,7 @@ $(()=>{
                     type: "cycle",
                     overlayColor: "#fff",
                     overlayAlpha: .6,
+                    autoHide: 5000,
                     text: '<div class="mt-2 text-small">Loading...</div>'
                 })
     })
