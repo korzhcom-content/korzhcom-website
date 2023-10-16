@@ -68,4 +68,4 @@
 /login				https://account.korzh.com
 /demo/*				https://demo.korzh.com/:splat
 /admin/*			https://admin.korzh.com/:splat
-/api/*              https://admin.korzh.com/api/:splat
+/api/*              https://client.korzh.com/api/:splat
