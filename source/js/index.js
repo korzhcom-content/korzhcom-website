@@ -65,6 +65,7 @@ function getTrial(){
                     form.append($(`<input type='hidden' name='email' value='${email}'>`))
 
                     form[0].submit()
+                    setTimeout(() => showLoadIndicator(), 100)
                 }
             },
             {
@@ -79,17 +80,21 @@ function getTrial(){
 
 window.onpageshow = function (event) {
     if (event.persisted) {
-        window.location.reload();
+        window.location.reload()
     }
 };
 
+function showLoadIndicator() {
+    Metro.activity.open({
+        type: "cycle",
+        overlayColor: "#fff",
+        overlayAlpha: .6,
+        text: '<div class="mt-2 text-small">Loading...</div>'
+    })
+}
+
 $(()=>{
     $("body").on("click", "a[slow-loading]", function() {
-        Metro.activity.open({
-            type: "cycle",
-            overlayColor: "#fff",
-            overlayAlpha: .6,
-            text: '<div class="mt-2 text-small">Loading...</div>'
-        })
+        showLoadIndicator();
     })
 })
