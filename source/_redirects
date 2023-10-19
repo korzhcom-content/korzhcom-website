@@ -42,7 +42,7 @@
 /news/localizer-version-*	/news/localizer-version-:splat
 /ersk*	/easy-report-starter-kit/:splat
 /easyquery/docs/how-to/add-virtual-attribute-in-model	/easyquery/docs/tutorials/add-virtual-attribute-in-model
-/blogs	/blogs/dotnet-stories
+/blogs	/blog:splat
 /easyquery/docs/getting-started/new-data-model	/easyquery/docs/getting-started/working-with-data-model
 /delphi/eq	/easyquery
 /easyquery/docs/getting-started/asp-net-mvc	/easyquery/docs/getting-started/asp-net-4-mvc-or-webforms
@@ -69,3 +69,4 @@
 /demo/*				https://demo.korzh.com/:splat
 /admin/*			https://admin.korzh.com/:splat
 /api/*              https://account.korzh.com/api/:splat    200!
+/blog/tag/*         /blog/tags:splat
