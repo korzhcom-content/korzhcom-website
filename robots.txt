@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /forums/search.php
+Disallow: /forums/profile.php
+Disallow: /forums/viewonline.php
+Disallow: /forums/memberlist.php
+Disallow: /forums/viewtopic.php*&sid=
+Disallow: /forums/viewforum.php*&sid=
+Sitemap: https://korzh.com/sitemap.xml
