@@ -1,11 +1,11 @@
 /easyquery/docs/tutorials/common-queries	/easyquery/docs/tutorials/common-sql-queries
 /blogs/dotnet-stories*	/blog:splat
 /easyquery/docs/version-5-0	/easyquery/docs/getting-started/version-5-x
-/order.shtml	/easyquery/licensing
+/order.shtml	/easyquery#licensing
 /sections/eq/eq-intro1.htm	/easyquery
 /en/*	/:splat
 /easyquery/docs/how-to/add-new-operator-in-model	/easyquery/docs/tutorials/add-new-operator-in-model
-/localizer/purchase*	/localizer/licensing:splat
+/localizer/purchase*	/localizer#licensing
 /delphi/localizer	/localizer
 /eq	/easyquery
 /easyquery/release-notes*	/easyquery/docs/release-notes:splat
@@ -14,8 +14,8 @@
 /easyquery/docs/fundamentals/what-is-easyquery	/easyquery/docs/introduction
 /easyquery/dotnet	/easyquery
 /easyquery/javascript/docs/getting-started-query-builder-php	/easyquery/javascript/docs/getting-started/query-builder-php
-/news/easyquery-version-*	/news/easyquery-version-:splat
-/easyquery/purchase*	/easyquery/licensing:splat
+/news/easyquery-version-*	/easyquery/docs/changelog
+/easyquery/purchase*	/easyquery#licensing
 /easyquery/docs/fundamentals/about-data-model	/easyquery/docs/fundamentals/data-model
 /easyquery/docs/getting-started/asp-net-webforms	/easyquery/docs/getting-started/asp-net-4-mvc-or-webforms
 /query-builder-net-asp	/easyquery
@@ -39,7 +39,7 @@
 /blogs/net-tricks*	/blog:splat
 /easyquery/docs/use-cases/building-dynamic-queries-with-easyquery-and-entity-framework	/easyquery/docs/tutorials/building-dynamic-queries-with-easyquery-and-entity-framework
 /easyquery/changelog-js	/easyquery/javascript/docs/changelog
-/news/localizer-version-*	/news/localizer-version-:splat
+/news/localizer-version-*	/localizer
 /ersk*	/easy-report-starter-kit/:splat
 /easyquery/docs/how-to/add-virtual-attribute-in-model	/easyquery/docs/tutorials/add-virtual-attribute-in-model
 /blogs	/blog:splat
@@ -56,6 +56,8 @@
 /easyquery/demo1.htm	/easyquery
 /easyquery/docs/how-to/add-columns-by-code	/easyquery/docs/how-to/add-columns-and-conditions-by-code
 /eq/activex	/easyquery
+/support/resellers	/resellers
+/easyquery/video	/easyquery
 
 /easyquery/docs/*                   https://korzh.aistant.com/proxy/easyquery-dotnet/:splat  200!
 /easyquery/javascript/docs/*        https://korzh.aistant.com/proxy/easyquery-javascript/:splat  200!
