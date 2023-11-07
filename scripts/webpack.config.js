@@ -21,7 +21,7 @@ module.exports = {
       type: 'var'
     },
     filename: 'app-client.min.js',
-    path: path.resolve(__dirname, '../source/js'),
+    path: path.resolve(__dirname, '../source/assets/js'),
   },
   plugins: [
     new CleanWebpackPlugin({
