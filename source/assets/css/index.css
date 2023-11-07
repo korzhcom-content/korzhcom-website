@@ -289,4 +289,20 @@ footer .mute-text {
 .kdlg-header {
   width: 100%!important;
 }
+.lightbox__image-wrapper img {
+  max-width: calc(100vw - 200px);
+}
+.image-preview {
+  height: 170px!important;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+}
+.image-preview img {
+  width: 100%;
+  min-height: 100%;
+}
+.image-preview:hover {
+  transform: scale(1.1);
+  z-index: 2;
+}
 /*# sourceMappingURL=index.css.map */
