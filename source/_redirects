@@ -1,67 +1,100 @@
-/easyquery/docs/tutorials/common-queries	/easyquery/docs/tutorials/common-sql-queries
-/blogs/dotnet-stories*	/blog:splat
-/easyquery/docs/version-5-0	/easyquery/docs/getting-started/version-5-x
+/en/*	/:splat
+/support/resellers	/resellers
+
 /order.shtml	/easyquery#licensing
 /sections/eq/eq-intro1.htm	/easyquery
-/en/*	/:splat
-/easyquery/docs/how-to/add-new-operator-in-model	/easyquery/docs/tutorials/add-new-operator-in-model
-/localizer/purchase*	/localizer#licensing
-/delphi/localizer	/localizer
 /eq	/easyquery
-/easyquery/release-notes*	/easyquery/docs/release-notes:splat
+/easyquery/dotnet	/easyquery
+/easyquery/purchase*	/easyquery#licensing
+/easyquery/licensing*	/easyquery#licensing
+/query-builder-net-asp	/easyquery
+/purchase.jsp product=:LOCVCL	/localizer#licensing
+/purchase.jsp*	/easyquery#licensing
+/easyquery/screenshots.jsp	/easyquery
+/easyquery/vcl	/easyquery
+/query-builder-net	/easyquery
+/easyquery/winforms	/easyquery
+/delphi/eq	/easyquery
+/delphi/sq	/easyquery
+/easyquery/downloads	/easyquery
+/easyquery/demo1.htm	/easyquery
+/eq/activex	/easyquery
+/easyquery/video	/easyquery
+/static/easyquery/eq-booklet.pdf	https://cdn.korzh.com/download/eq-booklet.pdf
+/easyquery-release*		/easyquery
+/easyquery-version*		/easyquery
+
+/ersk*	/easy-report-starter-kit/:splat
+
+/easyquery/release-notes*	/easyquery/docs/release-notes/:splat
+/easyquery/docs/tutorials/common-queries	/easyquery/docs/tutorials/common-sql-queries
+/easyquery/docs/version-5-0	/easyquery/docs/getting-started/version-5-x
+/easyquery/docs/how-to/add-new-operator-in-model	/easyquery/docs/tutorials/add-new-operator-in-model
+/easyquery/docs/developer-guide/how-it-works	/easyquery/docs/fundamentals/how-it-works
 /easyquery/docs/tutorials/how-to-set-up-javascript-widgets-mvc-version	/easyquery/docs/tutorials/javascript-widgets-settings-formats
 /easyquery/docs/how-to/add-columns-and-conditions-by-code	/easyquery/docs/how-to/add-columns-conditions-with-code
 /easyquery/docs/fundamentals/what-is-easyquery	/easyquery/docs/introduction
-/easyquery/dotnet	/easyquery
 /easyquery/javascript/docs/getting-started-query-builder-php	/easyquery/javascript/docs/getting-started/query-builder-php
 /news/easyquery-version-*	/easyquery/docs/changelog
-/easyquery/purchase*	/easyquery#licensing
 /easyquery/docs/fundamentals/about-data-model	/easyquery/docs/fundamentals/data-model
 /easyquery/docs/getting-started/asp-net-webforms	/easyquery/docs/getting-started/asp-net-4-mvc-or-webforms
-/query-builder-net-asp	/easyquery
 /easyquery/docs/how-to/customizing-query-format*	/easyquery/docs/how-to/customizing-sql-query-formats
-/purchase.jsp*	/easyquery/purchase
 /easyquery/docs/tutorials/building-dynamic-queries-with-easyquery-and-entity-framework	/easyquery/docs/tutorials/dynamic-queries-ui-aspnet-core-entity-framework
 /easyquery/docs/javascript/javascript-query-builder-with-nodejs	/easyquery/javascript/docs/getting-started/javascript-query-builder-with-nodejs
-/easyquery/screenshots.jsp	/easyquery
 /easyquery/usecase/easyquery-entity-framework-entity-SQL	/easyquery/docs/use-cases/building-dynamic-queries-with-easyquery-and-entity-framework
-/easyquery/vcl	/easyquery
 /easyquery/changelog-*	/easyquery/docs/changelog
-/delphi /localizer
-/__gazdablogpost____default~net-tricks~a3b1afdfc5554dc0893f30c476104c0f	/blog/aspnet-identity-migrate-membership-passwords
-/query-builder-net	/easyquery
-/blog/dependency-Injection-explanation-in-simple-words	/blog/dependency-injection-explanation-in-simple-words
-/blogs/dotnnet-stories/aspnet-identity-store-user-data-in-claims	/blog/add-extra-user-claims-aspnet-core-webapp
 /easyquery/docs/getting-started/version-5-x	/easyquery/docs/getting-started/asp-net-core
 /easyquery/docs/javascript/query-builder-php	/easyquery/javascript/docs/getting-started/query-builder-php
-/easyquery/docs/developer-guide*	/easyquery/docs/fundamentals:splat
-/easyquery/winforms	/easyquery
-/blogs/net-tricks*	/blog:splat
+/easyquery/docs/developer-guide*	/easyquery/docs/fundamentals/:splat
 /easyquery/docs/use-cases/building-dynamic-queries-with-easyquery-and-entity-framework	/easyquery/docs/tutorials/building-dynamic-queries-with-easyquery-and-entity-framework
 /easyquery/changelog-js	/easyquery/javascript/docs/changelog
-/news/localizer-version-*	/localizer
-/ersk*	/easy-report-starter-kit/:splat
 /easyquery/docs/how-to/add-virtual-attribute-in-model	/easyquery/docs/tutorials/add-virtual-attribute-in-model
-/blogs	/blog:splat
 /easyquery/docs/getting-started/new-data-model	/easyquery/docs/getting-started/working-with-data-model
-/delphi/eq	/easyquery
 /easyquery/docs/getting-started/asp-net-mvc	/easyquery/docs/getting-started/asp-net-4-mvc-or-webforms
 /easyquery/LICENSE.txt	/easyquery/eula.txt
-/localizer/LICENSE.txt	/localizer/eula.txt
-/blogs/rus/why_yuschenko.html	/blogs/dotnet-stories
 /easyquery/docs/common-queries/gridview-filtering-with-easyquery-aspnet-webforms	/easyquery/docs/use-cases/gridview-filtering-with-easyquery-aspnet-webforms
-/easyquery/docs/javascript*	/easyquery/javascript/docs/getting-started:splat
+/easyquery/docs/javascript*	/easyquery/javascript/docs/getting-started/:splat
 /easyquery/docs/javascript-query-builder-php	/easyquery/javascript/docs/getting-started/query-builder-php
-/easyquery/downloads	/easyquery
-/easyquery/demo1.htm	/easyquery
 /easyquery/docs/how-to/add-columns-by-code	/easyquery/docs/how-to/add-columns-and-conditions-by-code
-/eq/activex	/easyquery
-/support/resellers	/resellers
-/easyquery/video	/easyquery
+/easyquery/javascript/docs/getting-started	/easyquery/javascript/docs/introduction
+/easyquery/javascript/docs/api-reference	/easyquery/javascript/docs/api-reference-7x
+/easyquery/docs/common-queries/*	/easyquery/docs/tutorials/:splat
+/easyquery/docs/tutorials/net-core-version-5-x	/easyquery/docs/how-to/version-5-x
+/easyquery/docs/common-queries/sub-query	/easyquery/docs/query-with-a-subquery
+/easyquery/docs/use-cases	/easyquery/docs/how-to
 
+/localizer/purchase*	/localizer#licensing
+/delphi/localizer	/localizer
+/localizer/changelog	/localizer
+/delphi /localizer
+/localizer-version-*	/localizer
+/news/localizer-version-*	/localizer
+/localizer/LICENSE.txt	/localizer/eula.txt
+/startdownload item=:loc	/download/locsetup.exe
+
+/__gazdablogpost____default~net-tricks~a3b1afdfc5554dc0893f30c476104c0f	/blog/aspnet-identity-migrate-membership-passwords
+/blogs/net-tricks*	/blog/:splat
+/blogs/dotnet-stories*	/blog/:splat
+/blogs/dotnnet-stories/aspnet-identity-store-user-data-in-claims	/blog/add-extra-user-claims-aspnet-core-webapp
+/blogs/rus/why_yuschenko.html	/blog
+/blogs	/blog/:splat
+/blog/tag/*         /blog/tags/:splat
+/blog/dependency-Injection-explanation-in-simple-words	/blog/dependency-injection-explanation-in-simple-words
+
+
+/orderform*			https://account.korzh.com/orderform:splat
+
+/news*				/
+/crammer*			/
+/clarity*			/
+/newspiper*			/
+
+
+/images/*							/assets/images/:splat
 /easyquery/docs/*                   https://korzh.aistant.com/proxy/easyquery-dotnet/:splat  200!
 /easyquery/javascript/docs/*        https://korzh.aistant.com/proxy/easyquery-javascript/:splat  200!
 /easy-report-starter-kit/docs/*     https://korzh.aistant.com/proxy/ersk/:splat  200!
+/metroui/docs/*						https://metroui.org.ua/intro.html
 
 /download/*							https://cdn.korzh.com/download/:splat
 
@@ -71,4 +104,3 @@
 /demo/*				https://demo.korzh.com/:splat
 /admin/*			https://admin.korzh.com/:splat
 /api/*              https://account.korzh.com/api/:splat    200!
-/blog/tag/*         /blog/tags:splat
