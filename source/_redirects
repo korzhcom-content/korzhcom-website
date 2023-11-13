@@ -72,3 +72,7 @@
 /admin/*			https://admin.korzh.com/:splat
 /api/*              https://account.korzh.com/api/:splat    200!
 /blog/tag/*         /blog/tags:splat
+
+/crammer  /discontinued?project-name=crammer
+/clarity  /discontinued?project-name=clarity
+/newspiper  /discontinued?project-name=newspiper
