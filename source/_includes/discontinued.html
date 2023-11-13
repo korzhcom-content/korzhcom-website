@@ -1,6 +1,4 @@
----
-title: PROJECT DISCONTINUED >> Korzh.com - Tools from Developers for Developers
----
+
 <style>
     .app-bar {
         border-bottom: 1px solid #dedede;
@@ -18,9 +16,9 @@ title: PROJECT DISCONTINUED >> Korzh.com - Tools from Developers for Developers
     <section class="container-fluid">
         <div class="container">
             <div class="d-flex flex-align-center flex-justify-center flex-column" style="margin-top: 100px;">
-                <div class="h1 project-name">The Project</div>
+                <div class="h1 project-name">{{ page.project-name }}</div>
                 <img class="mt-20 mb-20" src="/assets/images/discontinued.webp" alt="discontinued" style="width: 300px;">
-                <div class="text-leader">Unfortunately, the project <span class="project-name"></span> is discontinued.</div>
+                <div class="text-leader">Unfortunately, the project <span class="project-name">{{ page.project-name }}</span> is discontinued.</div>
                 <div class="text-leader">Take a look at our current projects</div>
                 <div class="row" style="margin-top: 60px;">
                     <div class="cell-md-4">
@@ -64,19 +62,3 @@ title: PROJECT DISCONTINUED >> Korzh.com - Tools from Developers for Developers
     <section class="mt-auto container-fluid more-question bg-light">
         {% include more-questions.html %}
     </section>
-
-<script>
-    window.addEventListener("load", () => {
-        const getURIParameter = (name) => {
-            const url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
-        const projectName = getURIParameter('project') || 'Awesome Project'
-        $(".project-name").text(projectName)
-    })
-</script>
