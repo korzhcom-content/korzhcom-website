@@ -85,9 +85,9 @@
 /orderform*			https://account.korzh.com/orderform:splat
 
 /news*				/
-/crammer*			/
-/clarity*			/
-/newspiper*			/
+#/crammer*			/discontinued?project-name=crammer   200!
+#/clarity*			/discontinued?project-name=clarity   200!
+#/newspiper*			/discontinued?project-name=newspiper   200!
 
 
 /images/*							/assets/images/:splat
@@ -104,3 +104,5 @@
 /demo/*				https://demo.korzh.com/:splat
 /admin/*			https://admin.korzh.com/:splat
 /api/*              https://account.korzh.com/api/:splat    200!
+/blog/tag/*         /blog/tags:splat
+
