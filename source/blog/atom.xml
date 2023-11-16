@@ -125,137 +125,6 @@
         <category label="TYPESCRIPT" term="TYPESCRIPT"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[ASP.NET Core default project structure explained (part 1)]]></title>
-        <id>https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1</id>
-        <link href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1"/>
-        <updated>2021-05-23T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Introduction]]></summary>
-        <content type="html"><![CDATA[<p><img loading="lazy" src="https://korzh.com/blog/assets/images/computer-coffee-01-a7e2ae32ba982b004b23d7282738dc5d.jpg" width="1920" height="1282" class="img_ev3q"></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="introduction">Introduction<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction">​</a></h2>
-<p>When you start learning a programming language, one of your first exercises will probably be to write a “Hello World” application to figure out the basic concepts.
-This exercise works well if you’re writing a simple console program that will only print out the greetings on the screen.</p>
-<p>However, once you move onto learning to write web apps using a new framework, such as ASP.NET Core, such a simple code is not enough — partially because web apps are more complex.
-And also because, right off the bat, the tools and frameworks used for writing web apps try to introduce advanced techniques and approaches for building and maintaining them once they scale.</p>
-<p>It all can seem like too much for a beginner.
-Here we will take apart the default ASP.NET Core solution template piece by piece, then figure out the purpose of each piece and how exactly it works.</p>
-<p>Please note that this isn’t a full-scale tutorial on all the aspects of creating web apps in ASP.NET Core.
-Rather, it is a short guide where you can check why a particular part is added to your project or find a piece of code and a link to the relevant documentation that explains it in detail.</p>
-<p>As an example, I used a new solution that targets .NET 5.
-However, most of this article's information will also be relevant for the ASP.NET Core projects that target .NET Core 3.1 or the upcoming .NET 6.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="creating-a-new-web-project">Creating a New Web Project<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#creating-a-new-web-project" class="hash-link" aria-label="Direct link to Creating a New Web Project" title="Direct link to Creating a New Web Project">​</a></h2>
-<p>Let’s start with creating a new empty web app with the “Create a new project” wizard in Visual Studio.</p>
-<p>Here is how this step should look:</p>
-<p><img loading="lazy" alt="Create new project dialog in Visual Studio" src="https://korzh.com/blog/assets/images/create-new-project-dlg-f293c181a454d844f19b7dc618cab490.png" width="1277" height="841" class="img_ev3q"></p>
-<p>When you press Next, the wizard will ask you to choose the names of the new solution and project and the folder to place the solution files in:</p>
-<p><img loading="lazy" alt="Configure new project dialog in Visual Studio" src="https://korzh.com/blog/assets/images/configure-project-dlg-65dcd774eb05a670e8b3c0ec8197755c.png" width="1236" height="809" class="img_ev3q"></p>
-<blockquote>
-<p><strong>Tip #1</strong>: Place the project and the solution into separate folders. Choosing the same location for both is convenient only for very small applications. Once you start adding other layers to your solution (domain classes, data layers, API, etc.), having them in separate projects will be more practical.</p>
-</blockquote>
-<blockquote>
-<p><strong>Tip #2</strong>: Use the general name of your application for the name of the solution (like “MyCoolApp”) and add the “.Web” suffix for the project name (e.g., “MyCoolApp.Web”).</p>
-</blockquote>
-<div id="projectCreationFinalStep"><p>Finally, you will need to choose some additional project options.</p><p><img loading="lazy" alt="Additional information for the new project" src="https://korzh.com/blog/assets/images/project-additional-info-a0828b7b4bd4cede3dd83121c611b712.png" width="1022" height="677" class="img_ev3q"></p><p>The most important options here are:</p><ul>
-<li>
-<p><strong>Target Framework</strong>. I suggest selecting the latest one (for the moment), .NET 5, but all the information in this article is relevant for .NET Core 3.1 or .NET 6 (it’s in the pre-release state now) projects as well.</p>
-</li>
-<li>
-<p><strong>Authentication Type</strong>. In this article, we suppose this option is set to <em>Individual Accounts</em>. This value means that our new web project will contain some means for managing user accounts and provide UI for the basic authentication operations: Login, Registration, Reset Password, etc.</p>
-</li>
-</ul><p>Let's click on "Create" when everything is set and get our new solution.</p></div>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="project-structure">Project Structure<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#project-structure" class="hash-link" aria-label="Direct link to Project Structure" title="Direct link to Project Structure">​</a></h2>
-<p>After finishing the steps described above, you will get a new solution with one project inside it.</p>
-<p>The structure of that project will look similar (or even the same) to the following one:</p>
-<p><img loading="lazy" alt="Default ASP.NET Core project structure" src="https://korzh.com/blog/assets/images/default-asp-net-project-structure-4205075f264d2c23cd63b1c974d70a19.png" width="305" height="301" class="img_ev3q"></p>
-<p>Let’s take a closer look at each part of your new project.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-connected-services">1. Connected Services<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#1-connected-services" class="hash-link" aria-label="Direct link to 1. Connected Services" title="Direct link to 1. Connected Services">​</a></h3>
-<p>This is the first node in your project’s structure and possibly the less-used one.
-It is intended to automate the multiple steps necessary to connect a project to an external service (like Azure Storage or Application Insights).
-You can right-click on this node and select “Add connected service…” to run a wizard that will lead you through the process.
-Usually, it just adds necessary packages and gives you basic instructions on how to start using your app's service.
-As I’ve already mentioned, there is a good chance you will not use this node during your project’s lifetime.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-dependencies">2. Dependencies<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#2-dependencies" class="hash-link" aria-label="Direct link to 2. Dependencies" title="Direct link to 2. Dependencies">​</a></h3>
-<p>This element of your project structure contains all packets or other projects on which your project depends.</p>
-<p>There are four main folders inside this node:</p>
-<ul>
-<li><strong>Analyzers</strong><br>
-<!-- -->They help you make your code better: cleaner, error-free. Each analyzer checks that your code satisfies a list of rules incorporated in it. If any part of your code does not apply to one of the rules, you will see either a Warning or an Error while you build your project.</li>
-</ul>
-<p>Please note that analyzers work only at compile time and do not affect your resulting application.</p>
-<ul>
-<li><strong>Frameworks</strong><br>
-<!-- -->This folder contains a list of frameworks your project depends on. This information is important if you <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/" target="_blank" rel="noopener noreferrer">publish your web app as a runtime-dependent</a> (as opposed to a self-contained one). In this case, all the frameworks listed here must be installed on the server where you will run your app.</li>
-</ul>
-<blockquote>
-<p>NB: You can use <code>dotnet --info</code> console command to check the list of installed frameworks.*</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>Packages</strong><br>
-<!-- -->This is the main item in this node. It lists all NuGet packages you added (installed) to your project. If any of those packages depend on other packages, they will be installed automatically and listed as sub-nodes of the root-level packages. You can remove each installed package here (right-click / Remove).</p>
-</li>
-<li>
-<p><strong>Projects</strong><br>
-<!-- -->This is the list of other projects in this solution your current project depends on.
-You can reference other projects using the “Add reference” command from the right-click menu.
-Obviously, this node is empty now since we have only one project in the solution.</p>
-</li>
-</ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-properties">3. Properties<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#3-properties" class="hash-link" aria-label="Direct link to 3. Properties" title="Direct link to 3. Properties">​</a></h3>
-<p>This part contains different properties of your project that you can modify by double-clicking on this node in the Solution Explorer. Most of the properties there affect the compile- and debug-time behavior of your project.</p>
-<p>The only item inside this node is a “launchSettings.json” file containing the launch profiles. Each profile defines how to run your project when you click on the “Run” button in Visual Studio.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-wwwroot">4. wwwroot<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#4-wwwroot" class="hash-link" aria-label="Direct link to 4. wwwroot" title="Direct link to 4. wwwroot">​</a></h3>
-<p>This folder contains all the static files of your web application: CSS files, JavaScript files, images, and icons.
-As you might figure out from its name, this will be the root folder of your web app.
-So if you put an “image1.png” file into the “wwwroot/images/dir1” folder, it will be accessible in the browser by the “/images/dir/image1.png” address.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="5-areas">5. Areas<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#5-areas" class="hash-link" aria-label="Direct link to 5. Areas" title="Direct link to 5. Areas">​</a></h3>
-<p>This folder is added because we selected the “Individual Accounts” value for the “Authentication Type” option when created the project.</p>
-<p>In addition to the core authentication/authorization packages (which is called ASP.NET Core Identity), the default template also adds the “Microsoft.AspNetCore.Identity.UI” package. This is a Razor-class library that contains all forms and partial views for authentication and user management: Login, Registration, Reset Password, User Profile, and many others.
-All these forms will use your layout (defined in <em>Pages/Shared/_Layout.cshtml</em>) and so will match your website’s design.</p>
-<p>However, you still might want to change some of those forms (or even all of them).
-In this case, you can use the Scaffold command and add the necessary files to your project. The scaffolded files will be added to the <em>Areas/Identity</em> folder.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="6-data">6. Data<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#6-data" class="hash-link" aria-label="Direct link to 6. Data" title="Direct link to 6. Data">​</a></h3>
-<p>As in the previous case, this folder appears in our new project because of the “Authentication Type” option that was turned on at the beginning.</p>
-<p>By default, all user-related information (users, their roles, claims, etc.) is stored in a database accessed with <a href="https://docs.microsoft.com/en-us/ef/core/" target="_blank" rel="noopener noreferrer">Entity Framework Core</a> ORM (object-relational mapping) framework. If you are not familiar with EF Core, you can find a lot of tutorials on <a href="https://docs.microsoft.com/en-us/ef/core/get-started/" target="_blank" rel="noopener noreferrer">Microsoft Docs</a>.</p>
-<p>The “Data” folder contains your DB context class named “ApplicationDbContext.” This class is derived from the “IdentityDbContext” class defined in the “Microsoft.AspNetCore.Identity.EntityFrameworkCore” assembly, and it includes all DB sets (tables) necessary to store user-related information.</p>
-<p>You can use this class or create another DbContext class to add your models.</p>
-<p>Additionally, the “Data” folder also includes “Migrations” sub-folder with all your Entity Framework Core migrations.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="7-pages">7. Pages<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#7-pages" class="hash-link" aria-label="Direct link to 7. Pages" title="Direct link to 7. Pages">​</a></h3>
-<p>This folder contains all pages (forms) of your web applications. ASP.NET Core has two default approaches for content rendering: MVC (Model View Controller) and <a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages" target="_blank" rel="noopener noreferrer">Razor Pages</a> (which is, actually, a kind of MVC, where each controller and the corresponding view are stored together). Both approaches use <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor" target="_blank" rel="noopener noreferrer">Razor syntax</a> that you can think of as HTML + C#.</p>
-<p>Each Razor page is represented by a “.cshtml” file. The code related to it is stored in a so-called “code-behind” file with the same name and a “.cshtml.cs” extension.</p>
-<p>From the start, the “Pages” folder contains a few default pages, such as Index (the home page of your web app), Privacy, and Error. Additionally, you can find the main layout file (_Layout.cshtml) and some partial views in the “Pages/Shared” folder.</p>
-<p><strong>NB</strong>: It’s a common practice to prefix the names of the layouts and partial views with <code>_</code> symbol.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="8-root-folder-files">8. Root Folder Files<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#8-root-folder-files" class="hash-link" aria-label="Direct link to 8. Root Folder Files" title="Direct link to 8. Root Folder Files">​</a></h3>
-<p>Now, when we’ve looked over all the main folders created with the default ASP.NET Core application template, let’s take a closer look at the files stored in the project’s root folder. They are the most important part of the project.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="programcs">Program.cs<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#programcs" class="hash-link" aria-label="Direct link to Program.cs" title="Direct link to Program.cs">​</a></h4>
-<p>This file defines the “Program” class with one static method, “Main,” which is the entry point of your web application.</p>
-<p>The only purpose of this method is to define the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1#host" target="_blank" rel="noopener noreferrer">host</a> and then pass the control to the Startup class. For more information about the default host builder, look at an article about <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host" target="_blank" rel="noopener noreferrer">Generic Host</a> on Microsoft’s Docs.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="applicationsettings">application.settings<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#applicationsettings" class="hash-link" aria-label="Direct link to application.settings" title="Direct link to application.settings">​</a></h4>
-<p>This is a JSON file that stores the application’s settings. The settings have a hierarchical structure and can be accessed with the Configuration object defined in the Startup class or in any other place of your program where you injected IConfiguration service. For example:</p>
-<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">var defaultLogLevel = Configuration.GetValue&lt;string&gt;("Logging:LogLevel:Default");</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>The different levels of hierarchy are separated by the colon (<code>:</code>) symbol.</p>
-<p>By default, in addition to “application.settings”, the ASP.NET Core template also includes an “application.Development.settings” file.
-The settings defined in this file are loaded only into the Development environment and are not available in production.
-To learn more about the “.settings” files and configuration in ASP.NET Core projects in general, please read <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/" target="_blank" rel="noopener noreferrer">this article</a> on Microsoft’s Docs.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="startupcs">Startup.cs<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#startupcs" class="hash-link" aria-label="Direct link to Startup.cs" title="Direct link to Startup.cs">​</a></h4>
-<p>This is the final part of the ASP.NET Core project’s structure. The “Startup” class serves three main purposes:</p>
-<ul>
-<li>
-<p>It performs all initialization tasks (setting application-wide constants, DB seeding, migrations, etc.).</p>
-</li>
-<li>
-<p>It registers all services used in this project in the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection" target="_blank" rel="noopener noreferrer">DI (dependency injection) container</a>.</p>
-</li>
-<li>
-<p>It defines the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection" target="_blank" rel="noopener noreferrer">middleware pipeline</a> of your web-application.</p>
-</li>
-</ul>
-<p>This class contains a lot of code (as for a project that has just been created) from the beginning and will become even bigger when you start adding new features to your application.</p>
-<p>We will take a look at it in more detail in the <a href="https://korzh.com/blog/asp-net-core-project-structure-explained-part2">next article</a>.</p>]]></content>
-        <category label="ASP-NET-CORE" term="ASP-NET-CORE"/>
-        <category label="JAVASCRIPT" term="JAVASCRIPT"/>
-        <category label="TYPESCRIPT" term="TYPESCRIPT"/>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Single-file web API services with .NET 5 and ASP.NET Core]]></title>
         <id>https://korzh.com/blog/single-file-web-service-aspnetcore</id>
         <link href="https://korzh.com/blog/single-file-web-service-aspnetcore"/>
@@ -576,6 +445,137 @@ As already mentioned above, they already know which endpoint is selected and so 
 <p>Thanks for the reading, and take care!</p>]]></content>
         <category label="ASP-NET-CORE" term="ASP-NET-CORE"/>
         <category label="PROJECT-TEMPLATE" term="PROJECT-TEMPLATE"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ASP.NET Core default project structure explained (part 1)]]></title>
+        <id>https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1</id>
+        <link href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1"/>
+        <updated>2020-05-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Introduction]]></summary>
+        <content type="html"><![CDATA[<p><img loading="lazy" src="https://korzh.com/blog/assets/images/computer-coffee-01-a7e2ae32ba982b004b23d7282738dc5d.jpg" width="1920" height="1282" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="introduction">Introduction<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction">​</a></h2>
+<p>When you start learning a programming language, one of your first exercises will probably be to write a “Hello World” application to figure out the basic concepts.
+This exercise works well if you’re writing a simple console program that will only print out the greetings on the screen.</p>
+<p>However, once you move onto learning to write web apps using a new framework, such as ASP.NET Core, such a simple code is not enough — partially because web apps are more complex.
+And also because, right off the bat, the tools and frameworks used for writing web apps try to introduce advanced techniques and approaches for building and maintaining them once they scale.</p>
+<p>It all can seem like too much for a beginner.
+Here we will take apart the default ASP.NET Core solution template piece by piece, then figure out the purpose of each piece and how exactly it works.</p>
+<p>Please note that this isn’t a full-scale tutorial on all the aspects of creating web apps in ASP.NET Core.
+Rather, it is a short guide where you can check why a particular part is added to your project or find a piece of code and a link to the relevant documentation that explains it in detail.</p>
+<p>As an example, I used a new solution that targets .NET 5.
+However, most of this article's information will also be relevant for the ASP.NET Core projects that target .NET Core 3.1 or the upcoming .NET 6.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="creating-a-new-web-project">Creating a New Web Project<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#creating-a-new-web-project" class="hash-link" aria-label="Direct link to Creating a New Web Project" title="Direct link to Creating a New Web Project">​</a></h2>
+<p>Let’s start with creating a new empty web app with the “Create a new project” wizard in Visual Studio.</p>
+<p>Here is how this step should look:</p>
+<p><img loading="lazy" alt="Create new project dialog in Visual Studio" src="https://korzh.com/blog/assets/images/create-new-project-dlg-f293c181a454d844f19b7dc618cab490.png" width="1277" height="841" class="img_ev3q"></p>
+<p>When you press Next, the wizard will ask you to choose the names of the new solution and project and the folder to place the solution files in:</p>
+<p><img loading="lazy" alt="Configure new project dialog in Visual Studio" src="https://korzh.com/blog/assets/images/configure-project-dlg-65dcd774eb05a670e8b3c0ec8197755c.png" width="1236" height="809" class="img_ev3q"></p>
+<blockquote>
+<p><strong>Tip #1</strong>: Place the project and the solution into separate folders. Choosing the same location for both is convenient only for very small applications. Once you start adding other layers to your solution (domain classes, data layers, API, etc.), having them in separate projects will be more practical.</p>
+</blockquote>
+<blockquote>
+<p><strong>Tip #2</strong>: Use the general name of your application for the name of the solution (like “MyCoolApp”) and add the “.Web” suffix for the project name (e.g., “MyCoolApp.Web”).</p>
+</blockquote>
+<div id="projectCreationFinalStep"><p>Finally, you will need to choose some additional project options.</p><p><img loading="lazy" alt="Additional information for the new project" src="https://korzh.com/blog/assets/images/project-additional-info-a0828b7b4bd4cede3dd83121c611b712.png" width="1022" height="677" class="img_ev3q"></p><p>The most important options here are:</p><ul>
+<li>
+<p><strong>Target Framework</strong>. I suggest selecting the latest one (for the moment), .NET 5, but all the information in this article is relevant for .NET Core 3.1 or .NET 6 (it’s in the pre-release state now) projects as well.</p>
+</li>
+<li>
+<p><strong>Authentication Type</strong>. In this article, we suppose this option is set to <em>Individual Accounts</em>. This value means that our new web project will contain some means for managing user accounts and provide UI for the basic authentication operations: Login, Registration, Reset Password, etc.</p>
+</li>
+</ul><p>Let's click on "Create" when everything is set and get our new solution.</p></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="project-structure">Project Structure<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#project-structure" class="hash-link" aria-label="Direct link to Project Structure" title="Direct link to Project Structure">​</a></h2>
+<p>After finishing the steps described above, you will get a new solution with one project inside it.</p>
+<p>The structure of that project will look similar (or even the same) to the following one:</p>
+<p><img loading="lazy" alt="Default ASP.NET Core project structure" src="https://korzh.com/blog/assets/images/default-asp-net-project-structure-4205075f264d2c23cd63b1c974d70a19.png" width="305" height="301" class="img_ev3q"></p>
+<p>Let’s take a closer look at each part of your new project.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-connected-services">1. Connected Services<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#1-connected-services" class="hash-link" aria-label="Direct link to 1. Connected Services" title="Direct link to 1. Connected Services">​</a></h3>
+<p>This is the first node in your project’s structure and possibly the less-used one.
+It is intended to automate the multiple steps necessary to connect a project to an external service (like Azure Storage or Application Insights).
+You can right-click on this node and select “Add connected service…” to run a wizard that will lead you through the process.
+Usually, it just adds necessary packages and gives you basic instructions on how to start using your app's service.
+As I’ve already mentioned, there is a good chance you will not use this node during your project’s lifetime.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-dependencies">2. Dependencies<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#2-dependencies" class="hash-link" aria-label="Direct link to 2. Dependencies" title="Direct link to 2. Dependencies">​</a></h3>
+<p>This element of your project structure contains all packets or other projects on which your project depends.</p>
+<p>There are four main folders inside this node:</p>
+<ul>
+<li><strong>Analyzers</strong><br>
+<!-- -->They help you make your code better: cleaner, error-free. Each analyzer checks that your code satisfies a list of rules incorporated in it. If any part of your code does not apply to one of the rules, you will see either a Warning or an Error while you build your project.</li>
+</ul>
+<p>Please note that analyzers work only at compile time and do not affect your resulting application.</p>
+<ul>
+<li><strong>Frameworks</strong><br>
+<!-- -->This folder contains a list of frameworks your project depends on. This information is important if you <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/" target="_blank" rel="noopener noreferrer">publish your web app as a runtime-dependent</a> (as opposed to a self-contained one). In this case, all the frameworks listed here must be installed on the server where you will run your app.</li>
+</ul>
+<blockquote>
+<p>NB: You can use <code>dotnet --info</code> console command to check the list of installed frameworks.*</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Packages</strong><br>
+<!-- -->This is the main item in this node. It lists all NuGet packages you added (installed) to your project. If any of those packages depend on other packages, they will be installed automatically and listed as sub-nodes of the root-level packages. You can remove each installed package here (right-click / Remove).</p>
+</li>
+<li>
+<p><strong>Projects</strong><br>
+<!-- -->This is the list of other projects in this solution your current project depends on.
+You can reference other projects using the “Add reference” command from the right-click menu.
+Obviously, this node is empty now since we have only one project in the solution.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-properties">3. Properties<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#3-properties" class="hash-link" aria-label="Direct link to 3. Properties" title="Direct link to 3. Properties">​</a></h3>
+<p>This part contains different properties of your project that you can modify by double-clicking on this node in the Solution Explorer. Most of the properties there affect the compile- and debug-time behavior of your project.</p>
+<p>The only item inside this node is a “launchSettings.json” file containing the launch profiles. Each profile defines how to run your project when you click on the “Run” button in Visual Studio.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-wwwroot">4. wwwroot<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#4-wwwroot" class="hash-link" aria-label="Direct link to 4. wwwroot" title="Direct link to 4. wwwroot">​</a></h3>
+<p>This folder contains all the static files of your web application: CSS files, JavaScript files, images, and icons.
+As you might figure out from its name, this will be the root folder of your web app.
+So if you put an “image1.png” file into the “wwwroot/images/dir1” folder, it will be accessible in the browser by the “/images/dir/image1.png” address.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="5-areas">5. Areas<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#5-areas" class="hash-link" aria-label="Direct link to 5. Areas" title="Direct link to 5. Areas">​</a></h3>
+<p>This folder is added because we selected the “Individual Accounts” value for the “Authentication Type” option when created the project.</p>
+<p>In addition to the core authentication/authorization packages (which is called ASP.NET Core Identity), the default template also adds the “Microsoft.AspNetCore.Identity.UI” package. This is a Razor-class library that contains all forms and partial views for authentication and user management: Login, Registration, Reset Password, User Profile, and many others.
+All these forms will use your layout (defined in <em>Pages/Shared/_Layout.cshtml</em>) and so will match your website’s design.</p>
+<p>However, you still might want to change some of those forms (or even all of them).
+In this case, you can use the Scaffold command and add the necessary files to your project. The scaffolded files will be added to the <em>Areas/Identity</em> folder.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="6-data">6. Data<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#6-data" class="hash-link" aria-label="Direct link to 6. Data" title="Direct link to 6. Data">​</a></h3>
+<p>As in the previous case, this folder appears in our new project because of the “Authentication Type” option that was turned on at the beginning.</p>
+<p>By default, all user-related information (users, their roles, claims, etc.) is stored in a database accessed with <a href="https://docs.microsoft.com/en-us/ef/core/" target="_blank" rel="noopener noreferrer">Entity Framework Core</a> ORM (object-relational mapping) framework. If you are not familiar with EF Core, you can find a lot of tutorials on <a href="https://docs.microsoft.com/en-us/ef/core/get-started/" target="_blank" rel="noopener noreferrer">Microsoft Docs</a>.</p>
+<p>The “Data” folder contains your DB context class named “ApplicationDbContext.” This class is derived from the “IdentityDbContext” class defined in the “Microsoft.AspNetCore.Identity.EntityFrameworkCore” assembly, and it includes all DB sets (tables) necessary to store user-related information.</p>
+<p>You can use this class or create another DbContext class to add your models.</p>
+<p>Additionally, the “Data” folder also includes “Migrations” sub-folder with all your Entity Framework Core migrations.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="7-pages">7. Pages<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#7-pages" class="hash-link" aria-label="Direct link to 7. Pages" title="Direct link to 7. Pages">​</a></h3>
+<p>This folder contains all pages (forms) of your web applications. ASP.NET Core has two default approaches for content rendering: MVC (Model View Controller) and <a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages" target="_blank" rel="noopener noreferrer">Razor Pages</a> (which is, actually, a kind of MVC, where each controller and the corresponding view are stored together). Both approaches use <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor" target="_blank" rel="noopener noreferrer">Razor syntax</a> that you can think of as HTML + C#.</p>
+<p>Each Razor page is represented by a “.cshtml” file. The code related to it is stored in a so-called “code-behind” file with the same name and a “.cshtml.cs” extension.</p>
+<p>From the start, the “Pages” folder contains a few default pages, such as Index (the home page of your web app), Privacy, and Error. Additionally, you can find the main layout file (_Layout.cshtml) and some partial views in the “Pages/Shared” folder.</p>
+<p><strong>NB</strong>: It’s a common practice to prefix the names of the layouts and partial views with <code>_</code> symbol.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="8-root-folder-files">8. Root Folder Files<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#8-root-folder-files" class="hash-link" aria-label="Direct link to 8. Root Folder Files" title="Direct link to 8. Root Folder Files">​</a></h3>
+<p>Now, when we’ve looked over all the main folders created with the default ASP.NET Core application template, let’s take a closer look at the files stored in the project’s root folder. They are the most important part of the project.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="programcs">Program.cs<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#programcs" class="hash-link" aria-label="Direct link to Program.cs" title="Direct link to Program.cs">​</a></h4>
+<p>This file defines the “Program” class with one static method, “Main,” which is the entry point of your web application.</p>
+<p>The only purpose of this method is to define the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1#host" target="_blank" rel="noopener noreferrer">host</a> and then pass the control to the Startup class. For more information about the default host builder, look at an article about <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host" target="_blank" rel="noopener noreferrer">Generic Host</a> on Microsoft’s Docs.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="applicationsettings">application.settings<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#applicationsettings" class="hash-link" aria-label="Direct link to application.settings" title="Direct link to application.settings">​</a></h4>
+<p>This is a JSON file that stores the application’s settings. The settings have a hierarchical structure and can be accessed with the Configuration object defined in the Startup class or in any other place of your program where you injected IConfiguration service. For example:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">var defaultLogLevel = Configuration.GetValue&lt;string&gt;("Logging:LogLevel:Default");</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>The different levels of hierarchy are separated by the colon (<code>:</code>) symbol.</p>
+<p>By default, in addition to “application.settings”, the ASP.NET Core template also includes an “application.Development.settings” file.
+The settings defined in this file are loaded only into the Development environment and are not available in production.
+To learn more about the “.settings” files and configuration in ASP.NET Core projects in general, please read <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/" target="_blank" rel="noopener noreferrer">this article</a> on Microsoft’s Docs.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="startupcs">Startup.cs<a href="https://korzh.com/blog/asp-net-core-default-project-structure-explained-part-1#startupcs" class="hash-link" aria-label="Direct link to Startup.cs" title="Direct link to Startup.cs">​</a></h4>
+<p>This is the final part of the ASP.NET Core project’s structure. The “Startup” class serves three main purposes:</p>
+<ul>
+<li>
+<p>It performs all initialization tasks (setting application-wide constants, DB seeding, migrations, etc.).</p>
+</li>
+<li>
+<p>It registers all services used in this project in the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection" target="_blank" rel="noopener noreferrer">DI (dependency injection) container</a>.</p>
+</li>
+<li>
+<p>It defines the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection" target="_blank" rel="noopener noreferrer">middleware pipeline</a> of your web-application.</p>
+</li>
+</ul>
+<p>This class contains a lot of code (as for a project that has just been created) from the beginning and will become even bigger when you start adding new features to your application.</p>
+<p>We will take a look at it in more detail in the <a href="https://korzh.com/blog/asp-net-core-project-structure-explained-part2">next article</a>.</p>]]></content>
+        <category label="ASP-NET-CORE" term="ASP-NET-CORE"/>
+        <category label="JAVASCRIPT" term="JAVASCRIPT"/>
+        <category label="TYPESCRIPT" term="TYPESCRIPT"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[.NET vs. Java - Which Platform Is Better for Your Software Developer Career?]]></title>
