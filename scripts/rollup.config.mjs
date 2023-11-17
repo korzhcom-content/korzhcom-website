@@ -35,11 +35,11 @@ export default {
             browser: true
         }),
         commonjs(),
-        copy({
-            targets: [
-                {src: './node_modules/metro4/icons/*', dest: './source/assets/metro'},
-            ]
-        }),
+        // copy({
+        //     targets: [
+        //         {src: './node_modules/metro4/icons/*', dest: './source/assets/metro'},
+        //     ]
+        // }),
     ],
     output: {
         file: './source/assets/metro/metro.js',

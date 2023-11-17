@@ -40,28 +40,5 @@ module.exports = [
           cleanAfterEveryBuildPatterns: ['*.LICENSE.txt'],
         })
       ],
-    },
-    {
-      entry: './scripts/src/metro.js',
-      module: {
-        rules: [
-          {
-            test: /\.less$/i,
-            use: [
-              // compiles Less to CSS
-              "style-loader",
-              "css-loader",
-              "less-loader",
-            ],
-          },
-        ],
-      },
-      resolve: {
-        extensions: ['.js'],
-      },
-      output: {
-        filename: 'metro.min.js',
-        path: path.resolve(__dirname, '../source/assets/js'),
-      },
     }
 ];
