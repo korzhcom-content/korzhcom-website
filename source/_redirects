@@ -62,7 +62,7 @@
 /easyquery/docs/tutorials/net-core-version-5-x	/easyquery/docs/how-to/version-5-x
 /easyquery/docs/common-queries/sub-query	/easyquery/docs/query-with-a-subquery
 /easyquery/docs/use-cases	/easyquery/docs/how-to
-/get-start p=sq    /simple-query/get-start?redir
+/get-start p=sq install=:install   /simple-query/get-start?install=:install
 
 /localizer/purchase*	/localizer#licensing
 /delphi/localizer	/localizer
@@ -72,7 +72,7 @@
 /news/localizer-version-*	/localizer
 /localizer/LICENSE.txt	/localizer/eula.txt
 /startdownload item=:loc	/download/locsetup.exe
-/get-start p=locvcl    /localizer/get-start?redir
+/get-start p=locvcl install=:install    /localizer/get-start?install=:install
 
 /__gazdablogpost____default~net-tricks~a3b1afdfc5554dc0893f30c476104c0f	/blog/aspnet-identity-migrate-membership-passwords
 /blogs/net-tricks*	/blog/:splat
