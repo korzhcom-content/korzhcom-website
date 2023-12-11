@@ -1,0 +1,868 @@
+Nov-20-2023 Version 4.19.0
+--------------------------
+-new: RAD Studio 12 Athens support;
+-new: automatic translation using DeepL API;
+-fix: problem in TMX files import;
+
+Oct-05-2021 Version 4.18.0
+--------------------------
+-new: RAD Studio 11 Alexandria support;
+-fix: bug in importing of empty strings in TXT files;
+-fix: bug in adding of FastReport strings to language file;
+-fix: AV bug in extracting of hardcoded strings;
+
+Oct-21-2020 Version 4.17.0
+--------------------------
+-new: RAD Studio 10.4 Sydney support;
+-new: RSPrefixWithUnitName option; 
+-fix: bug in nested frames processing;
+
+Nov-28-2018 Version 4.16.0
+--------------------------
+-new: RAD Studio 10.3 Rio support;
+-new: RSPrefixWithUnitName option; 
+-fix: bug in nested frames processing;
+
+May-09-2017 Version 4.15.0
+--------------------------
+-new: RAD Studio 10.2 Tokyo support.
+
+Language Manager:
+-upd: Forms/Units tree now shows both total and actual (filtered) count of items;
+-upd: Google Translate validation now works for batch translation too;
+-fix: bug in creating of new Repository;
+-fix: problem with context menu in multi-monitor configurations; 
+-fix: problem with some special characters in Google Translate;
+-fix: incorrect error handling in Google Translate;
+-fix: bug in automatic translation on language creation;
+-fix: bug in exporting to text or XML;
+
+ 
+14-May-2016 Version 4.14.0
+--------------------------
+-new: RAD Studio 10.1 Berlin support;
+
+
+17-Nov-2015 Version 4.13.0
+--------------------------
+-new: RAD Studio 10 Seattle support;
+-new: new parameter in Language Manager command line API: -open:<list of languages>. Allows to open specified language file(s) together with native language. Example: langmngr.exe -last -open:rus,de
+-new: new parameter in Language Manager command line API: -uilang:<language extention>. Allows to run Language Manager with UI translated to the specified languge. Example: langmngr.exe -uilang:de
+-new: LCID is now displayed on language properties dialog; 
+-new: Google API key now can be set in Options dialog of Language Manager;
+-new: new "regular expression" filter in the Language Manager;
+-upd: Language Manager got modernized look; 
+-upd: performance improvement in resource DLL creation routine;
+-fix: Wrong processing of resourcestring section in non-English languages;
+-fix: few small improvements and bugfixes;
+
+
+24-Apr-2015 Version 4.12.0
+--------------------------
+-new: RAD Studio XE8 support;
+-fix: Small fix for DRC files processing;
+
+01-Oct-2014 Version 4.11.0
+--------------------------
+-new: RAD Studio XE7 support;
+-new: Import from Sisulizer files
+
+
+26-May-2014 Version 4.10.0
+--------------------------
+-new: RAD Studio XE6 support;
+-new: UseLocrefresh option for localized projects. Allows to use LocRefresh utility to refresh language file from IDE.
+
+
+17-Oct-2013 Version 4.9.0
+-------------------------
+-new: RAD Studio XE5 support;
+
+-fix: Small problem in processing of forms with frames;
+
+
+10-Jun-2013 Version 4.8.0
+-------------------------
+-new: RAD Studio XE4 support;
+
+-fix: problem with importing multi-line strings from CSV files;
+-fix: bug in Repository import from TMX;
+
+
+25-Oct-2012 Version 4.7.0
+-------------------------
+-new: RAD Studio XE3 support;
+
+Language Manager:
+-upd: Improved interface of Import dialog;
+-fix: bug in ANSI-encoded text files import;
+-fix: bug with empty property values in XML-import;
+-fix: issue with strings started with " symbol in XML-import;
+
+
+16-May-2012 Version 4.6.1
+-------------------------
+-new: RAD Studio XE2 update pack 4 support;
+
+Language Manager:
+-fix: bug in repository import;
+-fix: some umlauts displayed incorrectly;
+-fix: bug in console import from XML;
+
+
+12-Nov-2011 Version 4.6.0
+-------------------------
+-new: RAD Studio XE2 support (with update pack 1);
+-new: 64-bit support;
+-fix: Delphi 2009 and above are now forced to create utf8-encoded drc files;
+
+Language Manager:
+-fix: the problem in consecutive replace;
+
+25-Jul-2011 Version 4.5.2
+-------------------------
+-new: New "Start localization" dialog;
+-upd: Few improvements in automatic translation through Google;
+-fix: Wrong charset of translated properties after "Switch Native Language" operation in non-Unicode Delphi 
+-fix: Wrong behavior during BiDiMode property processing;
+-fix: Untranslatable items have been translated in some cases;
+-fix: Translation of External section using the Repository;
+-fix: Problem with "Paste" operation in Language Manager;
+-fix: Encoding problem during processing of non-English DRC files;
+-upd: Export to XML now does not quote strings;
+
+22-Sep-2010 Version 4.5.0
+-------------------------
+-new: RAD Studio XE support;
+-new: an ability to translate Fast Report components and report files;
+-fix: the problem with unnecessary string merging in C++ Builder during "Extract hardcoded strings" operation.
+-fix: the problem with Vietnamese charset;
+-fix: the differences in resource DLL creation from Language Manager and from the program itself;
+-fix: few small problem with automatic translation through Google;
+-fix: .drc file was not found in Delphi XE if output folder differs from the project folder.
+
+05-Jun-2010 Version 4.4.0
+-------------------------
+-new: An ability to create translations for the languages which does not have a code page in Windows (Unicode-only);
+-new: New event in LocalizerOnFly object: OnFormProcessStart - occurs for each processed form during "on the fly" language switching;
+-new: access to language files version information in LocalizerOnFly object;
+-fix: Resource strings were not refreshed after "Switch Native Language" operation;
+-fix: The problem with form inheritance during "on the fly" language switching;
+-fix: Unnecessary charset processing for Delphi 2009 and higher projects;
+-fix: The problem with DLLs localization in C++ Builder;
+-fix: native language file iteratively opened from resources even if it is already opened from file;
+
+Language Wizard:
+-new: Localizer intialization functions are inserted automatically into .dpr file;
+-upd: Now all units used in the project are shown in the "Exclude unit" dialog in Language Wizard;
+-fix: The problem with "Excluded Units" and "Link to EXE" options set together;
+-fix: The problems with "Refresh after build" option on project groups;
+-fix: Access violation error during automatic refresh in C++ Builder 2010;
+
+Language Manager:
+-new: Statistics dialog;
+-new: Repository export/import to/from .TMX format;
+-fix: Registry access rights problem in Options dialog;
+
+
+16-Dec-2009 Version 4.3.0
+-------------------------
+ Language Manager
+ -new: "Next untranslated item" command (Ctrl+U shortcut) in Language Manager;
+ -fix: The problem with long strings when automatic translation is used;
+
+ Language Wizard:
+ -new: new property in Project Settings dialog: "Transliteration Mode";
+ -fix: small problems during "Extract Hardcoded Strings" operation;
+ -fix: wrong behavior of LocRefresh utility during generation of resource DLLs;
+ -fix: wrong behavior of LocRefresh utility when "Link languages to EXE" option was turned on;
+
+
+21-Sep-2009 Version 4.2.0
+-------------------------
+ -new: Delphi 2010 support;
+
+ Language Manager
+ -new: "Next untranslated item" command (Ctrl+U shortcut);
+ -new: An ability to translate some cells or the whole language via Google Translate API;
+ -new: An ability to copy properties/constants names (Shift+Ctrl+C or popup menu);
+ -new: The copy, cut and paste operations now support multi-cell selections. The operations are two-way compatible with MS Excel;
+ -fix: bug in "Import MS Glossary" feature;  
+
+
+08-Jun-2009 Version 4.1.0
+-------------------------
+ -new: An ability to supress Font.Charset processing;
+ -new: "Refresh after save" option in Project Settings dialog;
+ -new: Now "Project Settings" dialog shows all forms used in project (not only explicitly linked); 
+ -new: "Form preview" button in Language Manager - shows the appearance of selected form for current langauge (contributed by Ralf Steinhaeusser);
+ -fix: problem with processing of TNotebook component;
+ -fix: problem with multi-byte languages in Delphi 2009;
+
+
+03-Mar-2009 Version 4.0.2
+ -fix: "Duplicated resources" problem found in previous version;
+
+
+26-Feb-2009 Version 4.0.1
+ -new: Synchronization check for "Link languages into EXE" option;
+ -new: Keyboard shortcuts in LM for navigation between units and forms;
+ -upd: Grey color for untranslatable items;
+ -fix: Few small problems found in previous release;
+
+
+Dec-16-2008 Version 4.0.0
+-new: Delphi 2009 support;
+-new: New style of "Extract hardcoded strings" wizard;
+-upd: More accurate processing of the projects with both Unicode and non-Unicode strings;
+-upd: Improved performance of "Refresh language files" operation;
+-fix: several bugs;
+
+
+Sep-10-2008 Version 3.8.1
+ -new: An ability to specify maximum length of constant identifiers
+ -fix: Long form names were wrapped in "Exclude Forms" list in Project Settings dialog;
+ -fix: Wrong behaviour of Localizer on DLL library project under C++ Builder;
+ -fix: Project options files were changed in "Avoid .map file creation" option was turned on;
+ -fix: TCustomFrame are not processed if Parent is not TForm;
+ -fix: The workaround for: Delphi doesn't have a FontCharsets item that corresponds to some charsets (i.e. Vietnamese);
+
+
+Feb-07-2008 Version 3.8.0
+ -new: .rtm (Report Builder) files processing;
+ -new: New option for correct processing the constants and units with underscore symbol;
+ -upd: small Import\Export dialog improvements in Language Manager;
+ -upd: An ability to add additional units and forms to "excluded" list;
+ -fix: XML import error in Language Manager;
+ -fix: Unused forms were not removed automatically;
+
+Oct-16-2007 Version 3.7.0
+ -new: C++ Builder 2007 support;
+ -new: New option "avoid detailed map file creation";
+ -new: New option "Process BiDiMode";
+ -new: New option "Remove unused items" in Library Manager;
+ -new: New attribute for language files: "Always show untranslated as native";
+ -fix: Wrong behaviour of Import dialog;
+ -fix: Wrong behaviour of Repository Export function;
+
+
+
+Aug-30-2007 Version 3.6.3
+ -upd: An ability to select excluded forms and units from list instead of typing their names;
+ -fix: RCDATA resources with numerec IDs were not processed correctly;
+ -fix: "Can not find .drc file" error for C++Builder packages;	
+ -fix: Help button did not work in Localizer | Project Settings dialog;
+
+Jun-12-2007 Version 3.6.1
+ -fix: Problem with libraries in Language Manager;
+ -fix: "Add API" option did not work under BDS 2007;
+ -fix: Problem with project options saving;
+ -fix: Problem with package translation;
+
+Jun-05-2007 Version 3.6.0
+ -new: Library Path parameter in Language Manager;
+ -upd: Auxiliary functions from LocOnFly unit (LocStr and others) were modified to be more convenient for C++Builder;
+ -upd: Several useful changes in Exprot/Import dialog of Language Manager;
+ -fix: "Can not find .bpl file" error for packages during Refresh operation;	
+ -fix: .cfg and .dof files were changed on each Refresh;
+ -fix: Disable localization for project did not work;
+ -fix: An error during .rc files processing;
+
+Apr-10-2007 Version 3.5.10
+ -new: Delphi 2007 files installation;
+ -fix: Bug in .rc files processing;
+
+Feb-28-2007 Version 3.5.9
+ -new: support for upcoming Delphi 2007 for Win32;
+ -fix: Some error messages were not informative;
+ -fix: Error during lwizard10.bpl loading in BDS 2006 under MS Vista;
+
+
+Dec-26-2006 Version 3.5.8
+ -new: Line numbers in "Extract hardcoded strings" dialog;
+ -new: New command-line parameter for Language Manager: -translate;
+ -new: New command-line parameter for Language Manager: -xml;
+ -upd: More informative error messages in LocRefresh utility;
+ -upd: More informative error messages in Language Wizard;
+ -fix: Wrong project recognition by LocRefresh for BDS 4 C++ Builder projects;
+ -fix: Language Manager crashing in some environment;
+ -fix: AV exception when empty project is opened in Language Manager;
+ -fix: Incorrect PrjConsts.pas creation;
+ -fix: Form placed int Excluded Forms was not deleted from language file completely;
+
+Aug-30-2006 Version 3.5.7
+ -new: New type of property rule (with * at the begining);
+ -upd: Language Wizard now shows warning if Property Rules list is empty;
+ -fix: Problem in localization of DLL projects with linked languages;
+ -fix: Problem with charset processing during on-the-fly translation;
+ -fix: Bug in searching of strings with #13#10 in repository;
+ -fix: Font.Charset is not changed for components without textual properties;
+ -fix: Problem with Excluded Forms section;
+
+Language Manager
+ -fix: Export to text, separator setting was ignored;
+ -fix: Import problems for External section (no native values);
+
+
+May-12-2006 Version 3.5.6
+ -new: AsciiDfmStrings property in LocOnFly;
+ -new: New parameter in Language Manager: -newlang;
+ -upd: Minor changes in Localizer | Project Settings dialog;
+ -upd: More informative error messages in wizard;
+ -upd: Pro edition does not raise an exception now when it is necessary to recreate resource DLL;
+ -fix: NativeLocale was not set correctly when you run application
+ -fix: bug in processing of dfm's with integer properties
+ -fix: Language files were not synhronized in Editor sample project;
+
+
+
+Mar-21-2006 Version 3.5.5
+ -new: New parameter in LocRefresh utility: -unused. It allows to change "Remove unused" options independently from settings for current project;
+ -fix: "Automatically Refresh after build" feature did not work correctly;
+ -fix: Project output path was not recognized correctly during Refresh process initiated by "Automatically Refresh after build" option;
+ -fix:  Problem with long project loading by Language Manager if there is big repository installed;
+ -fix: Wrong project type (VCL Forms, Package, Library, etc.) identification for new projects in BDS 2006;
+ -fix: Localizer did not recognize project type correctly (Delphi or CBuilder) in case project file extention was in upper case (e.g. Project1.DPR);
+ -fix: Bug concerned to "Units" section corruption in C++Builder projects;
+ -fix: wrong recognition of non-English property values during Refresh;
+ -fix: Wrong target file recognition for C++ Builder 2006 projects;
+
+Language Manager
+ -fix: incorrect search of library files;
+ -upd: setting of "translated" status during language file importing; 
+
+Feb-04-2006 Version 3.5.3 (revision 2)
+ -new: new option in TKLocalizerOnFly class. It allows to check synchronization of native language file with main EXE. This option is turned on by default if native language is English, otherwise - it is off.
+ -fix: wrong behaviour of LocRefresh in case of using old "full" processing method;
+ -fix: problem with processing multi-byte strings in .drc files;
+ -fix: Localizer did not work under Win9X systems because it used some functions that were not implemented in Win9X API;
+
+
+Jan-11-2006 Version 3.5.2 (revision 3)
+ -upd: "Rebuild on Refresh" option now is turned on automatically when we turn on "Link languages to .EXE" option;
+ -upd: "Scan .PAS files" menu item now changed to "Extract hardcoded strings". It can be used both for Delphi or C++ Builder projects;
+ -upd: DLLsPath is changed accordingly to changes in AppFileName (if it was not changed manually);
+ -upd: Localizer now automatically switches to native language if native locale translation is requested but not found;
+ -fix: "Scan ..." menu item did not appear in C++Builder 6.0;
+ -fix: Useless convertion of wide-strings from resources to ANSI-strings was removed;
+
+
+Dec-28-2005 Version 3.5.1
+  -new: support for Borland Developer Studio 2006;
+  -fix: LocalizerOnFly object did not process multilevel properties (like Button1.Properties.Items[1].Caption) during "on the fly" language switching;
+  -fix: resourcestring section was not created in some cases during "Scan .pas files" operation;
+  -fix: bug in glossary import;
+Language Manager:
+  -fix: incorrect import of Unicode MS Glossaries;
+  -fix: the multiline cell edit dialog for Repository is corrected;
+
+
+Nov-02-2005 Version 3.5.0
+ -new: ProcessContainerEx in TKLocalizerOnFly class - allows to switch one form (or any other container component) into specified language;
+ -new: LocalizedName of the language now is saved for language files linked in .EXE;
+ -new: New parameters in LocRefresh utility which allows to synchronize language files more correctly;
+ -fix: Incorrect processing of multi-level collections;
+ -fix: String constants with single quotes were written wrongly in RC file;
+ -fix: .drc file was not found during Refresh operation in C++ Builder if output directory differs from project folder;
+ -fix: error during "Scan .CPP files" operation processing - sometimes it used Pascal style of resource source file instead of RC style;
+ -fix: Resource strings sometimes were doubled in their "native" unit and in RC unit;
+ -fix: Forms and charset were not processed during initialization;
+Language Manager:
+ -new: export/import to/from text via command line;
+ -new: "Apply Library" operation now is applied to properties as well as to constants;
+ -new: an ablity to search the translated strings with format symbols that differ from native value;
+ -fix: incorrect charsets in Repository refreshing dialog;
+ -fix: error closing repository form when grid is in edit mode;
+
+
+May-23-2005 Version 3.4.1 
+ -new: "Merge duplicated resource strings" option in Localizer Project Settings dialog; 
+ -new: Maximum constant name length now is limited by 20 symbols;
+ -new: LocalizedName property in TLFInfo class;
+ -new: Initialized property in TLFInfo class;
+ -new: LocRefresh now beep and wait for key press after any error during processing;
+ -new: -nowait parameter for LocRefresh utility;
+ -new: AppFileName property in TKLocalizerOnFly class;
+ -new: AppInstance property in TKLocUtils and TKLocalizerOnFly classes;
+ -upd: AppFileName in TKLocUtils class is writable now;
+ -upd: GetWideStr function in LocOnFly unit was renamed to GetWStr;
+ -fix: Problem with processing of TCustomFrame descendants (for example for TTnTFrame);
+ -fix: Problem with processing projects which generate DLL in result;
+ -fix: "Stream read error" during first time project processing if "Language folder" field is not empty;
+ -fix: LocWStr function returned AnsiString instead of WideString;
+ -fix: LocWStr and LocStr function returned empty string if Localizer is not initialized;
+ -fix: If user switched off Localizer in the Project Settings dialog but have "Automatically make Refresh after build" checked it would go on to do so;
+ -fix: Localization resources were not added into .EXE during first refresh;
+ -fix: Language Wizard transferred all language files when Language Folder is changed (instead of only necessary ones);
+Language Manager
+ -fix: error closing project if .leo file is read-only;
+ -fix: Korean IME - did not move cursor correctly;
+ -new: LM can now indicate untranslated items that have proper translations in the Repository (thanks to DI Ralf Steinhaeusser);
+ -new: New "Smart Repository" option allows to use Repository for strings that are not completely the same (thanks to DI Ralf Steinhaeusser);
+ -fix: incorrect Native value in Repository form->Multiline cell editor;
+ -new: Warning message appears if format symbols in translated string differ from native one (thanks to DI Ralf Steinhaeusser);
+
+
+Jan-26-2005 Version 3.4.0 
+ -new: Delphi 2005 support;
+ -new: News section in language files: "External". User can add his(her) own items into native language file and then access them at run-time using function from LocOnFly.pas unit;
+ -new: All string properties are saved as WideString for project marked as Unicode;
+ -new: RSValue function in LocalizerOnFly object - returns translated value of the string by the pointer of resource string;
+ -upd: Now "base RS ID" parameter is calculated accordingly to minimal ID of all resourcestrings in the project;
+ -fix: Localizer changed font.charset even for the objects which are not included into language file. Now it does not.
+ -fix: Localizer did not consider "Output directory" parameter for packages;
+ -fix: Single quote was changed by \' during generation of RC files;
+ Language Manager:
+ -fix: Language Manager added non-translatable strings into native language file;
+ -fix: Error in "Apply Library" function; 
+
+Oct-09-2004 Version 3.32
+ -new: an ability to select IME for eastern languages (e.g. Japanese) under WinXP systems;
+ -upd: constants in RC unit in Language Manager are sorted by numbers now;
+ -upd: An ability to show more that 3 rows in hard-coded strings selection dialog;
+ -fix: wrong behaviour of LocalizerOnFly.InitReg method in case if language file with translation was changed;
+ -fix: problem during "Switch Native Language" operation: #13#10 combination was not processed correctly in .pas files;
+ -fix: PropValueByName, RSValueByName and other similar methods caused memory leaks and ineffective work;
+ -fix: Resource DLL was not reganerated if some changes were made in language file (build is changed);
+ -fix: "Rebuild project on Refresh" option was not saved correctly in project localization options file (.plo) ;
+ -fix: String properties with values in non-Engish languages was not added into native language file in some cases;
+ -fix: Problem with font charset changing on TPageControl like components;
+ -fix: AV exception during LocalizerOnFly.SwitchToExt method execution on controls with "Style" property;
+ -fix: Bug in export/import to text in Language Manager: exported TAB symbols are not restored during import;
+
+Sep-21-2004 Version 3.31
+  -new: OnLangSwitchStart event in LocalizerOnFly object; 
+  -new: Processing Style.Font (DevExpress classes) during "on-the-fly" language switching;
+  -new: Resource unit type now is save in project localizer options file (.plo); 
+  -upd: Now the last empty row in String List properties is ignored;
+  -fix: Exclude Units list did not work properly (constants from those units were added into RC section in native language file);
+  -fix: wrong behaviour of Switch Native Language operation;
+  -fix: resource string name prefix parameter was not saved;
+
+Sep-01-2004 Version 3.30
+ -new: An ability to turn on/off the linking of languages into EXE;
+ -new: SoftMode property in LocalizerOnFly object. It allows to turn off resource DLLs creating and using;
+ -new: ProcessContainer method in LocalizerOnFly object. Allows to translate all components on some form or data model right at run-time without using resource DLLs;
+ -upd: Localizer packages now are separated to run-time and design-time ones;
+ -upd: Unit LocUtils. Localizer.Init and InitReg methods are now boolean functions. If Localizer.SafeWork is set to True, no error message is shown - use the result of Init[Reg] to define if initialization completed correctly;
+ -fix: Wrong behaviour of loading native language file from resources;
+ -fix: OnLangSwitch event did not occur when SwitchLangToFile method was called;
+ -fix: .NTV file had wrong localization version after "Refresh Language Files" operation;
+ -fix: Bug with resource strings unit scanning: incorrect processing of concatanation string constant + string constant identifier (e.g. 'Some string' + rsSomeOtherString);
+ -fix: Bug in package processing if Output Folder for packages is default ($Delphi\Projects\BPL);
+
+Language Manager:
+ -new: Now Language Manager interface can be easily translated to another langauge (by Language Manager itself);
+ -new: floating window with native value;
+ -new: native value is visible in the "Multiline cell edit" dialog;
+ -upd: libraries can be placed anywhere. Just register them in the Registry;
+ -upd: untranslatable items are not shown in non-developer copy of Language Manager;
+ -upd: resourcestrings IDs are shown in debug mode;
+ -fix: incorrect error message when XML import is crashed;
+ -fix: verified strings are not translated with automatical procedures now (auto translate, translate language by repository);
+ -fix: "List index out of bounds" in Replace dialog on multiline cells;
+
+Feb-15-2004 Version 3.25
+ -new: Sorting in the language list returned by LocalizerOnFly object;
+ -upd: {$R *.KLR} compiler directive is added into DPR in any case now (not only if "Add API" options is enabled);
+ -upd: Translation names shown in menu are taken from "English Name" parameter of corresponding language files now;
+ -fix: Memory leaks in SwitchTo functions;
+ -fix: Languages stored in EXE were not shown for use if native language file provided with application;
+ -fix: error translating runtime DLLs under NT4;
+
+Language Manager:
+ -fix: Multiline Cell Edit dialog incorrectly performed Cut/Copy/Paste in some situations;
+
+Dec-25-2003 Version 3.24
+ -fix: An error on const clause in units during executing "Switch Navitve Language" operation;
+ -fix: Font charset was not changed during "Switch Native Language" operation;
+
+Dec-15-2003 Version 3.23
+ -new: UnicodeProject parameter in Project Settings dialog. Turn it on to make Localizer recognize all string properties as WideString;
+ -fix: string constants are lost if "Scan .PAS" wizard stops with some error (e.g. "File can not be opened");
+ -fix: the string length was limited to 64K in the language file;
+ -fix: LocalizerOnFly.OnLangSwitch now is called after all packages and DLL are translated;
+
+Language Manager:
+ -upd: CreateDLL now puts the DLL into the PE file folder;
+ -fix: WrongRowIndex error on empty grid;
+
+
+Language Wizard
+ -fix: "Localization Enabled" check box was always turned on even for non-localized projects;
+ -fix: Wrong behaviour of "Switch Native Language" operation;
+
+
+Nov-14-2003 Version 3.22
+ -new: ability to process ActionBars during on-the-fly language switching;
+
+Language Wizard:
+ -upd: Now you can use linking languages into result PE file feature for packages and DLLs (it was able only for native language file in the previous versions);
+ -upd: Localizer now searches and synchronizes resource DLLs in the same directory where .EXE (.DLL, .BPL) file is placed (early it synchronized only those which were stored in langauge files folder);
+ -fix: "Scan .PAS" operation now correctly processes resource units with 'const' section and resourcestrings definitions which use another resource strings or string constants;
+ -fix: "Auto refresh" now does not start after "Run" command;
+ -fix: Wrong behaviour when enabling localization in the project where its where previously disabled;
+ -fix: "Index out of bounds" error in "Scan PAS/CPP files" operations;
+ -fix: Localizer Pro did not make automatic regeneration of resource DLL if corresponding language file was changed;
+ -fix: .dpr file now is changed only it is necessary;
+
+Language Manager:
+ -upd: the PE file validation is not performed at the program start now;
+ -upd: only #13#10 sequence is now used as line separator. The individual symbols (#13 and #10) are stored in the strings;
+ -fix: the native language file was saved every time the Language Manager is closed;
+ -fix: the properties that have never been translated are "visually" equal to the native values;
+ -fix: the Tab symbol can be entered into the cell;
+ -fix: Division by zero on empty native values;
+ -fix: Problem on filtering exported properties/constants (XML);
+ -fix: Problem with Korean IME on Korean computer;
+
+Sep-12-2003 Version 3.20
+ -new: TElWideStrings (ElPack library) and TtntStrings (TNT library) properties processing during "on the fly" language switching;
+ -new: SwitchToStream method in LocOnFly unit;
+ -upd: SwitchModuleToExt method was moved to public section in LocOnFly unit;
+ -fix: Problem in frames processing during "on the fly" language switching;
+
+Language Wizard:
+ -new: "Auto Refresh" option. Now Localizer can automatically make Refresh operation after each compilation of the project;
+ -new: "Create NTV" option. Turn it on if you use some forms packing utility (like Citadel);
+ -new: Now you can define "exclude types" in "substitute properties" rules. Exclude types are listed after main type name separated by back slash "\". Example: T*Field\TPPField,TWWField:FieldName-DisplayName;
+ -new: Now you can specify prefix for resource string constants (default 'S');
+ -new: Automatic header file creation for .rc file generated by "Scan .CPP Files" operation;
+ -new: Automatic addition of "#include" directive for modified CPP files during "Scan .CPP Files" operation;
+
+
+Languge Manager:
+ -new: Now you can see the size of translated text (in percentage to original one) in the status bar;
+ -new: The cells can be marked as "verified" to prevent further editing;
+ -fix: "Create DLL" menu item was disabled if project is opened automatically (on double-click or using command-line param);
+ -fix: AV when add or delete language in the repository form;
+ -fix: setting the options to 'move down automatically' and disabling 'show untranslatable items' results in an error when marking the last item in the table as untranslatable;
+ -upd: the "Open repository" menu item has gone. There is a special field "Repository path" in the "Options" dialog ("Repository" tab) instead;
+ -fix: problems with IME for systems with original locale (e.g. you edit Japanese text on Japanese Windows);
+
+
+Jun-18-2003 Version 3.15
+ -fix: error in processing empty strings in translations;
+ -fix: DLLsPath property from LocUtils was not processed correctly;
+ -fix: Wrong behaviour in processing Unicode (WideString) properties in Delphi 6 and higher;
+ -fix: the MiddleEast languages are defined more correctly now;
+ -upd: more informative error message during resource DLL creation;
+
+Languge Manager:
+ -fix: the newly created languages have not been compressed;
+
+Jun-08-2003 Version 3.12
+Language Wizard
+ -upd: "Link languages into EXE" list box in Project Settings dialog now visible only when Pro (OnFly) edition was chosen;
+ -fix: .KLR file were created in the .EXE output folder instead of project's folder;
+ -fix: "Stream Read Error" in Pro edition during processing language files greater 65K;
+
+Jun-02-2003 Version 3.10
+ -new: property LocalizerOnFly.DeleteUnusedLDll allows you to force automatical deleting of generated DLLs when they are free;
+ -new: compatibility with packing utils (like AsPack, AsProtect etc.)
+ -upd: native DLL (.NTV) is not generated and is not used any more;
+ -upd: LocalizerOnFly now search for package language files not only in package's folder but also in folder specified by LangDir property;
+ -fix: error in processing of Font.Charset property;
+ -fix: InitReg method from LocUtils unit did not load the language on application startup if the registry key differ from default (Software\Borland\Locales);
+ -fix: GetStr and GetWideStr functions (LocOnFly unit) now correctly work under Win9* platforms;
+ -fix: bug in processing exceptions in LocOnFly unit if ErrorReaction = erException;
+
+Language Wizard
+ -new: now native language file is always linked with .exe (Pro edition only);
+ -upd: all linked language files are stored in .KLR resource file (..._KLR.res for CBuilder), so additional .._KLL.res file is not needed now;
+ -upd: "Default Propeties" was renamed to "Substitute Propeties";
+ -new: "Substitue Propeties" list now allows wildcards (*) in rules. Example: TDBGrid.Columns[*]:FieldName-Title.Caption;
+ -upd: language files are always compressed when linked into .EXE;
+ -fix: error message during "Switch Native Language" operation in C++Builder;
+ -fix: problem in Project Settings dialog: needless WordWrap for "Property rules" and "Exclude Forms" lists;
+ -fix: error message while processing project with output directory specified by (or with the help of) some  environment variable(s);
+
+
+Language Manager
+ -new: you may select PE file (EXE, BPL, DLL) to generate DLLs on;
+ -new: you may show/hide the repository languages in the repository form;
+ -upd: synchronization on exit is speeded-up;  
+ -upd: strings that have never been translated are changed together with native strings;
+ -upd: shortcuts Ctrl+Alt+<...> are changed to Shift+Ctrl+<...> to prevent diactritics entering problems;
+ -fix: Find next/prev stop on multiline cells;
+ -fix: some operations (sorting, filtering etc.) worked incorrectly when the grid is in edit mode;
+ -fix: Repository export: some characters were exported incorrectly;
+ -fix: unnecessary grid redrawing on "untranslatable" status change has gone;
+ -fix: repository export: the languages with the same primary ID can be exported simultaneously;
+
+
+Apr-21-2003 Version 3.01
+ -new: ErrorReaction property in LocalizerOnFly object;
+ -fix: Bug in LocOnFly unit in case package or DLLs translation;
+ -fix: Problem in running Language Manager under Win98 machines;
+ -fix: Problem in localizing packages in C++ Builder ("Localizer | Project Setting" menu item was disable);
+ -fix: "Abstract error" message was raised in some cases during language switching;
+
+
+Apr-10-2003 Version 3.00
+ -new: Delphi packages and DLLs localization;
+ -new: ability to  store languages inside of .EXE file;
+ -new: Language files compression;
+ -upd: interface of several functions in LocUtils unit (to correspond to similar functions in LocOnFly unit);
+ -upd: only translated strings are counted when the trial version limitations are applied;
+ -fix: failed to create native DLL if exe/bpl file doesn't contain STRING resources at all;
+ -fix: inherited forms processing bug;
+ -fix: data modules processing bug;
+ -fix: improper fonts scaling on the systems with Large Fonts set (on the fly translation);
+ -fix: LocUtils wrote unnecessary info to the registry;
+
+Language Wizard
+ -new: "Switch native language" operation  - allows to change the language of strings on all forms and units at design time;
+ -new: Processing properties which are not stored in .DFM (like TField.DisplayLabel that is equal to FieldName);
+ -new: "Scan .CPP files" operation for CBuilder version of Localizer;
+ -new: ability to specify list of additional units for "Scan PAS/CPP files" operations;
+ -new: ability to rebuid project totally on each "Refresh language files" operation;
+ -new: ability to specify new type of rule in "Processing Rules" list: -TypeName.PropertyName. Useful for excluding collection properties (like -TDBGrid.Columns[*].Title.Caption);
+ -fix: bug in saving project's settings where .plo file is read-only;
+ -fix: bug in inserting {$R *.KLR} directive into .dpk file in Delphi 6;
+ -fix: wrong behaviour of Localizer menu Delphi 3 ("Project Settings" menu item was always disabled);
+ -fix: wrong behaviour of "Scan .PAS" operation when constants were renamed;
+ -fix: there were only primary language ID available for native language file;
+ -fix: refreshing of package project failed if the output directory differs from the project one;
+
+Language Manager
+ -new: "Repair project" feature available in debug mode;
+ -new: "Pack repository" feature allows to remove empty and duplicate rows;
+ -new: Multi-selection feature. Now it is possible to perform operations under more than one row/column;
+ -new: "Show textual/nontextual properties" filter;
+ -new: Strings style can be selected (C-style or DFN style)  when repository is exported;
+ -new: A few new command line parameters;
+ -new: Import MS Glossary files into Language Repository;
+ -new: Import/Export of Unicode/UTF8 text files;
+ -new: language files import (merging language files function);
+ -new: "Add language" function in repository;  
+ -new: you may edit cells that require IME (Far East languages etc.) without changing of system locale;
+ -new: Middle East languages may be edited as "Right to Left";
+ -new: shortcuts to "Add to repository" and "Translate with repository" items;
+ -new: possibility to open different Repository databases;
+ -new: you can add/delete columns to/from the repository;
+ -new: you can change repository language locale;
+ -new: "Select All" feature in the main grid and in the repository form;
+ -upd: the primary languages can be added to the repository;
+ -upd: more sensible error messages in repository import;
+ -upd: the repository changes (editing, adding, deleting) are applied immediately;
+ -fix: cell remained "untranslated" after "Paste";
+ -fix: bug in importing text files that don't contain properties/constants names;
+ -fix: bug in importing properties/constants that are not present in the language file;
+ -fix: imort from first form/unit in the list was skipped;
+ -fix: LM was not closed if .leo file is read-only;
+
+Sep-20-2002 Version 2.23
+Delphi 7 support added.
+
+Sep-16-2002 Version 2.22
+Language Wizard:
+ -fix: bug in processing "Property rules" - specifing the rule like -Form1.Caption caused erasing all caption items on the form;
+ -fix: AV during "Refresh" operation for projects who has forms with empty caption;
+
+
+Sep-02-2002 Version 2.21
+ -fix: AV in LocOnFly unit during Language switching when some third-party controls are used;
+ -fix: AV in Language Wizard after deleting a component;
+ -fix: backup language files were not loaded properly;
+
+Language Wizard
+ -fix: "Stream read error" during Refresh after language folder changing in Project Settings dialog;
+
+Language Manager
+ -fix: AV in the repository form;
+ -fix: AV during translation input;
+ -new (build 4): Repository Export/Import now understands both C-style and DFN strings. Special thanks to Ralf Steinhaeusser, SpoonworX Inc. 
+
+Aug-20-2002 Version 2.2
+ -fix: WideString properties were not processed during "on the fly" language switching;
+ -fix: Incorrect UNC path processing in LocOnFly unit;
+ -fix: Incorrect identification of the library name (if the project is library). Special thanks to David Hildingsson;
+ -new: LocalizerOnFly.SwitchTo now loads native language file if passed locale is equal to native locale;
+ -fix: Incorrect string properties parsing (D6; DFM files; strings with #xxxx symbols);
+ -new: New LocRefresh utility is available (see Localizer\Utils\LocRefresh folder). It allows you to refresh language files from command line (without IDE);
+
+Language Wizard
+  -upd: Language Wizard was totally rewritten for using new Open Tools API (OTA) only to support upcoming Delphi 7 (tested with Field Test 3);
+ -fix: 'Scan PAS' wizard incorrectly added a unit to uses section;
+ -fix: 'Refresh' operation now correcly processes environment variables in project paths;
+ -new: Wizard now automatically picks up a backuped native language file if you reenable localization (after it was disabled);
+ -upd: <projectname>_klr.res file is created for C++ Builder instead of old <projectname>.klr since C++Builder 6 does not allow resource files with another than .res extention;
+
+Language Manager
+ -new: Export dialog allows to prevent untranslated items from being exported;
+ -new: Export dialog allows to select forms/units to be exported;
+ -new: Export dialog allows only translated/untranslated items to be exported;
+ -new: Import dialog allows to select forms/units to be imported;
+ -new: Form/unit combo now displays properties/constants count;
+ -fix: Incorrect language 'English Name' assignment on some Windows versions;
+ -new: You can sort by constants/properties names (fixed column in the grid). A new option 'Compare properties by full name' is added too;
+ -fix: Incorrect last language closing when the native language is invisible;
+ -fix: Incorrect displaying of buttoned cell after search operation;
+ -fix: 'Import from ...' - proccesing of collection items when 'Synchronize by | Properties names' is selected;
+ -fix: 'Index out of bounds' message on double-click in 'Translate with repository' dialog;
+ -new: Language files are opened exclusively now;
+ -fix: Wrong behaviour in processing string lists with UTF8 strings in Delphi6;
+ -fix: (build 2) Error "Can't open language file" during "Synchronize DLLs" process;
+ -new: (build 2) Proper work with read-only files; read-only indication;
+
+Apr-26-2002 Version 2.14
+Language Wizard
+ -fix: Locale ID = 0 for native language files when LangDir is not empty;
+ -fix: Confusion with different binaries (dll, bpl, exe) that have the same name;
+
+Language Manager
+ -fix: Only language files are synchronized when project is closed; 
+ -new: New option ('Refresh project on close') that allows you to disable synchronization of language files when project is closed;
+
+Apr-19-2002 Version 2.13
+OnFly edition
+ -new: DLLDir property in TLocOnFly class (LocalizerOnFly global object);
+
+Language Wizard
+ -fix: Saving of 'Exclude units' list;
+ -fix: Possible range error when 'Range checking' option is turned on;
+ -new: 'RC' unit can be excluded as other ones;
+
+Mar-18-2002 Version 2.12
+Language Wizard
+ -fix: Incorrect processing of 'Exclude units' list that may result in a loss of constants translations;
+
+Language Manager
+ -fix: '0' displaying instead of strings when change view from 'Forms' (and integer cells are presented) to 'Units';
+ -fix: Repository cut last char during some operations;
+ -fix: Non-string properties now are not added to the Repository;
+
+Mar-07-2002 Version 2.11
+ -fix: Integer and stringlist properties processing during OnFly language switching;
+ -fix: Error deleting res. DLL with 2-letters extension during OnFly language switching;
+ -fix: LocUtils and LocConst units are added to loconfly*.lib (C++ Builder)
+
+Language Manager
+ -fix: Blinking when making the item Untranslatable;
+ -fix: AV by repeated 'Close' during synchronization;
+ -fix: 'List index out of bounds' when close app when the grid is in editor mode.
+
+Feb-19-2002 Version 2.1
+ -new: Non-string properties support (Left, Top, etc.);
+ -fix: Inherited form processing in OnFly add-on;  
+
+Language Wizard
+ -new: Exclude Forms & Exclude Units options in Project Settings dialog;
+ -fix: Bug in compilation of D3 projects concerned with search paths;
+  
+Language Manager
+ -Language Manager installation program now available at http://www.korzh.com/download/lmsetup.exe;
+ -new: Language files and DLLs are automatically refreshed when you close project in LM;
+ -new: "Move down automatically" option;
+ -new: Form/unit combo now displays form/unit count;
+ -new: Language file version is displayed in "Properties" dialog;
+ -fix: "Modified" status changing during "Cut" operation;
+ -fix: Incorrect work with network pathes (\\server\sharedfolder\...);
+ -fix: Incorrect work with with "backward" specifiers as "..\".
+
+Dec-20-2001 Version 2.0
+  -new: OnFly editon - now you can select from two different methods of localization. Choose the one that is more suitable to your needs;
+
+Language Wizard:
+ -new: an ability to set the folder where language files and resource DLLs will be stored;
+ -new: switching between two editions in Project Settings dialog;
+ -new: an ability to turn off automatical removing unused properties and resource strings during Refresh operation;
+ -new: processing wild card characters in "Process Properties" rules in "Project Settings dialog;
+ -fix: processing Delphi 6 forms which contains non-ASCII symbols in string properties;	
+ -fix: processing constant units with accentuation symbols in name;
+
+Language Manager
+ -new: an ability to edit Language Repository; 
+ -fix: error during loading when .leo file is damaged;
+
+
+Sep-20-2001 Version 1.5
+Language Wizard
+ -new: "Help" button in the main dialogs;
+ -new: "Defaults" button in the "Project Settings" dialog;
+ -upd: Several changes in "Scan .PAS" utility - now it works more stable;
+ -fix: processing of exsiting resourcestring constants (with comments, multilines, etc.);
+Language Manager
+ -new: "Language Repository" functionality.All words from language files with their translation now can be stored in the language repository and then used for translation;
+ -new: "Untranslatable mark" for items in language files. Each word can be marked as "untranslatable" by developer. Such words can not be changed by translator;
+ -upd: protecting mechanizm. Now Language Manager has no functional limitations and does not require registration key;
+
+Jul-02-2001 Version 1.4 
+Language Wizard
+ - changed: Wizard behaviour for Delphi 4 and higher. Now it uses internal compiler and allows to process project if .drc file was not created;
+
+Language Manager
+ - changed: Language Properties dialog now shows tree for language selecting;
+ - added: autoreplacing feature - Language Manager changes all translations in the equal pairs of words immediately after translation in first such pair is entered;
+ - added: new dialog for editing for multiline strings. Now you can select between old editor and new one; 
+ - added: IME support;
+
+May-23-2001 Version 1.3
+ - added: new Library Manager tool for third-party components and packages processing;
+ - added: proper charset is set automatically for translated components in the created DLLs;
+
+Language Wizard
+ - fixed: string constants have been placed into resourcestring section in the LocUtils unit;
+ - fixed: some errors in "scan PAS files" operation;
+ - fixed: processing of multiline properties with long strings;
+ - fixed: error using AsPack/AsProtect with .exe file;
+
+Language Manager
+ - added: ability to edit and use the translation of third-party components and packages;
+ - added: allows to create language file for primary language (.de, .en etc.);
+ - fixed: incorrect Find/Replace dialog scaling with LargeFonts option set;
+ - fixed: processing of strings with incomplete line break (#10 or #13);
+ - fixed: incorrect grid behaviour with invisible native language;
+ - fixed: incorrect DLL synchronizing from the command line.
+
+Apr-08-2001 Version 1.2
+Language Wizard
+ - fixed: error processing .drc file (string with double quotes);
+ - fixed: processing simular strings in "Scan PAS" operation (e.g. 'Hello', '&Hello', 'HELLO');
+ - added: ability to comment resource strings and to break one string to several ones using '+' operator;
+Language Manager
+ - fixed: .bak files are not longer processed during "Synchronize DLLs" operation;
+ - added: Search/Replace feature;
+ - added: Sorting is improved;
+ - added: Selecting cell by right mouse click;
+
+Mar-28-2001 Version 1.1
+Language Wizard
+ - added: correct processing equal string constans in "Scan .PAS" operation;
+ - added: synchronizing resource DLLs during "Refresh langauge files" operation.
+ - added: many chages in LocUtils unit. Old functions LoadResLibrary... are not available now. New class have been added -  TKLocUtils and new global variable - Localizer : TKLocUtils. New method - PopulateMenu. See comments in LocUtils.pas for detail;
+ - fixed: error during processing inherited forms and Delphi 5 frames;
+ - fixed: error in translating from UNICODE strings to ANSI in some locales;
+
+Langauge Manager
+ - added: language settings dialog;
+ - added: alphabetical sorting by the active language;
+ - added: "Show translated/untranslated" filter;
+ - added: Refresh operation (Edit | Refresh menu item);
+ - added: "Go to line" dialog (Search menu);
+ - added: "Revert to native" operation - available trough right-click popup menu;
+ - added: grid rows resizing feature;
+ - added: ability to edit any item as list (Ctrl+Enter);
+ - added: ability to export StringID for string constants;
+ - fixed: Memo field in grid now saves all changes when user click outside it;
+
+
+Mar-10-2001 Version 1.03
+ - bug fixed: compilation error during "Refresh" operation in some kind of projects (with many third-party components installed);
+ - bug fixed: error during "Synchronize resource DLL" operation;
+ - bug fixed: "Refresh" operation now correctly removes from language file the forms removed from the project;
+
+Mar-05-2001 Version 1.02
+ - bug fixed: error while processing forms with some particular components;
+ - added: Refresh operation synchronize all resource DLL - so it is not necessary to call Language Manager after "Refresh" to synchronize them manually;
+ - added: New command "Synchronize DLLs" in Language Manager;
+
+Mar-03-2001 Version 1.01
+ - bug fixed: error during Language Manager call if the path to project's directory contains spaces;
+ - bug fixed: one space is added to PrjConst unit name every time when "Scan .PAS" utility is called;
+ - added: project is reopened after scanning .PAS files;
+ - added: row {$R *.KLR} is added into .dpr automatically after "Refresh langauge files" operation;
+ - added: an ability to refresh language files after "Scan .PAS" operation.
+
+Feb-26-2001 Version 1.0 release
