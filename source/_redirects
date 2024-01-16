@@ -62,6 +62,7 @@
 /easyquery/docs/tutorials/net-core-version-5-x	/easyquery/docs/how-to/version-5-x
 /easyquery/docs/common-queries/sub-query	/easyquery/docs/query-with-a-subquery
 /easyquery/docs/use-cases	/easyquery/docs/how-to
+/get-start p=dme install=:install   /data-model-editor/get-start?install=:install
 /get-start p=sq install=:install   /simple-query/get-start?install=:install
 
 /localizer/purchase*	/localizer#licensing
