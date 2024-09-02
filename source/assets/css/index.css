@@ -306,4 +306,9 @@ footer .mute-text {
   transform: scale(1.1);
   z-index: 2;
 }
+.lightbox__prev > *,
+.lightbox__next > * {
+  height: 24px;
+  width: 24px;
+}
 /*# sourceMappingURL=index.css.map */
