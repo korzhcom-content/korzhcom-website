@@ -94,9 +94,9 @@
 
 
 /images/*							/assets/images/:splat
-/easyquery/docs/*                   https://korzh.aistant.com/proxy/easyquery-dotnet/:splat  200!
-/easyquery/javascript/docs/*        https://korzh.aistant.com/proxy/easyquery-javascript/:splat  200!
-/easy-report-starter-kit/docs/*     https://korzh.aistant.com/proxy/ersk/:splat  200!
+/easyquery/docs/*                   https://korzh.siteserver.xyz/proxy/easyquery-dotnet/:splat  200!
+/easyquery/javascript/docs/*        https://korzh.siteserver.xyz/proxy/easyquery-javascript/:splat  200!
+/easy-report-starter-kit/docs/*     https://korzh.siteserver.xyz/proxy/ersk/:splat  200!
 /metroui/docs/*						https://metroui.org.ua/intro.html
 
 /download/*							https://cdn.korzh.com/download/:splat
