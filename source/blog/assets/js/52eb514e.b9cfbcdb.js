@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[748],{938:e=>{e.exports=JSON.parse('{"label":"TOP-LEVEL-STATEMENTS","permalink":"/blog/tags/top-level-statements","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
