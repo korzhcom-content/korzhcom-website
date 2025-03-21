@@ -95,12 +95,12 @@
 
 /images/*							/assets/images/:splat
 /easyquery/docs/*                   https://easyquerynet-docs-astro.netlify.app/easyquery/docs/:splat/  200!
-/_eqnet_astro/*                     https://easyquerynet-docs-astro.netlify.app/_eqnet_astro/:splat
+/_eqnet_astro/*                     https://easyquerynet-docs-astro.netlify.app/_eqnet_astro/:splat  200!
 /easyquery/javascript/docs/*        https://korzh.siteserver.xyz/proxy/easyquery-javascript/:splat  200!
 /easy-report-starter-kit/docs/*     https://korzh.siteserver.xyz/proxy/ersk/:splat  200!
 /metroui/docs/*						https://metroui.org.ua/intro.html
 /localizer/docs/*                   https://localizer-docs-astro.netlify.app/localizer/docs/:splat/  200!
-/_loc_astro/*                       https://localizer-docs-astro.netlify.app/_loc_astro/:splat
+/_loc_astro/*                       https://localizer-docs-astro.netlify.app/_loc_astro/:splat  200!
 
 /download/*							https://cdn.korzh.com/download/:splat
 
