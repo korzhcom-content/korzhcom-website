@@ -171,7 +171,7 @@
 /easyquery/javascript/docs/*        https://korzh.siteserver.xyz/proxy/easyquery-javascript/:splat  200!
 /easy-report-starter-kit/docs/*     https://korzh.siteserver.xyz/proxy/ersk/:splat  200!
 /metroui/docs/*						https://metroui.org.ua/intro.html
-/localizer/docs                     /localizer/docs/introduction/overview  302!
+/localizer/docs                     /localizer/docs/getting-started/overview  302!
 /localizer/docs/*                   https://localizer-docs-astro.netlify.app/localizer/docs/:splat/  200!
 #/_loc_astro/*                       https://localizer-docs-astro.netlify.app/_loc_astro/:splat  200!
 
