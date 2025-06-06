@@ -133,6 +133,7 @@
 /easyquery/docs/query-with-a-subquery	/easyquery/docs/tutorials/common-sql-queries/query-with-a-subquery
 /easyquery/docs/tutorials/version-3-x/javascript-widgets-localization	/easyquery/docs/tutorials/version-3-x-tutorials/javascript-widgets-localization
 
+/easy-report-starter-kit/docs/setting-multi-tenancy /easy-report-starter-kit/docs/tutorials/setting-multi-tenancy
 
 
 
@@ -169,7 +170,8 @@
 /easyquery/docs/*                   https://easyquerynet-docs-astro.netlify.app/easyquery/docs/:splat/  200!
 #/_eqnet_astro/*                     https://easyquerynet-docs-astro.netlify.app/_eqnet_astro/:splat  200!
 /easyquery/javascript/docs/*        https://korzh.siteserver.xyz/proxy/easyquery-javascript/:splat  200!
-/easy-report-starter-kit/docs/*     https://korzh.siteserver.xyz/proxy/ersk/:splat  200!
+/easy-report-starter-kit/docs       /easy-report-starter-kit/docs/overview  302!
+/easy-report-starter-kit/docs/*     https://ersk-docs-astro.netlify.app/easy-report-starter-kit/docs/:splat  200!
 /metroui/docs/*						https://metroui.org.ua/intro.html
 /localizer/docs                     /localizer/docs/getting-started/overview  302!
 /localizer/docs/*                   https://localizer-docs-astro.netlify.app/localizer/docs/:splat/  200!
