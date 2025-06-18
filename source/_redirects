@@ -169,7 +169,7 @@
 /easyquery/docs                     /easyquery/docs/introduction  302!
 /easyquery/docs/*                   https://easyquerynet-docs-astro.netlify.app/easyquery/docs/:splat/  200!
 #/_eqnet_astro/*                     https://easyquerynet-docs-astro.netlify.app/_eqnet_astro/:splat  200!
-/easyquery/javascript/docs/*        /easyquery/javascript/docs/introduction:splat  302!
+/easyquery/javascript/docs          /easyquery/javascript/docs/introduction:splat  302!
 /easyquery/javascript/docs/*        https://easyqueryjs-docs-dev.netlify.app/easyquery/javascript/docs/:splat  200!
 /easy-report-starter-kit/docs       /easy-report-starter-kit/docs/overview  302!
 /easy-report-starter-kit/docs/*     https://ersk-docs-astro.netlify.app/easy-report-starter-kit/docs/:splat  200!
