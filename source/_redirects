@@ -133,6 +133,30 @@
 /easyquery/docs/query-with-a-subquery	/easyquery/docs/tutorials/common-sql-queries/query-with-a-subquery
 /easyquery/docs/tutorials/version-3-x/javascript-widgets-localization	/easyquery/docs/tutorials/version-3-x-tutorials/javascript-widgets-localization
 
+# Redierects for old articles placed in the wrong sections
+/easyquery/javascript/docs/api-reference-4-x	/easyquery/javascript/docs/api-reference-old/api-reference-4-x
+/easyquery/javascript/docs/api-reference-7x/@easyquery/ui-package	/easyquery/javascript/docs/api-reference-7x/ui-package
+/easyquery/javascript/docs/replacing-datepicker-widget	/easyquery/javascript/docs/tutorials/replacing-datepicker-widget
+/easyquery/javascript/docs/api-reference-6x	/easyquery/javascript/docs/api-reference-old/api-reference-6x
+/easyquery/javascript/docs/api-reference-7x/@easyquery/core-package	/easyquery/javascript/docs/api-reference-7x/core-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/core-package	/easyquery/javascript/docs/api-reference-6x/core-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/enterprise-package	/easyquery/javascript/docs/api-reference-6x/enterprise-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/ui-package	/easyquery/javascript/docs/api-reference-5-x/ui-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/locales-package	/easyquery/javascript/docs/api-reference-6x/locales-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/ui-package	/easyquery/javascript/docs/api-reference-6x/ui-package
+/easyquery/javascript/docs/api-reference-7x/@easyquery/enterprise-package	/easyquery/javascript/docs/api-reference-7x/enterprise-package
+/easyquery/javascript/docs/api-reference-7x/@easydata/core-package	/easyquery/javascript/docs/api-reference-7x/core-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/broker-eqs-package	/easyquery/javascript/docs/api-reference-5-x/broker-eqs-package
+/easyquery/javascript/docs/api-reference-5-x	/easyquery/javascript/docs/api-reference-old/api-reference-5-x
+/easyquery/javascript/docs/api-reference-7x/@easyquery/odata-package	/easyquery/javascript/docs/api-reference-7x/odata-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/core-package	/easyquery/javascript/docs/api-reference-5-x/core-package
+/easyquery/javascript/docs/api-reference-6x/-easyquery/core-package/variables	/easyquery/javascript/docs/api-reference-6x/@easyquery/core-package/variables
+/easyquery/javascript/docs/api-reference-7x/@easydata/ui-package	/easyquery/javascript/docs/api-reference-7x/ui-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/ui-jquery-package	/easyquery/javascript/docs/api-reference-5-x/ui-jquery-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/odata-package	/easyquery/javascript/docs/api-reference-6x/odata-package
+/easyquery/javascript/docs/api-reference-7x/@easyquery/locales-package	/easyquery/javascript/docs/api-reference-7x/locales-package
+
+
 /easy-report-starter-kit/docs/setting-multi-tenancy /easy-report-starter-kit/docs/tutorials/setting-multi-tenancy
 
 
@@ -169,7 +193,8 @@
 /easyquery/docs                     /easyquery/docs/introduction  302!
 /easyquery/docs/*                   https://easyquerynet-docs-astro.netlify.app/easyquery/docs/:splat/  200!
 #/_eqnet_astro/*                     https://easyquerynet-docs-astro.netlify.app/_eqnet_astro/:splat  200!
-/easyquery/javascript/docs/*        https://korzh.siteserver.xyz/proxy/easyquery-javascript/:splat  200!
+/easyquery/javascript/docs          /easyquery/javascript/docs/introduction 302!
+/easyquery/javascript/docs/*        https://easyqueryjs-docs-astro.netlify.app/easyquery/javascript/docs/:splat  200!
 /easy-report-starter-kit/docs       /easy-report-starter-kit/docs/overview  302!
 /easy-report-starter-kit/docs/*     https://ersk-docs-astro.netlify.app/easy-report-starter-kit/docs/:splat  200!
 /metroui/docs/*						https://metroui.org.ua/intro.html
