@@ -65,6 +65,97 @@
 /get-start p=dme install=:install   /data-model-editor/get-start?install=:install
 /get-start p=sq install=:install   /simple-query/get-start?install=:install
 
+# Redierects for old articles placed in the wrong sections
+/easyquery/docs/tutorials/dynamic-queries-with-easyquery-and-entity-framework	/easyquery/docs/tutorials/version-3-x-tutorials/dynamic-queries-with-easyquery-and-entity-framework
+/easyquery/docs/tutorials/aggregate-data	/easyquery/docs/tutorials/common-sql-queries/aggregate-data
+/easyquery/docs/tutorials/query-with-or-operators	/easyquery/docs/tutorials/common-sql-queries/query-with-or-operators
+/easyquery/docs/api-reference-4x	/easyquery/docs/api-reference-previous-versions/api-reference-4x
+/easyquery/docs/release-notes/version-3.9.0	/easyquery/docs/release-notes/version-3-x/version-3.9.0
+/easyquery/docs/getting-started/sample-mvc-entity-framework-new-dbcontext	/easyquery/docs/getting-started/version-3-x/sample-mvc-entity-framework-new-dbcontext
+/easyquery/docs/tutorials/javascript-widgets-settings-formats-webforms	/easyquery/docs/tutorials/version-3-x-tutorials/javascript-widgets-settings-formats-webforms
+/easyquery/docs/how-to/mvc-save-load-query-database	/easyquery/docs/how-to/obsolete-tutorials/mvc-save-load-query-database
+/easyquery/docs/use-cases/gridview-filtering-with-easyquery-aspnet-webforms	/easyquery/docs/tutorials/version-3-x-tutorials/gridview-filtering-with-easyquery-aspnet-webforms
+/easyquery/docs/release-notes/version-3.7.0	/easyquery/docs/release-notes/version-3-x/version-3.7.0
+/easyquery/docs/release-notes/version-3.0.0	/easyquery/docs/release-notes/version-3-x/version-3.0.0
+/easyquery/docs/release-notes/version-4.1.0	/easyquery/docs/release-notes/version-4-x/version-4.1.0
+/easyquery/docs/getting-started/asp-net-core-v4	/easyquery/docs/getting-started/version-4-x-obsolete/asp-net-core-v4
+/easyquery/docs/release-notes/version-3.10.0	/easyquery/docs/release-notes/version-3-x/version-3.10.0
+/easyquery/docs/release-notes/version-3.5.0	/easyquery/docs/release-notes/version-3-x/version-3.5.0
+/easyquery/docs/how-to/adhoc-reporting-in-your-webapp	/easyquery/docs/tutorials/adhoc-reporting-in-your-webapp
+/easyquery/docs/tutorials/query-over-one-table	/easyquery/docs/tutorials/common-sql-queries/query-over-one-table
+/easyquery/docs/release-notes/upgrade-from-3.x-to-4.0	/easyquery/docs/upgrade-instructions/upgrade-from-3.x-to-4.0
+/easyquery/docs/upgrade-instructions	/easyquery/docs/release-notes/upgrade-instructions
+/easyquery/docs/how-to/dynamically-populating-list-webforms	/easyquery/docs/how-to/obsolete-tutorials/dynamically-populating-list-webforms
+/easyquery/docs/version-3-x/getting-started/asp-net-webforms	/easyquery/docs/getting-started/version-3-x/asp-net-webforms
+/easyquery/docs/release-notes/version-3.8.0	/easyquery/docs/release-notes/version-3-x/version-3.8.0
+/easyquery/docs/release-notes/version-3.6.0	/easyquery/docs/release-notes/version-3-x/version-3.6.0
+/easyquery/docs/release-notes/upgrade-from-2.x-to-3.0	/easyquery/docs/upgrade-instructions/upgrade-from-2.x-to-3.0
+/easyquery/docs/use-cases/dynamic-php-query-builder-with-easyquery	/easyquery/docs/tutorials/version-3-x-tutorials/dynamic-php-query-builder-with-easyquery
+/easyquery/docs/tutorials/query-with-table-joins	/easyquery/docs/tutorials/common-sql-queries/query-with-table-joins
+/easyquery/docs/test-section2	/easyquery/docs/api-reference-4x/korzh-utils-namespace/test-section2
+/easyquery/docs/how-to/build-data-model-by-code	/easyquery/docs/how-to/obsolete-tutorials/build-data-model-by-code
+/easyquery/docs/tutorials/query-builder-ui-localization	/easyquery/docs/tutorials/version-3-x-tutorials/query-builder-ui-localization
+/easyquery/docs/tutorials/javascript-widgets-settings-formats	/easyquery/docs/tutorials/version-3-x-tutorials/javascript-widgets-settings-formats
+/easyquery/docs/use-cases/advanced-search-scaffold-nuget	/easyquery/docs/tutorials/version-3-x-tutorials/advanced-search-scaffold-nuget
+/easyquery/docs/how-to/anti-forgery-token	/easyquery/docs/how-to/obsolete-tutorials/anti-forgery-token
+/easyquery/docs/release-notes/version-3.4.0	/easyquery/docs/release-notes/version-3-x/version-3.4.0
+/easyquery/docs/getting-started/working-with-data-model	/easyquery/docs/tutorials/working-with-data-model
+/easyquery/docs/how-to/dynamic-populating-value-list-winforms-wpf	/easyquery/docs/how-to/version-5-x/dynamic-populating-value-list-winforms-wpf
+/easyquery/docs/release-notes/version-4.0	/easyquery/docs/release-notes/version-4-x/version-4.0
+/easyquery/docs/getting-started/sample-webforms-change-to-mssql	/easyquery/docs/getting-started/version-3-x/sample-webforms-change-to-mssql
+/easyquery/docs/release-notes/version-4.2.0	/easyquery/docs/release-notes/version-4-x/version-4.2.0
+/easyquery/docs/tutorials/dynamic-queries-ui-aspnet-core-entity-framework	/easyquery/docs/getting-started/asp-net-core/dynamic-queries-ui-aspnet-core-entity-framework
+/easyquery/docs/release-notes/version-5-1	/easyquery/docs/release-notes/version-5-x/version-5-1
+/easyquery/docs/release-notes/version-4-3-1	/easyquery/docs/release-notes/version-4-x/version-4-3-1
+/easyquery/docs/release-notes/upgrade-from-4-x-to-5-0	/easyquery/docs/upgrade-instructions/upgrade-from-4-x-to-5-0
+/easyquery/docs/getting-started/aspnet-core-react	/easyquery/docs/getting-started/asp-net-core/aspnet-core-react
+/easyquery/docs/release-notes/version-4-4-2	/easyquery/docs/release-notes/version-4-x/version-4-4-2
+/easyquery/docs/how-to/easyquery-middleware-non-authenticated-users	/easyquery/docs/how-to/version-5-x/easyquery-middleware-non-authenticated-users
+/easyquery/docs/how-to/create-data-model-dynamically-with-code	/easyquery/docs/how-to/version-5-x/create-data-model-dynamically-with-code
+/easyquery/docs/getting-started/aspnet-core-vue	/easyquery/docs/getting-started/asp-net-core/aspnet-core-vue
+/easyquery/docs/release-notes/version-5-2	/easyquery/docs/release-notes/version-5-x/version-5-2
+/easyquery/docs/how-to/store-queries-in-a-database	/easyquery/docs/how-to/version-5-x/store-queries-in-a-database
+/easyquery/docs/release-notes/easyquery-net-5-4-1-easyquery-js-6-1-0	/easyquery/docs/release-notes/version-5-x/easyquery-net-5-4-1-easyquery-js-6-1-0
+/easyquery/docs/changelog	/easyquery/docs/release-notes/changelog
+/easyquery/docs/getting-started/aspnet-core-angular	/easyquery/docs/getting-started/asp-net-core/aspnet-core-angular
+/easyquery/docs/release-notes/version-5-3	/easyquery/docs/release-notes/version-5-x/version-5-3
+/easyquery/docs/getting-started/aspnet-core-razor	/easyquery/docs/getting-started/asp-net-core/aspnet-core-razor
+/easyquery/docs/api-reference-5x	/easyquery/docs/api-reference-previous-versions/api-reference-5x
+/easyquery/docs/release-notes/version-4-4-0	/easyquery/docs/release-notes/version-4-x/version-4-4-0
+/easyquery/docs/tutorials/data-model-creation-loading	/easyquery/docs/tutorials/version-3-x-tutorials/data-model-creation-loading
+/easyquery/docs/how-to/processing-custom-value-editors-in-easyquery-js	/easyquery/docs/how-to/version-5-x/processing-custom-value-editors-in-easyquery-js
+/easyquery/docs/upgrade-instructions/net-framework-3-x-to-5-x-/asp-net-mvc-webforms	/easyquery/docs/upgrade-instructions/net4-editions-from-3-x-to-5-x/asp-net-mvc-webforms
+/easyquery/docs/release-notes/version-5-0	/easyquery/docs/release-notes/version-5-x/version-5-0
+/easyquery/docs/release-notes/version-4-4-1	/easyquery/docs/release-notes/version-4-x/version-4-4-1
+/easyquery/docs/upgrade-instructions-5-0-to-5-1	/easyquery/docs/hidden/upgrade-instructions-5-0-to-5-1
+/easyquery/docs/getting-started/silverlight	/easyquery/docs/getting-started/version-3-x/silverlight
+/easyquery/docs/getting-started/sample-webforms-javascript-webservice	/easyquery/docs/getting-started/version-3-x/sample-webforms-javascript-webservice
+/easyquery/docs/query-with-a-subquery	/easyquery/docs/tutorials/common-sql-queries/query-with-a-subquery
+/easyquery/docs/tutorials/version-3-x/javascript-widgets-localization	/easyquery/docs/tutorials/version-3-x-tutorials/javascript-widgets-localization
+
+# Redierects for old articles placed in the wrong sections
+/easyquery/javascript/docs/api-reference-4-x	/easyquery/javascript/docs/api-reference-old/api-reference-4-x
+/easyquery/javascript/docs/api-reference-7x/@easyquery/ui-package	/easyquery/javascript/docs/api-reference-7x/ui-package
+/easyquery/javascript/docs/replacing-datepicker-widget	/easyquery/javascript/docs/tutorials/replacing-datepicker-widget
+/easyquery/javascript/docs/api-reference-6x	/easyquery/javascript/docs/api-reference-old/api-reference-6x
+/easyquery/javascript/docs/api-reference-7x/@easyquery/core-package	/easyquery/javascript/docs/api-reference-7x/core-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/core-package	/easyquery/javascript/docs/api-reference-6x/core-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/enterprise-package	/easyquery/javascript/docs/api-reference-6x/enterprise-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/ui-package	/easyquery/javascript/docs/api-reference-5-x/ui-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/locales-package	/easyquery/javascript/docs/api-reference-6x/locales-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/ui-package	/easyquery/javascript/docs/api-reference-6x/ui-package
+/easyquery/javascript/docs/api-reference-7x/@easyquery/enterprise-package	/easyquery/javascript/docs/api-reference-7x/enterprise-package
+/easyquery/javascript/docs/api-reference-7x/@easydata/core-package	/easyquery/javascript/docs/api-reference-7x/core-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/broker-eqs-package	/easyquery/javascript/docs/api-reference-5-x/broker-eqs-package
+/easyquery/javascript/docs/api-reference-5-x	/easyquery/javascript/docs/api-reference-old/api-reference-5-x
+/easyquery/javascript/docs/api-reference-7x/@easyquery/odata-package	/easyquery/javascript/docs/api-reference-7x/odata-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/core-package	/easyquery/javascript/docs/api-reference-5-x/core-package
+/easyquery/javascript/docs/api-reference-6x/-easyquery/core-package/variables	/easyquery/javascript/docs/api-reference-6x/@easyquery/core-package/variables
+/easyquery/javascript/docs/api-reference-7x/@easydata/ui-package	/easyquery/javascript/docs/api-reference-7x/ui-package
+/easyquery/javascript/docs/api-reference-5-x/@easyquery/ui-jquery-package	/easyquery/javascript/docs/api-reference-5-x/ui-jquery-package
+/easyquery/javascript/docs/api-reference-6x/@easyquery/odata-package	/easyquery/javascript/docs/api-reference-6x/odata-package
+/easyquery/javascript/docs/api-reference-7x/@easyquery/locales-package	/easyquery/javascript/docs/api-reference-7x/locales-package
+
 
 /easy-report-starter-kit/docs/setting-multi-tenancy /easy-report-starter-kit/docs/tutorials/setting-multi-tenancy
 
