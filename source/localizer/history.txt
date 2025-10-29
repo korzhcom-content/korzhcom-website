@@ -1,3 +1,7 @@
+Oct-29-2025 Version 4.20.0
+--------------------------
+-new: RAD Studio 13 Florence support;
+
 Nov-20-2023 Version 4.19.0
 --------------------------
 -new: RAD Studio 12 Athens support;
