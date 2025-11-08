@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-    {% include gtag.html %}
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="metro4:cloak" content="switch">
+    <meta name="metro4:cloak" content="switch">   
     {% if page.canonical_url != nil %}
     <link rel="canonical" href="{{ page.canonical_url }}"/>
     {% else %}    
     <link rel="canonical" href="https://korzh.com{{ page.url | replace:'/index.html','' | replace:'.html',''}}">
     {% endif %}
+    {% include gtag-head.html %}
     <!--<link rel="stylesheet" href="/assets/css/easydata.css">-->
     <link rel="stylesheet" href="/assets/metro/metro.css">
     <link rel="stylesheet" href="/assets/css/index.css">
     <title>{{ page.title }}</title>
 </head>
 <body class="m4-cloak">
+    {% include gtag-body.html %}
 	{% include appbar.html %}
 
     {{ content }}
