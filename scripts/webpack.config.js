@@ -1,7 +1,12 @@
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+import path from 'path'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import { fileURLToPath } from 'url';
+import * as constants from 'node:constants'
 
-module.exports = [
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const config = [
     {
       entry: './scripts/src/index.ts',
       module: {
@@ -42,3 +47,5 @@ module.exports = [
       ],
     }
 ];
+
+export default config;
