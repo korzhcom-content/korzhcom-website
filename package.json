@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "clear:metro": "shx rm -rf source/assets/metro/*",
-    "start": "bundle exec jekyll serve",
+    "start": "cross-env RUBYOPT=-W0 bundle exec jekyll serve --livereload --incremental",
     "watch": "webpack watch --mode=development --config ./scripts/webpack.config.js",
     "build": "webpack --mode=production --config ./scripts/webpack.config.js",
     "build:metro": "npm run clear:metro && cross-env MODE=production node ./scripts/build-metro.js",

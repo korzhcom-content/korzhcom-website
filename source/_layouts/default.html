@@ -12,10 +12,21 @@
     <link rel="canonical" href="https://korzh.com{{ page.url | replace:'/index.html','' | replace:'.html',''}}">
     {% endif %}
     {% include gtag-head.html %}
+
+    <link rel="preconnect" href="https://korzh.com/easyquery/">
+    <link rel="preconnect" href="https://korzh.com/easyquery/javascript">
+    <link rel="preconnect" href="https://korzh.com/easy-report-starter-kit">
+    <link rel="preconnect" href="https://korzh.com/metroui">
+    <link rel="preconnect" href="https://korzh.com/localizer/">
+    
+    
     <!--<link rel="stylesheet" href="/assets/css/easydata.css">-->
-    <link rel="stylesheet" href="/assets/metro/metro.css" blocking="render">
-    <link rel="stylesheet" href="/assets/css/index.css" blocking="render">
     <title>{{ page.title }}</title>
+    <style>
+        body.cloak {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body class="cloak">
     {% include gtag-body.html %}
@@ -25,7 +36,10 @@
 	
     {% include footer.html %}
 
-    <script id="help-ukraine-win" async="true" src="https://helpukrainewinwidget.org/cdn/widget.js?type=two&position=bottom-right&layout=main"></script>
-    <script id="metroui" async="true" src="/assets/metro/metro.js"></script>
+<!--    <script id="help-ukraine-win" async="true" src="https://helpukrainewinwidget.org/cdn/widget.js?type=two&position=bottom-right&layout=main"></script>-->
+    <link rel="stylesheet" href="/assets/metro/metro.css">
+    <link rel="stylesheet" href="/assets/css/index.css" blocking="render">
+    <script src="/assets/metro/metro.js"></script>
+    <script src="/assets/js/index.js"></script>
 </body>
 </html>
