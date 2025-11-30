@@ -1,0 +1,4 @@
+[[headers]]
+  for = "*.*"
+  [headers.values]
+	  Сache-Сontrol = "max-age=604800"
