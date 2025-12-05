@@ -47,9 +47,10 @@ function getTrial(){
 
         `,
         closeButton: true,
-        actions: [
+        defaultActions: false,
+        customButtons: [
             {
-                caption: "Get Trial",
+                text: "Get Trial",
                 cls: "js-dialog-close success",
                 onclick: function(){
                     const url = `https://account.korzh.com/get-trial`
@@ -69,7 +70,7 @@ function getTrial(){
                 }
             },
             {
-                caption: "Cancel",
+                text: "Cancel",
                 cls: "js-dialog-close",
                 onclick: function(){
                 }
