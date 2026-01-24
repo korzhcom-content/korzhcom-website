@@ -38,8 +38,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                 </div>
                 <div class="mt-10">
                     <a href="https://easy.report" target="_blank" class="button fg-white text-bold hero-button">Live Demo</a>
-                    <a href="https://account.korzh.com/get-perk/?ctag=ERSK-COM&ptag=ERSK&diid=774"
-                                class="button fg-white text-bold hero-button">Get ERSK Community</a>
+                    <button onclick="getERSKCommunity()" class="button fg-white text-bold hero-button">Get ERSK Community</button>
                     <a href="#licensing" class="button fg-white text-bold hero-button">Licensing</a>
 
                 </div>
@@ -365,3 +364,156 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
 <section class="container-fluid more-question">
     {% include more-questions.html %}
 </section>
+
+<style>
+    .get-community-dialog {
+        .dialog-actions {
+            display: none!important;
+        }
+    }
+</style>
+
+<script>
+    var getCommunityDialog = null;
+
+    function getERSKCommunity(){
+        getCommunityDialog = Metro.dialog.create({
+            title: "Get ERSK Community",
+            content: `
+                <div>
+                    <p>When you download ERSK Community Edition, you'll get access to:</p>
+                    <ul class="unstyled-list">
+                        <li><span class="mif-checkmark fg-green mr-1"></span> Report Management</li>
+                        <li><span class="mif-checkmark fg-green mr-1"></span> User Management</li>
+                        <li><span class="mif-checkmark fg-green mr-1"></span> Report Sharing</li>
+                        <li><span class="mif-checkmark fg-green mr-1"></span> Data visualization with tables</li>
+                    </ul>
+                    <p class="mt-4">You can optionally provide your email to receive setup instructions and updates.</p>
+                </div>
+                <form id="ersk-community-edition-form">
+                    <div class="ersk-community-edition box">
+                        <label>Email (optional):</label>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="ersk-email-input"
+                            data-role="input" 
+                            data-validate="email"
+                            placeholder="Enter your email..."
+                        >
+                    </div>
+                    <div class="form-actions mt-4 d-flex flex-justify-right gap-2">
+                        <button type="button" class="button js-dialog-close">Cancel</button>
+                        <button 
+                            type="button"
+                            id="ersk-download-btn"
+                            class="button info"
+                            onclick="handleERSKDownload()"
+                        >Download ERSK Community</button>
+                    </div>
+                </form>
+            `,
+            clsDialog: "get-community-dialog shadow-large",
+            closeButton: true,
+            defaultActions: false,
+            customButtons: []
+        });
+    }
+
+    function handleERSKDownload() {
+        const emailInput = document.getElementById('ersk-email-input');
+        const email = emailInput?.value.trim() || '';
+        const downloadUrl = 'https://cdn.korzh.com/download/ersk_community.zip';
+
+        // Якщо email порожній - одразу завантаження
+        if (!email) {
+            if (getCommunityDialog) {
+                Metro.dialog.close(getCommunityDialog);
+            }
+            window.location.href = downloadUrl;
+            return;
+        }
+
+        // Перевірка валідності email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            Metro.toast.create('Please enter a valid email address', null, 3000, 'alert');
+            return;
+        }
+
+        // Блокуємо кнопку під час обробки
+        const btn = document.getElementById('ersk-download-btn');
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Processing...';
+
+        // Викликаємо reCAPTCHA v3
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6Lcy9VMsAAAAACMO_qoNsz9-N2Otihe4Z0f8o8H2', {action: 'download_ersk'})
+                .then(function(token) {
+                    return submitERSKData(email, token, downloadUrl);
+                })
+                .catch(function(error) {
+                    console.error('reCAPTCHA error:', error);
+                    Metro.toast.create('Verification failed. Please try again.', null, 3000, 'alert');
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                });
+        });
+    }
+
+    function submitERSKData(email, recaptchaToken, downloadUrl) {
+        // TODO: Замінити на реальний endpoint коли буде наданий
+        const apiEndpoint = 'https://account.korzh.com/api/register-download'; // ← Endpoint буде наданий пізніше
+
+        const data = {
+            email: email,
+            apptype: 'ersk_community',
+            referrer: document.referrer,
+            query: document.location.search,
+            'g-recaptcha-response': recaptchaToken
+        };
+
+        return fetch(apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Server error: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(result => {
+                // Успішно відправлено
+                if (getCommunityDialog) {
+                    Metro.dialog.close(getCommunityDialog);
+                }
+
+                // Показуємо повідомлення (опціонально)
+                Metro.toast.create('Thank you! Check your email for instructions.', null, 3000, 'success');
+
+                // Завантажуємо файл
+                setTimeout(() => {
+                    window.location.href = downloadUrl;
+                }, 500);
+            })
+            .catch(error => {
+                console.error('API error:', error);
+
+                // Навіть якщо API не спрацював - даємо завантажити файл
+                Metro.toast.create('Download will start shortly. Check your spam folder if you don\'t receive the email.', null, 4000, 'warning');
+
+                if (getCommunityDialog) {
+                    Metro.dialog.close(getCommunityDialog);
+                }
+
+                setTimeout(() => {
+                    window.location.href = downloadUrl;
+                }, 1000);
+            });
+    }
+</script>
