@@ -469,3 +469,17 @@ footer {
         width: 24px;
     }
 }
+
+
+.dialog-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.dialog {
+    --dialog-background: #fffbe7;
+}
+
+.trial-option {
+    background-color: #fff;
+}
