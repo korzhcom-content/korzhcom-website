@@ -463,8 +463,21 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
     }
 
     function submitERSKData(email, recaptchaToken, downloadUrl) {
-        // TODO: Замінити на реальний endpoint коли буде наданий
-        const apiEndpoint = 'https://account.korzh.com/api/register-download'; // ← Endpoint буде наданий пізніше
+        const apiEndpoint = ''; // ← Endpoint буде наданий пізніше
+
+        // Якщо endpoint порожній - відкриваємо завантаження в новій вкладці, поточну перенаправляємо на логін
+        if (!apiEndpoint) {
+            if (getCommunityDialog) {
+                Metro.dialog.close(getCommunityDialog);
+            }
+
+            // Відкриваємо завантаження в новому вікні
+            window.open(downloadUrl, '_blank');
+
+            // Поточне вікно перенаправляємо на логін
+            window.location.href = 'https://account.korzh.com/Auth/Login';
+            return;
+        }
 
         const data = {
             email: email,
@@ -515,5 +528,4 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                     window.location.href = downloadUrl;
                 }, 1000);
             });
-    }
-</script>
+    }</script>
