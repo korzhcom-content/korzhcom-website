@@ -29,6 +29,8 @@
     "less": "^4.4.2",
     "less-loader": "^12.3.0",
     "less-plugin-clean-css": "^1.6.0",
+    "oxfmt": "^0.27.0",
+    "prettier": "3.4.2",
     "shx": "^0.4.0",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.4",
