@@ -10,7 +10,9 @@
     "watch": "webpack watch --mode=development --config ./scripts/webpack.config.js",
     "build": "webpack --mode=production --config ./scripts/webpack.config.js",
     "build:metro": "npm run clear:metro && cross-env MODE=production node ./scripts/build-metro.js",
-    "compile:css": "lessc --source-map -clean-css source/assets/css/index.less source/assets/css/index.css"
+    "compile:css": "lessc --source-map -clean-css source/assets/css/index.less source/assets/css/index.css",
+    "lint": "oxlint . --fix",
+    "format": "oxfmt . --write"
   },
   "keywords": [],
   "author": "Korzh.com",
@@ -30,6 +32,7 @@
     "less-loader": "^12.3.0",
     "less-plugin-clean-css": "^1.6.0",
     "oxfmt": "^0.27.0",
+    "oxlint": "^1.42.0",
     "prettier": "3.4.2",
     "shx": "^0.4.0",
     "style-loader": "^4.0.0",
