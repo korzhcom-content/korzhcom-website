@@ -463,7 +463,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
     }
 
     function submitERSKData(email, recaptchaToken, downloadUrl) {
-        const apiEndpoint = ''; // ← Endpoint буде наданий пізніше
+        const apiEndpoint = 'https://korzh.com/easy-report-starter-kit/docs/setup-first-launch'; // ← Endpoint буде наданий пізніше
 
         // Якщо endpoint порожній - відкриваємо завантаження в новій вкладці, поточну перенаправляємо на логін
         if (!apiEndpoint) {
@@ -506,15 +506,21 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                     Metro.dialog.close(getCommunityDialog);
                 }
 
-                window.open(downloadUrl, '_blank');
 
+                if (result.status !== 21) {
+                    Metro.toast.create('Your account has ben created! Thank you for using our products!', {});
+                } else {
+                    // user already registered
+                }
+                
                 // Показуємо повідомлення (опціонально)
-                Metro.toast.create('Thank you for downloading ERSK Community!', null, 3000, 'success');
+                window.open(downloadUrl, '_blank');
+                Metro.toast.create('Thank you for downloading ERSK Community!', {});
 
                 // Завантажуємо файл
                 setTimeout(() => {
-                    window.location.href = downloadUrl;
-                }, 500);
+                    window.location.href = apiEndpoint;
+                }, 1500);
             })
             .catch(error => {
                 console.error('API error:', error);
