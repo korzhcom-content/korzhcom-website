@@ -411,6 +411,17 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
         });
     }
 
+    function setButtonState(state) {
+        const button = document.getElementById("ersk-download-btn");
+        if (state === "loading") {
+            button.disabled = true;
+            button.textContent = "Processing...";
+        } else {
+            button.disabled = false;
+            button.textContent = "Download ERSK Community";
+        }
+    }
+
     function handleERSKDownload() {
         const emailInput = document.getElementById("ersk-email-input");
         const email = emailInput?.value.trim() || "";
@@ -433,10 +444,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
         }
 
         // Блокуємо кнопку під час обробки
-        const btn = document.getElementById("ersk-download-btn");
-        const originalText = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = "Processing...";
+        setButtonState("loading");
 
         // Викликаємо reCAPTCHA v3
         grecaptcha.ready(function () {
@@ -447,24 +455,27 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                 })
                 .catch(function (error) {
                     console.error("reCAPTCHA error:", error);
-                    Metro.toast.create("Verification failed. Please try again.", null, 3000, "alert");
-                    btn.disabled = false;
-                    btn.textContent = originalText;
+                    Metro.toast.create("Verification failed. Please try again.", {
+                        clsToast: "alert",
+                        position: "top"
+                    });
+                    setButtonState("default");
                 });
         });
     }
 
-    function submitERSKData(email, recaptchaToken, downloadUrl) {
-        const apiEndpoint = 'https://korzh.com/easy-report-starter-kit/docs/setup-first-launch'; // ← Endpoint буде наданий пізніше
+    async function submitERSKData(email, recaptchaToken, downloadUrl) {
+        const nextUrl = 'https://korzh.com/easy-report-starter-kit/docs/setup-first-launch'; // ← Endpoint буде наданий пізніше
+        const apiAuthoring = "https://account.korzh.com/api/account/register";
 
+        // Відкриваємо завантаження в новому вікні
+        window.open(downloadUrl, "_blank");
+        
         // Якщо endpoint порожній - відкриваємо завантаження в новій вкладці, поточну перенаправляємо на логін
         if (!apiEndpoint) {
             if (getCommunityDialog) {
                 Metro.dialog.close(getCommunityDialog);
             }
-
-            // Відкриваємо завантаження в новому вікні
-            window.open(downloadUrl, "_blank");
 
             // Поточне вікно перенаправляємо на логін
             //window.location.href = 'https://account.korzh.com/Auth/Login';
@@ -486,61 +497,38 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
             "g-recaptcha-response": recaptchaToken,
         };
 
-        return fetch(apiAuthoring, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Server error: " + response.status);
-                }
-                return response.json();
+        try {
+            const response = await fetch(apiAuthoring, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
             })
-            .then((result) => {
-                // Успішно відправлено
-                /*
-                {
-                    "status": 21,
-                    "message": "User already exists: serhii@pimenov.com.ua"
-                }
-                */
 
-                if (getCommunityDialog) {
-                    Metro.dialog.close(getCommunityDialog);
-                }
+            if (!response.ok) {
+                console.error("[ERSK] Server error: " + response.status);
+            }
 
+            const result = await response.json();
 
-                if (result.status !== 21) {
-                    Metro.toast.create('Your account has ben created! Thank you for using our products!', {});
-                } else {
-                    // user already registered
-                }
-                
-                // Показуємо повідомлення (опціонально)
-                window.open(downloadUrl, '_blank');
-                Metro.toast.create('Thank you for downloading ERSK Community!', {});
+            if (result?.status === 21) {
+                // user already registered
+            } else {
+                Metro.toast.create('Your account has ben created! Thank you for using our products!', {
+                    clsToast: "success",
+                    position: "top"
+                });
+            }
 
-                // Завантажуємо файл
-                setTimeout(() => {
-                    window.location.href = apiEndpoint;
-                }, 1500);
-            })
-            .catch((error) => {
-                console.error("API error:", error);
+            globalThis.location.href = nextUrl;
 
-                // Навіть якщо API не спрацював - даємо завантажити файл
-                Metro.toast.create("Download will start shortly. Check your spam folder if you don't receive the email.", null, 4000, "warning");
-
-                if (getCommunityDialog) {
-                    Metro.dialog.close(getCommunityDialog);
-                }
-
-                setTimeout(() => {
-                    window.location.href = downloadUrl;
-                }, 1000);
-            });
+            if (getCommunityDialog) {
+                Metro.dialog.close(getCommunityDialog);
+            }
+        } catch (error) {
+            console.error("[ERSK] API error:", error);
+        }
+        return null;
     }
 </script>
