@@ -475,7 +475,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
             window.open(downloadUrl, '_blank');
 
             // Поточне вікно перенаправляємо на логін
-            window.location.href = 'https://account.korzh.com/Auth/Login';
+            //window.location.href = 'https://account.korzh.com/Auth/Login';
             return;
         }
 
@@ -506,8 +506,10 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                     Metro.dialog.close(getCommunityDialog);
                 }
 
+                window.open(downloadUrl, '_blank');
+
                 // Показуємо повідомлення (опціонально)
-                Metro.toast.create('Thank you! Check your email for instructions.', null, 3000, 'success');
+                Metro.toast.create('Thank you for downloading ERSK Community!', null, 3000, 'success');
 
                 // Завантажуємо файл
                 setTimeout(() => {
