@@ -1,15 +1,15 @@
-function trialChangeOptions(val){
+function trialChangeOptions(val) {
     $(".trial-sub-options > form").hide()
-    $("#trial-option-"+val).show()
+    $("#trial-option-" + val).show()
 }
 
-function getTrial(){
+function getTrial() {
     Metro.dialog.create({
         title: "Get EasyQuery Trial",
         content: `
 
-            <h3>Select your application type:</h3>
-            <div class="remark">
+            <h4>Select your application type:</h4>
+            <div class="remark dark">
                 EasyQuery framework can be used on different platforms and with different types of applications. So, to give you the most relevant installation instructions we need to know more about your project first.
             </div>
             <select id="select-apptype" class="mt-4 mb-4" data-role="select" data-filter="false" onchange="trialChangeOptions(this.value)">
@@ -27,7 +27,7 @@ function getTrial(){
                     <input type="radio" data-role="radio" name="viewEngine" data-caption="MVC" value="mvc" checked/>
                     <input type="radio" data-role="radio" name="viewEngine" data-caption="Razor Pages" value="razor-pages"/>
                 </form>
-                <form id="trial-option-asp-net-core-spa" class="trial-option border bd-default p-4">
+                <form id="trial-option-asp-net-core-spa" name="trial-option-asp-net-core-spa" class="trial-option border bd-default p-4">
                     <input type="radio" data-role="radio" name="frontend" data-caption="Angular" value="angular"/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="React" value="react"/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="Vue" value="vue"/>
@@ -45,6 +45,12 @@ function getTrial(){
                 </form>
             </div>
 
+            <h4>Enter your email (optional):</h4>
+            <div class="remark dark">
+                We will provide the detailed instructions on how to get the things worked
+            </div>
+            <input id="trial-email" type="email" placeholder="name@example.com" data-role="input" name="email"/>
+
         `,
         closeButton: true,
         defaultActions: false,
@@ -52,27 +58,78 @@ function getTrial(){
             {
                 text: "Get Trial",
                 cls: "js-dialog-close success",
-                onclick: function(){
-                    const url = `https://account.korzh.com/get-trial`
+                onclick: async function () {
+
+                    const url = 'https://localhost:26114/api/trial/register' // `https://account.korzh.com/api/trial/register`
                     const app = $("#select-apptype").val()
-                    const form = $(`#trial-option-${app}`)
-                    const email = ''
+                    const email = $("#trial-email").val()
 
-                    form.attr("method", "POST")
-                    form.attr("action", url)
-                    form.append($(`<input type='hidden' name='apptype' value='${app}'>`))
-                    form.append($(`<input type='hidden' name='referrer' value='${document.referrer}'>`))
-                    form.append($(`<input type='hidden' name='query' value='${document.location.search}'>`))
-                    form.append($(`<input type='hidden' name='email' value='${email}'>`))
+                    let nextHref = 'https://korzh.com/easyquery/docs/getting-started'
+                    switch (app) {
+                        case 'asp-net-core-razor':
+                            window.open('https://cdn.korzh.com/dot-net-samples/AspNetCore-Razor-Mvc.zip');
+                            break;
+                        case 'asp-net-core-spa':
+                            const form = document.forms["trial-option-asp-net-core-spa"]
+                            const spaType = form.elements.frontend.value
+                            switch (spaType) {
+                                case 'angular':
+                                    window.open('https://cdn.korzh.com/dot-net-samples/AspNetCore-Angular.zip');
+                                    break;
+                                case 'react':
+                                    window.open('https://cdn.korzh.com/dot-net-samples/AspNetCore-React.zip');
+                                    break;
+                                case 'vue':
+                                    window.open('https://cdn.korzh.com/dot-net-samples/AspNetCore-Vue3.zip');
+                                    break;
+                                case 'other':
+                                    break;
+                            }
+                            break;
+                        case 'asp-net-4-mvc':
+                            window.open('https://cdn.korzh.com/dot-net-samples/AspNet4-Mvc.zip');
+                            break;
+                        case 'asp-net-4-webforms':
+                            window.open('https://cdn.korzh.com/dot-net-samples/AspNet4-WebForms.zip');
+                            break;
+                        case 'net-winforms':
+                            window.open('https://cdn.korzh.com/dot-net-samples/WinForms.zip');
+                            break;
+                        case 'net-wpf':
+                            window.open('https://cdn.korzh.com/dot-net-samples/Wpf.zip');
+                            break;
+                        case 'webapp-other':
+                            break;
+                        case 'other':
+                            break;
+                    }
 
-                    form[0].submit()
-                    setTimeout(() => showLoadIndicator(), 100)
+                    const trialData = {
+                        apptype: `${app}`,
+                        referrer: `${document.referrer}`,
+                        query: `${document.location.search}`,
+                        email: `${email}`
+                    };
+
+                    try {
+                        await fetch(url, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(trialData)
+                        });
+
+                    } catch (error) {
+                    }
+
+                    window.location.href = nextHref
                 }
             },
             {
                 text: "Cancel",
                 cls: "js-dialog-close",
-                onclick: function(){
+                onclick: function () {
                 }
             }
         ]
@@ -94,8 +151,8 @@ function showLoadIndicator() {
     })
 }
 
-$(()=>{
-    $("body").on("click", "a[slow-loading]", function() {
+$(() => {
+    $("body").on("click", "a[slow-loading]", function () {
         showLoadIndicator();
     })
 })
