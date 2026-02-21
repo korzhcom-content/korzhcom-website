@@ -5,7 +5,7 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
     .app-bar .app-bar-menu>li a:hover,
     .app-bar .app-bar-menu li:not(.no-hover):hover {
         background-color: rgb(89, 95, 150) !important;
-        color: #ffffff!important;
+        color: #ffffff !important;
     }
 </style>
 
@@ -210,8 +210,8 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
                     data-icon-close="<span class='mif-cross'>">
                     <div class="cell-6 p-2">
                         <div class="image-preview h-100 border bd-default">
-                            <img src="/assets/images/asp-net-mvc-thumb.webp" data-original="/assets/images/asp-net-mvc.png"
-                                alt="">
+                            <img src="/assets/images/asp-net-mvc-thumb.webp"
+                                data-original="/assets/images/asp-net-mvc.png" alt="">
                         </div>
                     </div>
                     <div class="cell-6 p-2">
@@ -228,7 +228,8 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
                     </div>
                     <div class="cell-6 p-2">
                         <div class="image-preview h-100 border bd-default">
-                            <img src="/assets/images/advangle-thumb.webp" data-original="/assets/images/advangle.png" alt="">
+                            <img src="/assets/images/advangle-thumb.webp" data-original="/assets/images/advangle.png"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -381,9 +382,8 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
 <section class="container-fluid easyquery-editions-bg">
     <div class="container pt-10 pb-10">
         <h2 class="text-center text-bold">EASYQUERY <span>EDITIONS</span></h2>
-        <ul data-role="tabs" data-expand-point="md" data-tabs-type="pills"
-            data-cls-tabs="mt-10 mb-10 bg-transparent" data-cls-tabs-list-item="bg-transparent"
-            class=" easyquery-editions-tabs" style="justify-content: center;">
+        <ul data-role="tabs" data-expand-point="md" data-tabs-type="pills" data-cls-tabs="mt-10 mb-10 bg-transparent"
+            data-cls-tabs-list-item="bg-transparent" class=" easyquery-editions-tabs" style="justify-content: center;">
             <li><a href="#asp-core-edition-desc" class="flex-column"><img src="/assets/images/logos/aspnetcore.png"
                         alt="">
                     <div class="text-center p-2">ASP.NET Core</div>
@@ -1148,4 +1148,213 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
             Metro.getPlugin("#license-price", 'tabs').open(editions.indexOf(action) + 1)
         }
     })
+</script>
+
+<script>
+    function trialChangeOptions(val) {
+        $(".trial-sub-options > form").hide()
+        $("#trial-option-" + val).show()
+    }
+
+    function getTrial() {
+        Metro.dialog.create({
+            title: "Get EasyQuery Trial",
+            content: `
+
+            <h4>Select your application type:</h4>
+            <div class="remark dark">
+                EasyQuery framework can be used on different platforms and with different types of applications. So, to give you the most relevant installation instructions we need to know more about your project first.
+            </div>
+            <select id="select-apptype" class="mt-4 mb-4" data-role="select" data-filter="false" onchange="trialChangeOptions(this.value)">
+                <option value="asp-net-core-razor">ASP.NET Core + MVC or Razor pages</option>
+                <option value="asp-net-core-spa">ASP.NET Core + SPA Frontend (Angular, Razor, Vue, etc)</option>
+                <option value="asp-net-4-mvc">ASP.NET 4 MVC</option>
+                <option value="asp-net-4-webforms">ASP.NET 4 WebForms</option>
+                <option value="net-winforms">.NET (Core) Windows Forms</option>
+                <option value="net-wpf">.NET (Core) WPF</option>
+                <option value="webapp-other">Web application on other platform (Java, Node.js, PHP, Python, etc) </option>
+                <option value="other">Any other type of application</option>
+            </select>
+            <div class="trial-sub-options">
+                <form id="trial-option-asp-net-core-razor" class="trial-option border bd-default p-4">
+                    <input type="radio" data-role="radio" name="viewEngine" data-caption="MVC" value="mvc" checked/>
+                    <input type="radio" data-role="radio" name="viewEngine" data-caption="Razor Pages" value="razor-pages"/>
+                </form>
+                <form id="trial-option-asp-net-core-spa" name="trial-option-asp-net-core-spa" class="trial-option border bd-default p-4">
+                    <input type="radio" data-role="radio" name="frontend" data-caption="Angular" value="angular"/>
+                    <input type="radio" data-role="radio" name="frontend" data-caption="React" value="react"/>
+                    <input type="radio" data-role="radio" name="frontend" data-caption="Vue" value="vue"/>
+                    <input type="radio" data-role="radio" name="frontend" data-caption="Other" value="other" checked/>
+                </form>
+                <form id="trial-option-asp-net-4-mvc" class="trial-option"></form>
+                <form id="trial-option-asp-net-4-webforms" class="trial-option"></form>
+                <form id="trial-option-net-winforms" class="trial-option"></form>
+                <form id="trial-option-net-wpf" class="trial-option"></form>
+                <form id="trial-option-webapp-other" class="trial-option border bd-default p-4">
+                    <input type="text" data-role="input" name="backend" data-label="Please, specify:"/>
+                </form>
+                <form id="trial-option-other" class="trial-option border bd-default p-4">
+                    <input type="text" data-role="input" name="apptype" data-label="Please, specify:"/>
+                </form>
+            </div>
+
+            <h4>Enter your email (optional):</h4>
+            <div class="remark dark">
+                We will provide the detailed instructions on how to get the things worked
+            </div>
+            <input id="trial-email" type="email" placeholder="name@example.com" data-role="input" name="email"/>
+
+        `,
+            closeButton: true,
+            defaultActions: false,
+            customButtons: [
+                {
+                    id: "get-trial-btn",
+                    text: "Get Trial",
+                    cls: "js-dialog-close success",
+                    onclick: async function () {
+                        const app = document.getElementById("select-apptype").value
+                        const email = document.getElementById("trial-email").value
+                        // Викликаємо reCAPTCHA v3
+                        grecaptcha.ready(function () {
+                            grecaptcha
+                                .execute("6LcsYxksAAAAAI9Gb9I5Jk72k3t2tuuCJt0TgVJ9", { action: "eq_trial" })
+                                .then(function (token) {
+                                    return processTrialRequest(app, email, token)
+                                })
+                                .catch(function (error) {
+                                    console.error("reCAPTCHA error:", error);
+                                    Metro.toast.create("Verification failed. Please try again.", {
+                                        clsToast: "alert",
+                                        position: "top"
+                                    });
+                                    setButtonState("default");
+                                });
+                        });
+
+
+                    }
+                },
+                {
+                    text: "Cancel",
+                    cls: "js-dialog-close",
+                    onclick: function () {
+                    }
+                }
+            ]
+        })
+    }
+
+    function setButtonState(state) {
+        const button = document.getElementById("get-trial-btn");
+        if (state === "loading") {
+            button.disabled = true;
+            button.textContent = "Processing...";
+        } else {
+            button.disabled = false;
+            button.textContent = "Get Trial";
+        }
+    }
+
+
+    async function processTrialRequest(apptype, email, token) {
+        const url = `https://account.korzh.com/api/account/register`
+
+        let nextHref = 'https://korzh.com/easyquery/docs/getting-started'
+        let downloadUrl = null
+        switch (apptype) {
+            case 'asp-net-core-razor':
+                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Razor-Mvc.zip'
+                break;
+            case 'asp-net-core-spa':
+                const form = document.forms["trial-option-asp-net-core-spa"]
+                const spaType = form.elements.frontend.value
+                switch (spaType) {
+                    case 'angular':
+                        downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Angular.zip'
+                        break;
+                    case 'react':
+                        downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-React.zip'
+                        break;
+                    case 'vue':
+                        downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Vue3.zip'
+                        break;
+                    case 'other':
+                        break;
+                }
+                break;
+            case 'asp-net-4-mvc':
+                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNet4-Mvc.zip'
+                break;
+            case 'asp-net-4-webforms':
+                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNet4-WebForms.zip'
+                break;
+            case 'net-winforms':
+                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/WinForms.zip'
+                break;
+            case 'net-wpf':
+                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/Wpf.zip'
+                break;
+            case 'webapp-other':
+                break;
+            case 'other':
+                break;
+        }
+
+        const trialData = {
+            email,
+            captchaToken: token,
+            data: {
+                intent: "get-trial",
+                apptype
+            }
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(trialData)
+            });
+
+            if (!response.ok) {
+                console.error("[ERSK] Server error: " + response.status);
+                return
+            }
+        } catch (error) {
+            console.error("[ERSK] API error:", error);
+        }
+
+        if (downloadUrl) {
+            window.open(downloadUrl, '_blank')
+        }
+        setTimeout(() => {
+            window.location.href = nextHref        
+        }, 100);
+       
+    }
+
+    window.onpageshow = function (event) {
+        if (event.persisted) {
+            window.location.reload()
+        }
+    };
+
+    function showLoadIndicator() {
+        Metro.activity.open({
+            type: "cycle",
+            overlayColor: "#fff",
+            overlayAlpha: .6,
+            text: '<div class="mt-2 text-small">Loading...</div>'
+        })
+    }
+
+    $(() => {
+        $("body").on("click", "a[slow-loading]", function () {
+            showLoadIndicator();
+        })
+    })
+
 </script>

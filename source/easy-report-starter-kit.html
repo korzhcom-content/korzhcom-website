@@ -424,18 +424,9 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
         const email = emailInput?.value.trim() || "";
         const downloadUrl = "https://cdn.korzh.com/download/ersk_community.zip";
 
-        // Якщо email порожній - одразу завантаження
-        if (!email) {
-            if (getCommunityDialog) {
-                Metro.dialog.close(getCommunityDialog);
-            }
-            window.location.href = downloadUrl;
-            return;
-        }
-
         // Перевірка валідності email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
+        if (email && !emailRegex.test(email)) {
             Metro.toast.create("Please enter a valid email address", null, 3000, "alert");
             return;
         }
@@ -465,33 +456,13 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
         const nextUrl = "https://korzh.com/easy-report-starter-kit/docs/setup-first-launch"; // ← Endpoint буде наданий пізніше
         const apiAuthoring = "https://account.korzh.com/api/account/register";
 
-        // Якщо endpoint порожній - відкриваємо завантаження в новій вкладці, поточну перенаправляємо на логін
-        if (!apiAuthoring) {
-            if (getCommunityDialog) {
-                Metro.dialog.close(getCommunityDialog);
-            }
-
-            // Відкриваємо завантаження в новому вікні
-            window.open(downloadUrl, "_blank");
-
-            // Поточне вікно перенаправляємо на логін
-            //window.location.href = 'https://account.korzh.com/Auth/Login';
-            return;
-        }
-
         const data = {
-            email: email,
-            name: "",
-            successUrl: "", //URL to redirect the user after a successful confirmation of the registration
-            captchaToken: "", //The token of the Google CAPTCHA
+            email,
+            captchaToken: recaptchaToken, //The token of the Google CAPTCHA
             data: {
-                vid: 1002, //visitor ID (if available)
                 intent: "get-perk", //register | get-trial | get-perk
                 ptag: "EQN-ANC", //The unique identifier of the product the user interested in. EQN-ASP - EasyQuery for ASP.NET, EQN-ASP - EasyQuery for ASP.NET Core, ERSK - Easy Report Starter Kit, etc.
-                diid: 1203, //the ID of the download item (not used anymore)
-                apptype: "", //asp-net-core-razor | asp-net-core-spa | asp-net-4-mvc | asp-net-4-webforms | net-winforms | net-wpf | webapp-other | other
             },
-            "g-recaptcha-response": recaptchaToken,
         };
 
         try {
@@ -505,6 +476,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
 
             if (!response.ok) {
                 console.error("[ERSK] Server error: " + response.status);
+                return
             }
 
             const result = await response.json();
@@ -518,22 +490,20 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                 });
             }
 
-            // Відкриваємо завантаження в новому вікні
-            window.open(downloadUrl, "_blank");
-
             if (getCommunityDialog) {
                 Metro.dialog.close(getCommunityDialog);
             }
-            setTimeout(
-                (url) => {
-                    globalThis.location.href = url;
-                },
-                100,
-                nextUrl
-            );
         } catch (error) {
             console.error("[ERSK] API error:", error);
         }
+
+        // Відкриваємо завантаження в новому вікні
+        window.open(downloadUrl, "_blank");
+        setTimeout(() => {
+            window.location.href = nextUrl        
+        }, 100);
+
+
         return null;
     }
 </script>
