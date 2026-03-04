@@ -1327,13 +1327,63 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
             console.error("[ERSK] API error:", error);
         }
 
+        let dialogContent = `
+            <div class="text-center pt-4 pb-4">
+                <h4>Thank you!</h4>
+        `;
+
         if (downloadUrl) {
-            window.open(downloadUrl, '_blank')
+            dialogContent += `
+                <div class="mb-4">
+                    Your download will start shortly in <span id="download-countdown" class="text-bold fg-red">3</span> seconds...
+                </div>
+            `;
         }
-        setTimeout(() => {
-            window.location.href = nextHref        
-        }, 100);
-       
+
+        dialogContent += `
+                <div class="mb-4">
+                    <a href="${nextHref}" target="_blank" class="button link">Open the documentation to learn more</a>
+                </div>
+            </div>
+        `;
+
+        let downloadInterval = null;
+        Metro.dialog.create({
+            title: "Success",
+            content: dialogContent,
+            closeButton: true,
+            defaultActions: false,
+            actionsAlign: "right",
+            customButtons: [
+                {
+                    text: "Close",
+                    cls: "js-dialog-close",
+                    onclick: function () { }
+                }
+            ],
+            onOpen: function () {
+                if (downloadUrl) {
+                    let count = 3;
+                    downloadInterval = setInterval(() => {
+                        count--;
+                        const counterEl = document.getElementById('download-countdown');
+                        if (counterEl) {
+                            counterEl.innerText = count;
+                        }
+                        if (count <= 0) {
+                            clearInterval(downloadInterval);
+                            window.open(downloadUrl, '_blank');
+                        }
+                    }, 1000);
+                }
+            },
+            onClose: function () {
+                if (downloadInterval) {
+                    clearInterval(downloadInterval);
+                }
+            }
+        });
+
     }
 
     window.onpageshow = function (event) {
