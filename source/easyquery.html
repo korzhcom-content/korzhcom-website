@@ -1335,7 +1335,12 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
         if (downloadUrl) {
             dialogContent += `
                 <div class="mb-4">
-                    Your download will start shortly in <span id="download-countdown" class="text-bold fg-red">3</span> seconds...
+                    <div id="download-countdown-text">
+                        Your download will start shortly in <span id="download-countdown" class="text-bold fg-red">5</span> seconds...
+                    </div>
+                    <div class="mt-2 text-small">
+                        If your download does not start automatically, <a href="${downloadUrl}" target="_blank" id="manual-download-link" class="fg-primary">click here</a>.
+                    </div>
                 </div>
             `;
         }
@@ -1363,7 +1368,21 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
             ],
             onOpen: function () {
                 if (downloadUrl) {
-                    let count = 3;
+                    let count = 5;
+
+                    const manualLink = document.getElementById('manual-download-link');
+                    if (manualLink) {
+                        manualLink.addEventListener('click', () => {
+                            if (downloadInterval) {
+                                clearInterval(downloadInterval);
+                            }
+                            const countdownText = document.getElementById('download-countdown-text');
+                            if (countdownText) {
+                                countdownText.style.display = 'none';
+                            }
+                        });
+                    }
+
                     downloadInterval = setInterval(() => {
                         count--;
                         const counterEl = document.getElementById('download-countdown');
@@ -1372,6 +1391,10 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
                         }
                         if (count <= 0) {
                             clearInterval(downloadInterval);
+                            const countdownText = document.getElementById('download-countdown-text');
+                            if (countdownText) {
+                                countdownText.style.display = 'none';
+                            }
                             window.open(downloadUrl, '_blank');
                         }
                     }, 1000);
