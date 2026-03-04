@@ -309,8 +309,7 @@ footer {
     margin-top: 20px;
 }
 
-.answer {
-}
+.answer {}
 
 .scrollable-container {
     overflow-x: auto;
@@ -376,10 +375,12 @@ footer {
     li {
         border-radius: 4px;
     }
+
     li:not(.no-hover):hover {
         background-color: #2278ff !important;
         color: #fff !important;
     }
+
     &.opened {
         background-color: #ffffff !important;
         margin: 0 -24px 0 0 !important;
@@ -390,15 +391,18 @@ footer {
         a {
             padding: 10px !important;
         }
+
         .d-menu {
             position: relative !important;
             background-color: #ffffff !important;
             border: none !important;
         }
+
         li:not(.no-hover):hover {
             background-color: rgba(78, 119, 183, 0.5) !important;
             color: #ffffff;
-            & > a {
+
+            &>a {
                 color: #ffffff !important;
             }
         }
@@ -488,7 +492,7 @@ footer {
 
 .lightbox__prev,
 .lightbox__next {
-    & > * {
+    &>* {
         height: 24px;
         width: 24px;
     }
@@ -500,7 +504,7 @@ footer {
 }
 
 .dialog {
-    --dialog-background: #fffbe7;
+    --dialog-background: #fff;
 }
 
 .trial-option {
