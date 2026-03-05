@@ -1213,7 +1213,7 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
                 {
                     id: "get-trial-btn",
                     text: "Get Trial",
-                    cls: "js-dialog-close primary rounded px-6",
+                    cls: "primary rounded px-6",
                     onclick: async function () {
                         const app = document.getElementById("select-apptype").value
                         const email = document.getElementById("trial-email").value
@@ -1226,10 +1226,14 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
                                 })
                                 .catch(function (error) {
                                     console.error("reCAPTCHA error:", error);
-                                    Metro.toast.create("Verification failed. Please try again.", {
-                                        clsToast: "alert",
-                                        position: "top"
-                                    });
+                                    if (typeof Metro !== 'undefined' && Metro.toast && typeof Metro.toast.create === 'function') {
+                                        Metro.toast.create("Verification failed. Please try again.", {
+                                            clsToast: "alert",
+                                            position: "top"
+                                        });
+                                    } else {
+                                        alert("Verification failed. Please try again.");
+                                    }
                                     setButtonState("default");
                                 });
                         });
@@ -1362,60 +1366,76 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
             </div>
         `;
 
-        let downloadInterval = null;
-        Metro.dialog.create({
-            title: "",
-            content: dialogContent,
-            closeButton: true,
-            defaultActions: false,
-            actionsAlign: "center",
-            customButtons: [
-                {
-                    text: 'Close',
-                    cls: "js-dialog-close flat fg-gray",
-                    onclick: function () { }
-                }
-            ],
-            onOpen: function () {
-                if (downloadUrl) {
-                    let count = 5;
-
-                    const manualLink = document.getElementById('manual-download-link');
-                    if (manualLink) {
-                        manualLink.addEventListener('click', () => {
-                            if (downloadInterval) {
-                                clearInterval(downloadInterval);
-                            }
-                            const countdownText = document.getElementById('download-countdown-text');
-                            if (countdownText) {
-                                countdownText.style.display = 'none';
-                            }
-                        });
-                    }
-
-                    downloadInterval = setInterval(() => {
-                        count--;
-                        const counterEl = document.getElementById('download-countdown');
-                        if (counterEl) {
-                            counterEl.innerText = count;
-                        }
-                        if (count <= 0) {
-                            clearInterval(downloadInterval);
-                            const countdownText = document.getElementById('download-countdown-text');
-                            if (countdownText) {
-                                countdownText.style.display = 'none';
-                            }
-                            window.open(downloadUrl, '_blank');
-                        }
-                    }, 1000);
-                }
-            },
-            onClose: function () {
-                if (downloadInterval) {
-                    clearInterval(downloadInterval);
-                }
+        // Manually close any existing dialogs properly
+        const existingDialogs = document.querySelectorAll('.dialog');
+        existingDialogs.forEach(d => {
+            const instance = Metro.getPlugin(d, 'dialog');
+            if (instance && typeof instance.close === 'function') {
+                instance.close();
+            } else {
+                // Fallback direct removal
+                d.remove();
+                const overlay = document.querySelector('.overlay');
+                if (overlay) overlay.remove();
             }
         });
+
+        setTimeout(() => {
+            let downloadInterval = null;
+            Metro.dialog.create({
+                title: "",
+                content: dialogContent,
+                closeButton: true,
+                defaultActions: false,
+                actionsAlign: "center",
+                customButtons: [
+                    {
+                        text: 'Close',
+                        cls: "js-dialog-close flat fg-gray",
+                        onclick: function () { }
+                    }
+                ],
+                onOpen: function () {
+                    if (downloadUrl) {
+                        let count = 5;
+
+                        const manualLink = document.getElementById('manual-download-link');
+                        if (manualLink) {
+                            manualLink.addEventListener('click', () => {
+                                if (downloadInterval) {
+                                    clearInterval(downloadInterval);
+                                }
+                                const countdownText = document.getElementById('download-countdown-text');
+                                if (countdownText) {
+                                    countdownText.style.display = 'none';
+                                }
+                            });
+                        }
+
+                        downloadInterval = setInterval(() => {
+                            count--;
+                            const counterEl = document.getElementById('download-countdown');
+                            if (counterEl) {
+                                counterEl.innerText = count;
+                            }
+                            if (count <= 0) {
+                                clearInterval(downloadInterval);
+                                const countdownText = document.getElementById('download-countdown-text');
+                                if (countdownText) {
+                                    countdownText.style.display = 'none';
+                                }
+                                window.open(downloadUrl, '_blank');
+                            }
+                        }, 1000);
+                    }
+                },
+                onClose: function () {
+                    if (downloadInterval) {
+                        clearInterval(downloadInterval);
+                    }
+                }
+            });
+        }, 300);
 
     }
 
