@@ -1262,6 +1262,21 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
         }
     }
 
+    function closeDialogs() {
+        // Manually close any existing dialogs properly
+        const existingDialogs = document.querySelectorAll('.dialog');
+        existingDialogs.forEach(d => {
+            const instance = Metro.getPlugin(d, 'dialog');
+            if (instance && typeof instance.close === 'function') {
+                instance.close();
+            } else {
+                // Fallback direct removal
+                d.remove();
+                const overlay = document.querySelector('.overlay');
+                if (overlay) overlay.remove();
+            }
+        });
+    }
 
     async function processTrialRequest(apptype, email, token) {
         const url = `https://account.korzh.com/api/account/register`
@@ -1327,7 +1342,16 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
 
             if (!response.ok) {
                 console.error("[ERSK] Server error: " + response.status);
-                return
+                closeDialogs();
+                if (typeof Metro !== 'undefined' && Metro.toast && typeof Metro.toast.create === 'function') {
+                    Metro.toast.create("Verification failed. Please try again.", {
+                        clsToast: "alert",
+                        position: "top"
+                    });
+                } else {
+                    alert("Verification failed. Please try again.");
+                }
+                //return
             }
         } catch (error) {
             console.error("[ERSK] API error:", error);
@@ -1366,19 +1390,7 @@ title: EASYQUERY.NET >> Korzh.com - Tools from Developers for Developers
             </div>
         `;
 
-        // Manually close any existing dialogs properly
-        const existingDialogs = document.querySelectorAll('.dialog');
-        existingDialogs.forEach(d => {
-            const instance = Metro.getPlugin(d, 'dialog');
-            if (instance && typeof instance.close === 'function') {
-                instance.close();
-            } else {
-                // Fallback direct removal
-                d.remove();
-                const overlay = document.querySelector('.overlay');
-                if (overlay) overlay.remove();
-            }
-        });
+        closeDialogs();
 
         setTimeout(() => {
             let downloadInterval = null;
