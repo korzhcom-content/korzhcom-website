@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% if page.canonical_url != nil %}
-    <link rel="canonical" href="{{ page.canonical_url }}"/>
-    {% else %}    
+    <link rel="canonical" href="{{ page.canonical_url }}" />
+    {% else %}
     <link rel="canonical" href="https://korzh.com{{ page.url | replace:'/index.html','' | replace:'.html',''}}">
     {% endif %}
     {% include gtag-head.html %}
@@ -19,30 +20,33 @@
     <link rel="preconnect" href="https://korzh.com/metroui">
     <link rel="preconnect" href="https://korzh.com/localizer/">
 
-    <!-- reCaptcha --> 
-    <!-- TODO замініть на ваш Сайт API, щоб з мене не брали грошей якщо що --> 
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcsYxksAAAAAI9Gb9I5Jk72k3t2tuuCJt0TgVJ9" async defer></script>
-    
-    <!--<link rel="stylesheet" href="/assets/css/easydata.css">-->
     <title>{{ page.title }}</title>
     <style>
         body.cloak {
             opacity: 0;
         }
+        
+        .grecaptcha-badge { 
+            visibility: hidden; 
+        }
     </style>
 </head>
+
 <body class="cloak">
     {% include gtag-body.html %}
-	{% include appbar.html %}
+    {% include appbar.html %}
 
     {{ content }}
-	
+
     {% include footer.html %}
 
-    <script id="help-ukraine-win" async="true" src="https://helpukrainewinwidget.org/cdn/widget.js?type=two&position=bottom-right&layout=main"></script>
+    <script id="help-ukraine-win" async="true"
+        src="https://helpukrainewinwidget.org/cdn/widget.js?type=two&position=bottom-right&layout=main"></script>
     <link rel="stylesheet" href="/assets/metro/metro.css">
     <link rel="stylesheet" href="/assets/css/index.css" blocking="render">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeNDYMsAAAAALRDQNC4MOiETC9uD8gIj8AdRNjd" async defer></script>
     <script src="/assets/metro/metro.js"></script>
     <script src="/assets/js/index.js"></script>
 </body>
+
 </html>

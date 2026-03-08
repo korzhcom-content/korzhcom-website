@@ -9,3 +9,4 @@ dist
 app-client.min.js
 # Local Netlify folder
 .netlify
+.ai-context/*
