@@ -28,7 +28,7 @@ body {
 
     img {
         margin: 4px;
-        transform: scale(.8);
+        transform: scale(0.8);
     }
 }
 
@@ -38,7 +38,7 @@ body {
     bottom: -10px;
     right: 10px;
     color: #e6e8ea;
-    opacity: .3;
+    opacity: 0.3;
 }
 
 .part-button {
@@ -116,13 +116,13 @@ body {
 
     img:not(:hover) {
         filter: grayscale(100%);
-        opacity: .5;
-        transform: scale(.7);
+        opacity: 0.5;
+        transform: scale(0.7);
     }
 
     img {
         margin: 10px;
-        transition: all .1s linear;
+        transition: all 0.1s linear;
     }
 }
 
@@ -184,7 +184,8 @@ footer {
 }
 
 .easyquery-hero {
-    background: url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
+    background:
+        url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
         url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
         linear-gradient(60deg, #2d2a6c, #7980b5) 0 0 / auto repeat scroll padding-box border-box #2d2a6c;
     background-blend-mode: normal, normal;
@@ -196,7 +197,6 @@ footer {
     background:
         url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
         url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
-
         linear-gradient(60deg, rgb(82, 67, 170), rgb(70, 140, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
 }
@@ -205,7 +205,6 @@ footer {
     background:
         url(../images/ViewsBackground_Left_Narrow.svg) left center / contain no-repeat scroll padding-box border-box,
         url(../images/ViewsBackground_Right_Narrow.svg) right center / contain no-repeat scroll padding-box border-box,
-
         linear-gradient(60deg, #2a6c3e, #7bb579) 0% 0% / auto repeat scroll padding-box border-box #2a6c3e;
     background-blend-mode: normal, normal;
     color: rgb(255, 255, 255);
@@ -223,9 +222,10 @@ footer {
 }
 
 .easyjs-hero {
-    background: url(../images/ViewsBackground_Left_Narrow.svg) left center/contain no-repeat scroll padding-box border-box,
+    background:
+        url(../images/ViewsBackground_Left_Narrow.svg) left center/contain no-repeat scroll padding-box border-box,
         url(../images/ViewsBackground_Right_Narrow.svg) right center/contain no-repeat scroll padding-box border-box,
-        linear-gradient(60deg, #8c7d03, #bfb884) 0 0/auto repeat scroll padding-box border-box #8c7d03;
+        linear-gradient(60deg, #8c7d03, #bfb884) 0 0 / auto repeat scroll padding-box border-box #8c7d03;
     background-blend-mode: normal, normal;
     color: #fff;
     padding: 0;
@@ -327,7 +327,7 @@ footer {
     z-index: 0;
     font-size: 48px;
     color: rgb(211, 142, 246);
-    opacity: .2;
+    opacity: 0.2;
 }
 
 .step-number {
@@ -375,9 +375,37 @@ footer {
     li {
         border-radius: 4px;
     }
+
     li:not(.no-hover):hover {
-        background-color: #2278ff!important;
-        color: #fff!important;
+        background-color: #2278ff !important;
+        color: #fff !important;
+    }
+
+    &.opened {
+        background-color: #ffffff !important;
+        margin: 0 -24px 0 0 !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-left: -12px !important;
+        width: calc(100% + 24px) !important;
+
+        a {
+            padding: 10px !important;
+        }
+
+        .d-menu {
+            position: relative !important;
+            background-color: #ffffff !important;
+            border: none !important;
+        }
+
+        li:not(.no-hover):hover {
+            background-color: rgba(78, 119, 183, 0.5) !important;
+            color: #ffffff;
+
+            &>a {
+                color: #ffffff !important;
+            }
+        }
     }
 }
 
@@ -449,7 +477,7 @@ footer {
 .image-preview {
     height: 170px !important;
     overflow: hidden;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
 
     img {
         width: 100%;
@@ -470,14 +498,13 @@ footer {
     }
 }
 
-
 .dialog-title {
     font-weight: 600;
     font-size: 1.2rem;
 }
 
 .dialog {
-    --dialog-background: #fffbe7;
+    --dialog-background: #fff;
 }
 
 .trial-option {
