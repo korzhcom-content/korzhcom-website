@@ -107,25 +107,65 @@ document.addEventListener("DOMContentLoaded", () => {
                         const app = document.getElementById("select-apptype").value;
                         const email = document.getElementById("trial-email").value;
 
-                        setEqButtonState("loading");
+                        closeDialogs();
 
-                        if (typeof grecaptcha !== 'undefined') {
-                            grecaptcha.ready(function () {
-                                grecaptcha
-                                    .execute(reCaptchaSiteKey, { action: "eq_trial" })
-                                    .then(function (token) {
-                                        return processTrialRequest(app, email, token);
-                                    })
-                                    .catch(function (error) {
-                                        console.error("reCAPTCHA error:", error);
-                                        setEqButtonState("default");
-                                        closeDialogs();
-                                    });
-                            });
-                        } else {
-                            console.warn("grecaptcha is not defined");
-                            processTrialRequest(app, email, "dummy_token");
-                        }
+                        setTimeout(() => {
+                            if (typeof Metro !== 'undefined') {
+                                Metro.dialog.create({
+                                    title: "",
+                                    clsDialog: "eq-processing-dialog shadow-large",
+                                    content: `
+                                        <div style="position: relative;">
+                                            <!-- Ghost container to pre-stretch the dialog to exact destination size -->
+                                            <div style="visibility: hidden; pointer-events: none; opacity: 0; padding-top: 2rem; padding-bottom: 1rem;">
+                                                <div class="text-center"><span class="mif-checkmark fg-green" style="font-size: 64px; line-height: 1;"></span></div>
+                                                <h3 class="text-center text-light mb-6">Thank You!</h3>
+                                                <div class="mx-auto" style="max-width: 400px; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid transparent;">
+                                                    <div class="text-medium text-bold">Your download will start shortly in <span class="fg-red text-leader">5</span> seconds...</div>
+                                                    <div class="mt-2 text-muted">If your download does not start automatically, click here.</div>
+                                                </div>
+                                                <div class="mb-6 mx-auto" style="max-width: 400px;">
+                                                    <a class="button primary flex-justify-center"><span>Open the documentation</span></a>
+                                                </div>
+                                                <div class="text-center mt-6"><button class="button flat">Close</button></div>
+                                            </div>
+
+                                            <div id="eq-processing-state" class="text-center" style="position: absolute; top:0; left:0; right:0; bottom:0; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index: 2;">
+                                                <div class="mb-4">
+                                                    <div data-role="activity" data-type="cycle" data-style="color" style="margin: 0 auto; transform: scale(1.5);"></div>
+                                                </div>
+                                                <h3 class="text-light mt-4 mb-0">Processing...</h3>
+                                            </div>
+
+                                            <div id="eq-result-state" style="position: absolute; top:0; left:0; right:0; bottom:0; z-index: 3; display:flex; flex-direction:column; justify-content:center; opacity: 0; pointer-events: none; visibility: hidden;"></div>
+                                        </div>
+                                    `,
+                                    closeButton: true,
+                                    defaultActions: false,
+                                    overlay: true,
+                                    overlayClickClose: false,
+                                    customButtons: [],
+                                    onOpen: function () {
+                                        if (typeof grecaptcha !== 'undefined') {
+                                            grecaptcha.ready(function () {
+                                                grecaptcha
+                                                    .execute(reCaptchaSiteKey, { action: "eq_trial" })
+                                                    .then(function (token) {
+                                                        return processTrialRequest(app, email, token);
+                                                    })
+                                                    .catch(function (error) {
+                                                        console.error("reCAPTCHA error:", error);
+                                                        closeDialogs();
+                                                    });
+                                            });
+                                        } else {
+                                            console.warn("grecaptcha is not defined");
+                                            processTrialRequest(app, email, "dummy_token");
+                                        }
+                                    }
+                                });
+                            }
+                        }, 50);
                     }
                 },
                 {
@@ -295,69 +335,54 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="mif-arrow-right ml-2"></span>
                     </a>
                 </div>
+                <div class="text-center mt-6">
+                    <button class="button js-dialog-close flat fg-gray">Close</button>
+                </div>
             </div>
         `;
 
-        closeDialogs();
+        const processingState = document.getElementById("eq-processing-state");
+        const resultState = document.getElementById("eq-result-state");
+        let downloadInterval = null;
 
-        setTimeout(() => {
-            let downloadInterval = null;
-            if (typeof Metro === 'undefined') return;
+        if (processingState) processingState.style.display = "none";
 
-            Metro.dialog.create({
-                title: "",
-                content: dialogContent,
-                closeButton: true,
-                defaultActions: false,
-                actionsAlign: "center",
-                customButtons: [
-                    {
-                        text: 'Close',
-                        cls: "js-dialog-close flat fg-gray",
-                        onclick: function () { }
-                    }
-                ],
-                onOpen: function () {
-                    if (downloadUrl) {
-                        let count = 5;
+        if (resultState) {
+            resultState.innerHTML = dialogContent;
+            resultState.style.opacity = "1";
+            resultState.style.pointerEvents = "auto";
+            resultState.style.visibility = "visible";
 
-                        const manualLink = document.getElementById('manual-download-link');
-                        if (manualLink) {
-                            manualLink.addEventListener('click', () => {
-                                if (downloadInterval) {
-                                    clearInterval(downloadInterval);
-                                }
-                                const countdownText = document.getElementById('download-countdown-text');
-                                if (countdownText) {
-                                    countdownText.style.display = 'none';
-                                }
-                            });
-                        }
+            if (downloadUrl) {
+                let count = 5;
 
-                        downloadInterval = setInterval(() => {
-                            count--;
-                            const counterEl = document.getElementById('download-countdown');
-                            if (counterEl) {
-                                counterEl.innerText = count;
-                            }
-                            if (count <= 0) {
-                                clearInterval(downloadInterval);
-                                const countdownText = document.getElementById('download-countdown-text');
-                                if (countdownText) {
-                                    countdownText.style.display = 'none';
-                                }
-                                window.open(downloadUrl, '_blank');
-                            }
-                        }, 1000);
-                    }
-                },
-                onClose: function () {
-                    if (downloadInterval) {
-                        clearInterval(downloadInterval);
-                    }
+                const manualLink = document.getElementById('manual-download-link');
+                if (manualLink) {
+                    manualLink.addEventListener('click', () => {
+                        if (downloadInterval) clearInterval(downloadInterval);
+                        const countdownText = document.getElementById('download-countdown-text');
+                        if (countdownText) countdownText.style.display = 'none';
+                    });
                 }
-            });
-        }, 300);
+
+                downloadInterval = setInterval(() => {
+                    if (!document.getElementById('eq-result-state')) {
+                        clearInterval(downloadInterval);
+                        return;
+                    }
+
+                    count--;
+                    const counterEl = document.getElementById('download-countdown');
+                    if (counterEl) counterEl.innerText = count;
+                    if (count <= 0) {
+                        clearInterval(downloadInterval);
+                        const countdownText = document.getElementById('download-countdown-text');
+                        if (countdownText) countdownText.style.display = 'none';
+                        window.open(downloadUrl, '_blank');
+                    }
+                }, 1000);
+            }
+        }
     }
 
     window.addEventListener("pageshow", function (event) {
