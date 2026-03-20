@@ -8,6 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const eqAction = window.location.href.split("#")[1];
 
+    const mobileDialogStyle = document.createElement("style");
+    mobileDialogStyle.innerHTML = `
+        @media screen and (max-width: 768px) {
+            .eq-mobile-fullscreen {
+                width: 100vw !important;
+                height: 100vh !important;
+                max-width: 100vw !important;
+                max-height: 100vh !important;
+                margin: 0 !important;
+                top: 0 !important;
+                left: 0 !important;
+                transform: none !important;
+                border-radius: 0 !important;
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+                border: none !important;
+            }
+        }
+    `;
+    document.head.appendChild(mobileDialogStyle);
+
     if (eqAction === 'get-trial') {
         getTrial();
     } else {
@@ -94,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <input id="trial-email" type="email" placeholder="name@example.com" data-role="input" data-prepend="<span class='mif-envelop'></span>" name="email"/>
         `,
+            clsDialog: "eq-mobile-fullscreen",
             closeButton: true,
             defaultActions: false,
             overlay: true,
@@ -113,21 +135,18 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (typeof Metro !== 'undefined') {
                                 Metro.dialog.create({
                                     title: "",
-                                    clsDialog: "eq-processing-dialog shadow-large",
+                                    clsDialog: "eq-processing-dialog shadow-large eq-mobile-fullscreen",
                                     content: `
                                         <div style="position: relative;">
                                             <!-- Ghost container to pre-stretch the dialog to exact destination size -->
                                             <div style="visibility: hidden; pointer-events: none; opacity: 0; padding-top: 2rem; padding-bottom: 1rem;">
-                                                <div class="text-center"><span class="mif-checkmark fg-green" style="font-size: 64px; line-height: 1;"></span></div>
-                                                <h3 class="text-center text-light mb-6">Thank You!</h3>
-                                                <div class="mx-auto" style="max-width: 400px; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid transparent;">
-                                                    <div class="text-medium text-bold">Your download will start shortly in <span class="fg-red text-leader">5</span> seconds...</div>
-                                                    <div class="mt-2 text-muted">If your download does not start automatically, click here.</div>
+                                                <div class="mx-auto" style="max-width: 400px; padding: 1rem; margin-bottom: 1.5rem; border: none;">
+                                                    <h3 class="text-bold">Your download will start shortly in <span class="fg-green text-leader">5</span> seconds...</h3>
+                                                    <h3 class="mt-2 text-muted">If your download does not start automatically, click here.</h3>
                                                 </div>
                                                 <div class="mb-6 mx-auto" style="max-width: 400px;">
                                                     <a class="button primary flex-justify-center"><span>Open the documentation</span></a>
                                                 </div>
-                                                <div class="text-center mt-6"><button class="button flat">Close</button></div>
                                             </div>
 
                                             <div id="eq-processing-state" class="text-center" style="position: absolute; top:0; left:0; right:0; bottom:0; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index: 2;">
@@ -144,7 +163,14 @@ document.addEventListener("DOMContentLoaded", () => {
                                     defaultActions: false,
                                     overlay: true,
                                     overlayClickClose: false,
-                                    customButtons: [],
+                                    customButtons: [
+                                        {
+                                            text: "Close",
+                                            cls: "js-dialog-close flat fg-gray",
+                                            onclick: function () {
+                                            }
+                                        }
+                                    ],
                                     onOpen: function () {
                                         if (typeof grecaptcha !== 'undefined') {
                                             grecaptcha.ready(function () {
@@ -185,26 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
-    }
-
-    function setEqButtonState(state) {
-        let button = document.getElementById("get-trial-btn-in-dialog");
-        if (!button) {
-            button = document.querySelector(".js-get-trial-action-btn");
-        }
-        if (!button) {
-            console.warn("Could not find Get Trial button to change state.");
-            return;
-        }
-
-        const caption = button.querySelector(".caption") || button;
-        if (state === "loading") {
-            button.disabled = true;
-            caption.innerHTML = "Processing...";
-        } else {
-            button.disabled = false;
-            caption.innerHTML = "Get Trial";
-        }
     }
 
     function closeDialogs() {
@@ -305,24 +311,18 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("[EQ] API error:", error);
         }
 
-        let dialogContent = `
-            <div class="text-center pt-8 pb-4">
-                <div class="mb-4">
-                    <span class="mif-checkmark fg-green" style="font-size: 64px; line-height: 1; text-shadow: 0 4px 12px rgba(0, 128, 0, 0.2);"></span>
-                </div>
-                <h3 class="text-light mb-6">Thank You!</h3>
-        `;
+        let dialogContent = '';
 
         if (downloadUrl) {
             dialogContent += `
-                <div class="mx-auto" style="max-width: 400px;">
-                    <div class="p-4 border bd-default mb-6">
-                        <div id="download-countdown-text" class="text-medium text-bold">
-                            Your download will start shortly in <span id="download-countdown" class="fg-red text-leader">5</span> seconds...
-                        </div>
-                        <div class="mt-2 text-muted">
-                            If your download does not start automatically, <a href="${downloadUrl}" target="_blank" id="manual-download-link" class="fg-primary">click here</a>.
-                        </div>
+                <div class="mx-auto">
+                    <div class="p-4 bd-default mb-6">
+                        <h3 id="download-countdown-text" class="text-bold">
+                            Your download will start shortly in <span id="download-countdown" class="fg-green text-leader">5</span> seconds...
+                        </h3>
+                        <h4  class="mt-2 text-muted">
+                            <span id="manual-download-text">If your download does not start automatically,</span> <a href="${downloadUrl}" target="_blank" id="manual-download-link" class="fg-primary">click here</a>.
+                        </h4>
                     </div>
                 </div>
             `;
@@ -334,9 +334,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span>Open the documentation to learn more</span>
                         <span class="mif-arrow-right ml-2"></span>
                     </a>
-                </div>
-                <div class="text-center mt-6">
-                    <button class="button js-dialog-close flat fg-gray">Close</button>
                 </div>
             </div>
         `;
@@ -378,6 +375,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         clearInterval(downloadInterval);
                         const countdownText = document.getElementById('download-countdown-text');
                         if (countdownText) countdownText.style.display = 'none';
+                        const manualDownloadText = document.getElementById('manual-download-text');
+                        if (manualDownloadText) manualDownloadText.innerText = 'The download should have started automatically. If not,';
                         window.open(downloadUrl, '_blank');
                     }
                 }, 1000);
