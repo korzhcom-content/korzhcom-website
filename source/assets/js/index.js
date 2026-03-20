@@ -144,9 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     <h3 class="text-bold">Your download will start shortly in <span class="fg-green text-leader">5</span> seconds...</h3>
                                                     <h3 class="mt-2 text-muted">If your download does not start automatically, click here.</h3>
                                                 </div>
-                                                <div class="mb-6 mx-auto" style="max-width: 400px;">
-                                                    <a class="button primary flex-justify-center"><span>Open the documentation</span></a>
-                                                </div>
                                             </div>
 
                                             <div id="eq-processing-state" class="text-center" style="position: absolute; top:0; left:0; right:0; bottom:0; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index: 2;">
@@ -329,12 +326,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         dialogContent += `
-                <div class="mb-6 mx-auto" style="max-width: 400px;">
-                    <a href="${nextHref}" target="_blank" class="button primary outline rounded w-100 flex-justify-center">
-                        <span>Open the documentation to learn more</span>
-                        <span class="mif-arrow-right ml-2"></span>
-                    </a>
-                </div>
             </div>
         `;
 
@@ -349,6 +340,18 @@ document.addEventListener("DOMContentLoaded", () => {
             resultState.style.opacity = "1";
             resultState.style.pointerEvents = "auto";
             resultState.style.visibility = "visible";
+
+            const dialogActions = document.querySelector(".eq-processing-dialog .dialog-actions");
+            if (dialogActions && !document.getElementById("eq-docs-footer-link")) {
+                const a = document.createElement("a");
+                a.id = "eq-docs-footer-link";
+                a.href = nextHref;
+                a.target = "_blank";
+                a.className = "fg-primary";
+                a.style.marginRight = "auto";
+                a.innerHTML = "<span class='mif-books pr-2'></span> Open documentation";
+                dialogActions.insertBefore(a, dialogActions.firstChild);
+            }
 
             if (downloadUrl) {
                 let count = 5;
