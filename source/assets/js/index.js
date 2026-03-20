@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const reCaptchaSiteKey = "6LeNDYMsAAAAALRDQNC4MOiETC9uD8gIj8AdRNjd";
+
     // ==========================================
     // EasyQuery Logic (from easyquery.html)
     // ==========================================
@@ -100,15 +102,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     id: "get-trial-btn-in-dialog",
                     text: "Get Trial",
-                    cls: "info rounded px-6",
+                    cls: "info rounded px-6 js-get-trial-action-btn",
                     onclick: async function () {
                         const app = document.getElementById("select-apptype").value;
                         const email = document.getElementById("trial-email").value;
 
+                        setEqButtonState("loading");
+
                         if (typeof grecaptcha !== 'undefined') {
                             grecaptcha.ready(function () {
                                 grecaptcha
-                                    .execute("6LeNDYMsAAAAALRDQNC4MOiETC9uD8gIj8AdRNjd", { action: "eq_trial" })
+                                    .execute(reCaptchaSiteKey, { action: "eq_trial" })
                                     .then(function (token) {
                                         return processTrialRequest(app, email, token);
                                     })
@@ -144,14 +148,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function setEqButtonState(state) {
-        const button = document.getElementById("get-trial-btn-in-dialog");
-        if (!button) return;
+        let button = document.getElementById("get-trial-btn-in-dialog");
+        if (!button) {
+            button = document.querySelector(".js-get-trial-action-btn");
+        }
+        if (!button) {
+            console.warn("Could not find Get Trial button to change state.");
+            return;
+        }
+
+        const caption = button.querySelector(".caption") || button;
         if (state === "loading") {
             button.disabled = true;
-            button.textContent = "Processing...";
+            caption.innerHTML = "Processing...";
         } else {
             button.disabled = false;
-            button.textContent = "Get Trial";
+            caption.innerHTML = "Get Trial";
         }
     }
 
@@ -174,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function processTrialRequest(apptype, email, token) {
-        setEqButtonState("loading");
         const url = `https://account.korzh.com/api/account/register`;
 
         let nextHref = 'https://korzh.com/easyquery/docs/getting-started';
@@ -465,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof grecaptcha !== 'undefined') {
             grecaptcha.ready(function () {
                 grecaptcha
-                    .execute("6LeNDYMsAAAAALRDQNC4MOiETC9uD8gIj8AdRNjd", { action: "download_ersk" })
+                    .execute(reCaptchaSiteKey, { action: "download_ersk" })
                     .then(function (token) {
                         console.log("OK");
                         return submitERSKData(email, token, downloadUrl);
