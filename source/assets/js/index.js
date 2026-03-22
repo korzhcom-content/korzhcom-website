@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 <div class="mb-4">
                                                     <div data-role="activity" data-type="cycle" data-style="color" style="margin: 0 auto; transform: scale(1.5);"></div>
                                                 </div>
-                                                <h3 class="text-light mt-4 mb-0">Processing...</h3>
+                                                <h3 class="text-light mt-4 mb-0">Assembling a sample project for you...</h3>
                                             </div>
 
                                             <div id="eq-result-state" style="position: absolute; top:0; left:0; right:0; bottom:0; z-index: 3; display:flex; flex-direction:column; justify-content:center; opacity: 0; pointer-events: none; visibility: hidden;"></div>
@@ -314,11 +314,11 @@ document.addEventListener("DOMContentLoaded", () => {
             dialogContent += `
                 <div class="mx-auto">
                     <div class="p-4 bd-default mb-6">
-                        <h3 id="download-countdown-text" class="text-bold">
-                            Your download will start shortly in <span id="download-countdown" class="fg-green text-leader">5</span> seconds...
+                        <h3 id="download-countdown-text" class="text-bold text-center">
+                            The sample project download will start in <span id="download-countdown" class="fg-green text-leader">5</span> seconds...
                         </h3>
-                        <h4  class="mt-2 text-muted">
-                            <span id="manual-download-text">If your download does not start automatically,</span> <a href="${downloadUrl}" target="_blank" id="manual-download-link" class="fg-primary">click here</a>.
+                        <h4  class="mt-2 text-muted text-center" style="line-height: 1.5;">
+                            <span id="manual-download-text">If the download does not start automatically,</span> <a href="${downloadUrl}" target="_blank" id="manual-download-link" class="fg-primary">click here</a>.
                         </h4>
                     </div>
                 </div>
@@ -326,7 +326,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         dialogContent += `
-            </div>
+                <div class="mt-2 text-left">
+                    <a href="https://korzh.com/easyquery/docs/getting-started/from-sample-to-your-own-project" target="_blank" class="fg-primary">
+                        <span class="mif-books pr-2"></span> Getting started with the sample
+                    </a>
+                </div>
+                <div class="mt-2 text-left">
+                    <a href="${nextHref}" target="_blank" class="fg-primary">
+                        <span class="mif-books pr-2"></span> EasyQuery documentation
+                    </a>
+                </div>
         `;
 
         const processingState = document.getElementById("eq-processing-state");
@@ -340,18 +349,6 @@ document.addEventListener("DOMContentLoaded", () => {
             resultState.style.opacity = "1";
             resultState.style.pointerEvents = "auto";
             resultState.style.visibility = "visible";
-
-            const dialogActions = document.querySelector(".eq-processing-dialog .dialog-actions");
-            if (dialogActions && !document.getElementById("eq-docs-footer-link")) {
-                const a = document.createElement("a");
-                a.id = "eq-docs-footer-link";
-                a.href = nextHref;
-                a.target = "_blank";
-                a.className = "fg-primary";
-                a.style.marginRight = "auto";
-                a.innerHTML = "<span class='mif-books pr-2'></span> Open documentation";
-                dialogActions.insertBefore(a, dialogActions.firstChild);
-            }
 
             if (downloadUrl) {
                 let count = 5;
@@ -379,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const countdownText = document.getElementById('download-countdown-text');
                         if (countdownText) countdownText.style.display = 'none';
                         const manualDownloadText = document.getElementById('manual-download-text');
-                        if (manualDownloadText) manualDownloadText.innerText = 'The download should have started automatically. If not,';
+                        if (manualDownloadText) manualDownloadText.innerText = 'The sample project download should have started automatically.\nIf not,';
                         window.open(downloadUrl, '_blank');
                     }
                 }, 1000);
