@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             The sample project download will start in <span id="download-countdown" class="fg-green text-leader">5</span> seconds...
                         </h3>
                         <h4  class="mt-2 text-muted text-center" style="line-height: 1.5;">
-                            <span id="manual-download-text">If the download does not start automatically,</span> <a href="${downloadUrl}" target="_blank" id="manual-download-link" class="fg-primary">click here</a>.
+                            <span id="manual-download-text">If the download does not start automatically,</span> <a href="${downloadUrl}" id="manual-download-link" class="fg-primary">click here</a>.
                         </h4>
                     </div>
                 </div>
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (countdownText) countdownText.style.display = 'none';
                         const manualDownloadText = document.getElementById('manual-download-text');
                         if (manualDownloadText) manualDownloadText.innerText = 'The sample project download should have started automatically.\nIf not,';
-                        window.open(downloadUrl, '_blank');
+                        window.location.href = downloadUrl;
                     }
                 }, 1000);
             }
