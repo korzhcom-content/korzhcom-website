@@ -424,17 +424,17 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
         const email = emailInput?.value.trim() || "";
         const downloadUrl = "https://cdn.korzh.com/download/ersk_community.zip";
 
-        // Перевірка валідності email
+        // Check the validity of the email if it's provided
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email && !emailRegex.test(email)) {
             Metro.toast.create("Please enter a valid email address", null, 3000, "alert");
             return;
         }
 
-        // Блокуємо кнопку під час обробки
+        // Block the button to prevent multiple clicks and show loading state
         setButtonState("loading");
 
-        // Викликаємо reCAPTCHA v3
+        // Call reCAPTCHA to get the token and then submit the data
         grecaptcha.ready(function () {
             grecaptcha
                 .execute("6LeNDYMsAAAAALRDQNC4MOiETC9uD8gIj8AdRNjd", { action: "download_ersk" })
@@ -461,7 +461,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
             captchaToken: recaptchaToken, //The token of the Google CAPTCHA
             data: {
                 intent: "get-perk", //register | get-trial | get-perk
-                ptag: "EQN-ANC", //The unique identifier of the product the user interested in. EQN-ASP - EasyQuery for ASP.NET, EQN-ASP - EasyQuery for ASP.NET Core, ERSK - Easy Report Starter Kit, etc.
+                ptag: "ERSK", //The unique identifier of the product the user interested in.
             },
         };
 
@@ -497,7 +497,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
             console.error("[ERSK] API error:", error);
         }
 
-        // Відкриваємо завантаження в новому вікні
+        // Open the download link in a new tab and then redirect to the next page after a short delay
         window.open(downloadUrl, "_blank");
         setTimeout(() => {
             window.location.href = nextUrl        
