@@ -38,7 +38,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                 <div class="mt-10">
                     <a href="https://easy.report" target="_blank" class="button fg-white text-bold hero-button">Live
                         Demo</a>
-                    <button id="btn-get-ersk-community" class="button fg-white text-bold hero-button">Get ERSK
+                    <button class="button fg-white text-bold hero-button get-ersk-community-btn">Get ERSK
                         Community</button>
                     <a href="#licensing" class="button fg-white text-bold hero-button">Licensing</a>
                 </div>
@@ -219,8 +219,8 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
                         <td><span class="text-leader">Features</span></td>
                         <!-- <td><a id="GetERSKBtn" href="javascript:" class="button info">DOWNLOAD</a></td> -->
                         <td>
-                            <a href="https://account.korzh.com/get-perk/?ctag=ERSK-COM&ptag=ERSK&diid=774"
-                                class="button info" slow-loading>GET TEMPLATE</a>
+                            <a href="javascript:void(0)" 
+                                class="button info get-ersk-community-btn" slow-loading>GET TEMPLATE</a>
                         </td>
                         <td>
                             <a href="https://account.korzh.com/orderform?c=ERSK-ENT" data-ga-page-path="/checkout/ERSK"
@@ -485,7 +485,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
     }
 
     async function submitERSKData(email, recaptchaToken, downloadUrl) {
-        const nextUrl = "https://korzh.com/easy-report-starter-kit/docs/setup-first-launch"; // ← Endpoint буде наданий пізніше
+        const nextUrl = "https://korzh.com/easy-report-starter-kit/docs/setup-first-launch";
         const apiAuthoring = "https://account.korzh.com/api/account/register";
 
         const data = {
@@ -494,6 +494,7 @@ title: EASYREPORT STARTER KIT >> Korzh.com - Tools from Developers for Developer
             data: {
                 intent: "get-perk", //register | get-trial | get-perk
                 ptag: "ERSK", //The unique identifier of the product the user interested in.
+                apptype: "ersk-community", //The type of the application the user going to use. 
             },
         };
 

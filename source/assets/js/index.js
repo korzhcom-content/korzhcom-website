@@ -408,9 +408,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let getCommunityDialog = null;
 
-    const btnGetErskCommunity = document.getElementById("btn-get-ersk-community");
-    if (btnGetErskCommunity) {
-        btnGetErskCommunity.addEventListener("click", getERSKCommunity);
+    const btnGetErskCommunity = document.getElementsByClassName("get-ersk-community-btn");
+    if (btnGetErskCommunity.length > 0) {
+        Array.from(btnGetErskCommunity).forEach(btn => {
+            btn.addEventListener("click", getERSKCommunity);
+        });
     }
 
     function getERSKCommunity() {
@@ -525,10 +527,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const data = {
             email,
-            captchaToken: recaptchaToken,
+            captchaToken: recaptchaToken, //The token of the Google CAPTCHA
             data: {
-                intent: "get-perk",
-                ptag: "EQN-ANC",
+                intent: "get-perk", //register | get-trial | get-perk
+                ptag: "ERSK", //The unique identifier of the product the user interested in.
+                apptype: "ersk-community", //The type of the application the user going to use. 
             },
         };
 
