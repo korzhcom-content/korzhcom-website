@@ -523,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function submitERSKData(email, recaptchaToken, downloadUrl) {
         const nextUrl = "https://korzh.com/easy-report-starter-kit/docs/setup-first-launch";
-        const apiAuthoring = "https://localhost:56159/api/account/register";
+        const apiAuthoring = "https://account.korzh.com/api/account/register";
 
         const data = {
             email,
