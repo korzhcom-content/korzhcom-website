@@ -408,9 +408,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let getCommunityDialog = null;
 
-    const btnGetErskCommunity = document.getElementById("btn-get-ersk-community");
-    if (btnGetErskCommunity) {
-        btnGetErskCommunity.addEventListener("click", getERSKCommunity);
+    const btnGetErskCommunity = document.getElementsByClassName("get-ersk-community-btn");
+    if (btnGetErskCommunity.length > 0) {
+        Array.from(btnGetErskCommunity).forEach(btn => {
+            btn.addEventListener("click", getERSKCommunity);
+        });
     }
 
     function getERSKCommunity() {
