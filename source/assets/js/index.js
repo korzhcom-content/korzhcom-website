@@ -523,14 +523,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function submitERSKData(email, recaptchaToken, downloadUrl) {
         const nextUrl = "https://korzh.com/easy-report-starter-kit/docs/setup-first-launch";
-        const apiAuthoring = "https://account.korzh.com/api/account/register";
+        const apiAuthoring = "https://localhost:56159/api/account/register";
 
         const data = {
             email,
-            captchaToken: recaptchaToken,
+            captchaToken: recaptchaToken, //The token of the Google CAPTCHA
             data: {
-                intent: "get-perk",
-                ptag: "EQN-ANC",
+                intent: "get-perk", //register | get-trial | get-perk
+                ptag: "ERSK", //The unique identifier of the product the user interested in.
+                apptype: "ersk-community", //The type of the application the user going to use. 
             },
         };
 
