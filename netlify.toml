@@ -4,7 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "24"
-  RUBY_VERSION = "3.3.0"
+  RUBY_VERSION = "3.4.1"
   NODE_ENV     = "production"
   JEKYLL_ENV   = "production"
   # Force devDependencies to install. Netlify skips them when NODE_ENV=production,
