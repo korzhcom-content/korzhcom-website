@@ -3,7 +3,7 @@
   publish = "_site"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24"
   RUBY_VERSION = "3.3.0"
   NODE_ENV     = "production"
   JEKYLL_ENV   = "production"
