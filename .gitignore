@@ -6,7 +6,12 @@ vendor
 .idea
 node_modules
 dist
-app-client.min.js
+
+# Build outputs — produced by `npm run build` / `npm run watch`
+source/assets/js/*.js
+source/assets/js/*.js.map
+source/assets/metro/
+
 # Local Netlify folder
 .netlify
 .ai-context/*

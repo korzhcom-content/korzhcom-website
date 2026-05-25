@@ -46,7 +46,10 @@
     <link rel="stylesheet" href="/assets/css/index.css" blocking="render">
     <script src="https://www.google.com/recaptcha/api.js?render=6LeNDYMsAAAAALRDQNC4MOiETC9uD8gIj8AdRNjd" async defer></script>
     <script src="/assets/metro/metro.js"></script>
-    <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/site.js"></script>
+    {% if page.bundle %}
+    <script src="/assets/js/{{ page.bundle }}.js"></script>
+    {% endif %}
 </body>
 
 </html>
