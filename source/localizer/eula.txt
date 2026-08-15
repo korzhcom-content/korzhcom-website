@@ -1,3 +1,6 @@
+LOCALIZER END USER LICENSE AGREEMENT
+LAST UPDATED: 2026-08-15
+
 READ CAREFULLY BEFORE INSTALLING THE SOFTWARE.
 
 By installing the Localizer library (referred also as PRODUCT or "The software"), you are accepting this License Agreement. 
@@ -13,30 +16,32 @@ The AUTHOR represents and warrants that it is the legal owner of and has full ri
 II. LICENSING
 AUTHOR grants to you (as a person or company) a non-exclusive license to make and use copies of the PRODUCT in the manner provided below.  The PRODUCT is licensed, not sold.
 
-There are three possible types of license for PRODUCT: Evaluation License, Registered License (single or site) and Source Code License (signle or site).
+There are three possible types of license for PRODUCT: Evaluation License, Registered License (per-developer or company-wide) and Source Code License (per-developer or company-wide).
 
 II-1 Evaluation License
 AUTHOR grants to you a personal, non-exclusive license to install the PRODUCT for evaluation purposes.    
 The Localizer evaluation version may be freely distributed, provided the distribution package is not modified. No person or company may charge a fee for the distribution of the PRODUCT without written permission from the copyright holder. You may not distribute any portion of your or third-party products generated using evaluation version of the PRODUCT.
 
 II-2 Registered license
-After you have purchased the license for the PRODUCT you get a registration code enabling the registered copy. From that time you are licensed to use the PRODUCT only on one computer and by only one developer at the same time. License owner may make a second copy for his or her exclusive use on a second computer (e.g. at home) but the main requirement must be satisfied: only one copy of the PRODUCT must be used at the same time. 
-To remove this restriction you can purchase SITE LICENSE, which grants you (as license owner) the right to install the PRODUCT on any number of computer which belongs to one company and the right to use it by any number of users (developers) who works on that company.
+The PRODUCT is licensed on a per-developer basis. After you have purchased the license for the PRODUCT you get a license key enabling the registered copy. From that time you are licensed to use the PRODUCT by the number of developers covered by the purchased license.
+Licenses are assigned to named users and are not tied to particular workstations. A licensed developer may install and use the PRODUCT on as many computers as he or she needs (at work, at home, on a laptop, etc.), provided that the PRODUCT is used by that developer only.
+A single-developer license (such as "Basic", "Pro" or "Developer") covers one developer. To cover more developers you may either purchase several single-developer licenses or purchase a COMPANY (site) license, which grants you (as license owner) the right to use the PRODUCT by any number of developers within one company.
+There are no additional per-project, per-user or per-deployment fees: the software products you build with the PRODUCT may be distributed to any number of end users under the terms of section III.
 You may not duplicate the PRODUCT in whole or in part, except that you may make copies of the SOFTWARE for backup or archival purposes.  
 
 II-3 Source Code License
-You can purchase source code license for the PRODUCT (sold separately and is provided with site license too). This type of license gives you an access to source code of Localizer library. You can use provided source code to build your own software products and then distribute created products in binary code without any limitation but neither the source code nor modified source code of the PRODUCT may be distributed by you to any third party. The PRODUCT source code must be protected as your own and you expressly and unequivocally agree to be bound by the acts of your employees and agents.  You may modify the PRODUCT source code, however such modifications do not constitute ownership of the source code. Modifications to the PRODUCT source code may not be sold, transferred or published in any manner whatsoever. Licensing of the PRODUCT source code does not constitute a transfer of ownership under the terms of this agreement, and the PRODUCT remains owned and copyrighted by AUTHOR.   
+A Source Code License gives you an access to the source code of the Localizer library. It is included into certain types of the license (currently "Developer" and "Company") - please refer to the pricing table on the Korzh.com web-site for the current list. You can use provided source code to build your own software products and then distribute created products in binary code without any limitation but neither the source code nor modified source code of the PRODUCT may be distributed by you to any third party. The PRODUCT source code must be protected as your own and you expressly and unequivocally agree to be bound by the acts of your employees and agents.  You may modify the PRODUCT source code, however such modifications do not constitute ownership of the source code. Modifications to the PRODUCT source code may not be sold, transferred or published in any manner whatsoever. Licensing of the PRODUCT source code does not constitute a transfer of ownership under the terms of this agreement, and the PRODUCT remains owned and copyrighted by AUTHOR.   
 
 
 III. DISTRIBUTION RIGHTS
 Either Registered License or Source Code License grants its owner the rights to freely distribute any of PRODUCT parts that are designated as "redistributable" with his/her software products generated using Localizer.
 The list of redistributable parts of the PRODUCT is limited by the following items:
- - Language Manager program that is installed together with Localizer or can be downloaded separately for Korzh.com web-site;
+ - Language Manager program that is installed together with Localizer or can be downloaded separately from the Korzh.com web-site;
  - any data files created by Localizer for example language files (e.g. program.de.lng) or resource DLL files (e.g. program.EN or programname.UK).
 
 You have a royalty-free, fully paid-up, worldwide right to distribute the portions of the PRODUCT designated as "redistributable" only if: 
-(1) You have purchased a Registered or Source Code License for the PRODUCT and have received a registration code for the PRODUCT or/and get an access to protected 
-web-page that allow you to download PRODUCT source code;
+(1) You have purchased a Registered or Source Code License for the PRODUCT and hold a valid license key for the PRODUCT or/and an active license
+associated with your account on the Korzh.com web-site;
 (2) You distribute only the portions of the PRODUCT designated as "redistributable";
 (3) Your software product may not, in the reasonable opinion of AUTHOR, directly compete in form and function with Localizer;
 (4) You agree to indemnify AUTHOR from any and all claims or lawsuits including lawyer's fees that can arise or result from the use or distribution of your software product(s) that created using Localizer.
