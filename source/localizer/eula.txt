@@ -1,5 +1,5 @@
 LOCALIZER END USER LICENSE AGREEMENT
-LAST UPDATED: 2026-08-15
+LAST UPDATED: 2026-08-16
 
 READ CAREFULLY BEFORE INSTALLING THE SOFTWARE.
 
@@ -44,14 +44,39 @@ You have a royalty-free, fully paid-up, worldwide right to distribute the portio
 associated with your account on the Korzh.com web-site;
 (2) You distribute only the portions of the PRODUCT designated as "redistributable";
 (3) Your software product may not, in the reasonable opinion of AUTHOR, directly compete in form and function with Localizer;
-(4) You agree to indemnify AUTHOR from any and all claims or lawsuits including lawyer's fees that can arise or result from the use or distribution of your software product(s) that created using Localizer.
+(4) You are solely responsible for your own software product(s) created using Localizer, including their design, testing, security, regulatory compliance
+and fitness for your purposes. AUTHOR has no responsibility or liability, either to you or to any third party, arising out of your software product(s).
 (5) You distribute the "redistributable" parts of PRODUCT only in conjunction with your own software product(s) which has(have) reasonably significant functional additions to basic functionality provided by Localizer;
+
+Where you are legally able to give such an undertaking, you agree to indemnify AUTHOR from any and all claims or lawsuits, including lawyer's fees, that
+are brought by third parties and that can arise or result from the use or distribution of your software product(s) created using Localizer. If you are
+prohibited by applicable law from giving such an undertaking, this paragraph does not apply to you and does not affect your rights under this section -
+see section VI below.
 
 Any type of license (including evaluation license) allows you to distribute (print, publish, post on forums or newsgroups, etc) any code examples that use Localizer API (Application Programming Interface) including sample projects installed with Localizer.
 
 IV. TERMINATION OF THE AGREEMENT
 AUTHOR may terminate this license agreement if you (as license owner) fail to comply with the terms and conditions of this agreement and do not cure any failure to comply within thirty (30) days from notice by AUTHOR. In such event, you must destroy all copies of the PRODUCT.  You may terminate this license at any time by destroying all copies of the PRODUCT. 
 
-V. LIMITED WARRANTY 
-PRODUCT is distributed "AS IS". The AUTHOR expressly disclaims any warranty for the PRODUCT either express or implied. The AUTHOR is not liable for any damage, caused by use or inability to use the PRODUCT. 
+V. LIMITED WARRANTY AND LIMITATION OF LIABILITY
+PRODUCT is distributed "AS IS". The AUTHOR expressly disclaims any warranty for the PRODUCT either express or implied, including any implied warranties
+of merchantability, fitness for a particular purpose and non-infringement. The AUTHOR is not liable for any damage, caused by use or inability to use
+the PRODUCT.
+To the maximum extent permitted by applicable law, the total aggregate liability of AUTHOR arising out of or related to this Agreement or the PRODUCT
+shall not exceed the amount actually paid by you to AUTHOR for the license to the PRODUCT.
+To the maximum extent permitted by applicable law, AUTHOR shall not be liable for any indirect, incidental, special, consequential or punitive damages,
+or for any loss of profits, revenue, business or data, however caused and on any theory of liability, whether or not AUTHOR has been advised of the
+possibility of such damages.
+Nothing in this Agreement excludes or limits any liability to the extent that such exclusion or limitation is not permitted by applicable law.
+
+VI. GOVERNMENT AND OTHER PUBLIC LICENSEES
+If you are an agency or instrumentality of the United States Government, or any other entity that is prohibited by applicable law from providing an
+indemnity (including, without limitation, by reason of the Anti-Deficiency Act, Title 31, US Code, Sections 1341 and 1517), then:
+(1) The indemnification paragraph of section III does not apply to you, and compliance with it is not a condition of your rights under this Agreement.
+The numbered conditions listed in section III continue to apply;
+(2) In its place, you agree to promptly consider and adjudicate any and all claims which may arise out of this Agreement resulting from the actions of
+your duly authorized representatives, or your contractors, and to pay for any damage or injury as may be required by Federal law. Such adjudication will
+be pursued under the Federal Tort Claims Act, 28 U.S.C. Section 2671 et seq., the Federal Employees Compensation Act, 5 U.S.C. Section 8101 et seq., or
+such other legal authority as may be pertinent;
+(3) No other provision of this Agreement is modified.
 
