@@ -202,6 +202,9 @@
 /localizer/docs/*                   https://localizer-docs-astro.netlify.app/localizer/docs/:splat/  200!
 #/_loc_astro/*                       https://localizer-docs-astro.netlify.app/_loc_astro/:splat  200!
 
+# our own analytics collector, kept on this domain so the call is not a third-party one
+/t/*                                https://account.korzh.com/api/t/:splat  200!
+
 /download/*							https://cdn.korzh.com/download/:splat
 
 /account/*			https://account.korzh.com/:splat

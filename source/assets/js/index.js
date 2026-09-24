@@ -69,6 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function getTrial() {
         if (typeof Metro === 'undefined') return;
 
+        if (window.KorzhAnalytics) {
+            window.KorzhAnalytics.trackEvent('trial.dialog.opened');
+        }
+
         Metro.dialog.create({
             title: "<span class='mif-magic-wand fg-primary pr-2'></span> Get EasyQuery Trial",
             content: `
@@ -276,10 +280,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const trialData = {
             email,
             captchaToken: token,
-            data: {
-                intent: "get-trial",
-                apptype
-            }
+            data: window.KorzhAnalytics
+                ? window.KorzhAnalytics.requestData({ intent: "get-trial", apptype })
+                : { intent: "get-trial", apptype }
         };
 
         try {
@@ -418,6 +421,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function getERSKCommunity() {
         if (typeof Metro === 'undefined') return;
 
+        if (window.KorzhAnalytics) {
+            window.KorzhAnalytics.trackEvent('perk.dialog.opened', { ptag: 'ERSK' });
+        }
+
         getCommunityDialog = Metro.dialog.create({
             title: "Get ERSK Community",
             content: `
@@ -525,14 +532,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextUrl = "https://korzh.com/easy-report-starter-kit/docs/setup-first-launch";
         const apiAuthoring = "https://account.korzh.com/api/account/register";
 
+        const erskData = {
+            intent: "get-perk", //register | get-trial | get-perk
+            ptag: "ERSK", //The unique identifier of the product the user interested in.
+            apptype: "ersk-community", //The type of the application the user going to use.
+        };
+
         const data = {
             email,
             captchaToken: recaptchaToken, //The token of the Google CAPTCHA
-            data: {
-                intent: "get-perk", //register | get-trial | get-perk
-                ptag: "ERSK", //The unique identifier of the product the user interested in.
-                apptype: "ersk-community", //The type of the application the user going to use. 
-            },
+            data: window.KorzhAnalytics ? window.KorzhAnalytics.requestData(erskData) : erskData,
         };
 
         try {
