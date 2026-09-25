@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof Metro === 'undefined') return;
 
         if (window.KorzhAnalytics) {
-            window.KorzhAnalytics.trackEvent('trial.dialog.opened');
+            // the family tag: which EasyQuery product it is follows from the app type the visitor picks
+            window.KorzhAnalytics.trackEvent('trial.dialog.opened', { ptag: 'EQN' });
         }
 
         Metro.dialog.create({
