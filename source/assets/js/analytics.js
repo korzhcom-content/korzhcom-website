@@ -162,10 +162,21 @@
         return data;
     }
 
+    /**
+     * The link that records a download before sending the visitor to the file itself.
+     * Falls back to the file when the item is unknown, so a download can never be lost.
+     */
+    function downloadUrl(uri, fileUrl) {
+        if (!uri) return fileUrl;
+
+        return "https://account.korzh.com/d/" + uri + "?aid=" + encodeURIComponent(visitorId());
+    }
+
     window.KorzhAnalytics = {
         trackEvent: trackEvent,
         requestData: requestData,
         visitorId: visitorId,
+        downloadUrl: downloadUrl,
     };
 
     captureUtm();

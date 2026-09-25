@@ -232,6 +232,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // The samples, by the Uri of their download item on account.korzh.com and the file behind it.
+    // The site links through /d/{uri}, which records who downloads a sample and then redirects to
+    // the file; the file itself stays the fallback when the analytics script is not there.
+    const SAMPLES = {
+        'aspnetcore-razor-mvc': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Razor-Mvc.zip',
+        'aspnetcore-angular': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Angular.zip',
+        'aspnetcore-react': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-React.zip',
+        'aspnetcore-vue': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Vue3.zip',
+        'aspnet4-mvc': 'https://cdn.korzh.com/dot-net-samples/AspNet4-Mvc.zip',
+        'aspnet4-webforms': 'https://cdn.korzh.com/dot-net-samples/AspNet4-WebForms.zip',
+        'winforms': 'https://cdn.korzh.com/dot-net-samples/WinForms.zip',
+        'wpf': 'https://cdn.korzh.com/dot-net-samples/Wpf.zip',
+        'ersk-community': 'https://cdn.korzh.com/download/ersk_community.zip'
+    };
+
+    function sampleUrl(name) {
+        const fileUrl = SAMPLES[name];
+        if (!fileUrl) return null;
+
+        return window.KorzhAnalytics
+            ? window.KorzhAnalytics.downloadUrl('samples/' + name, fileUrl)
+            : fileUrl;
+    }
+
     async function processTrialRequest(apptype, email, token) {
         const url = `https://account.korzh.com/api/account/register`;
 
@@ -239,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let downloadUrl = null;
         switch (apptype) {
             case 'asp-net-core-razor':
-                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Razor-Mvc.zip';
+                downloadUrl = sampleUrl('aspnetcore-razor-mvc');
                 break;
             case 'asp-net-core-spa':
                 const form = document.forms["trial-option-asp-net-core-spa"];
@@ -247,13 +271,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     const spaType = form.elements.frontend.value;
                     switch (spaType) {
                         case 'angular':
-                            downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Angular.zip';
+                            downloadUrl = sampleUrl('aspnetcore-angular');
                             break;
                         case 'react':
-                            downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-React.zip';
+                            downloadUrl = sampleUrl('aspnetcore-react');
                             break;
                         case 'vue':
-                            downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Vue3.zip';
+                            downloadUrl = sampleUrl('aspnetcore-vue');
                             break;
                         case 'other':
                             break;
@@ -261,16 +285,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 break;
             case 'asp-net-4-mvc':
-                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNet4-Mvc.zip';
+                downloadUrl = sampleUrl('aspnet4-mvc');
                 break;
             case 'asp-net-4-webforms':
-                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/AspNet4-WebForms.zip';
+                downloadUrl = sampleUrl('aspnet4-webforms');
                 break;
             case 'net-winforms':
-                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/WinForms.zip';
+                downloadUrl = sampleUrl('winforms');
                 break;
             case 'net-wpf':
-                downloadUrl = 'https://cdn.korzh.com/dot-net-samples/Wpf.zip';
+                downloadUrl = sampleUrl('wpf');
                 break;
             case 'webapp-other':
             case 'other':
@@ -488,7 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleERSKDownload() {
         const emailInput = document.getElementById("ersk-email-input");
         const email = emailInput?.value.trim() || "";
-        const downloadUrl = "https://cdn.korzh.com/download/ersk_community.zip";
+        const downloadUrl = sampleUrl('ersk-community');
 
         // Перевірка валідності email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
