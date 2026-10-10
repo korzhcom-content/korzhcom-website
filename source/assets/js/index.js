@@ -97,10 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <input type="radio" data-role="radio" name="viewEngine" data-caption="Razor Pages" value="razor-pages"/>
                 </form>
                 <form id="trial-option-asp-net-core-spa" name="trial-option-asp-net-core-spa" class="trial-option p-4 border bd-default mb-4">
-                    <input type="radio" data-role="radio" name="frontend" data-caption="Angular" value="angular"/>
+                    <input type="radio" data-role="radio" name="frontend" data-caption="Angular" value="angular" checked/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="React" value="react"/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="Vue" value="vue"/>
-                    <input type="radio" data-role="radio" name="frontend" data-caption="Other" value="other" checked/>
+                    <input type="radio" data-role="radio" name="frontend" data-caption="Other" value="other"/>
                 </form>
                 <form id="trial-option-asp-net-4-mvc" class="trial-option"></form>
                 <form id="trial-option-asp-net-4-webforms" class="trial-option"></form>
