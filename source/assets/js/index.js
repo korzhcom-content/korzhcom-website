@@ -83,7 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <select id="select-apptype" class="mt-4 mb-4" data-role="select" data-filter="false">
                 <option value="asp-net-core-razor">ASP.NET Core + MVC or Razor pages</option>
-                <option value="asp-net-core-spa">ASP.NET Core + SPA Frontend (Angular, Razor, Vue, etc)</option>
+                <option value="asp-net-core-spa">ASP.NET Core + SPA Frontend (Angular, React, Vue, etc)</option>
+                <option value="asp-net-core-blazor">ASP.NET Core + Blazor (Server or WebAssembly)</option>
                 <option value="asp-net-4-mvc">ASP.NET 4 MVC</option>
                 <option value="asp-net-4-webforms">ASP.NET 4 WebForms</option>
                 <option value="net-winforms">.NET (Core) Windows Forms</option>
@@ -97,11 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     <input type="radio" data-role="radio" name="viewEngine" data-caption="Razor Pages" value="razor-pages"/>
                 </form>
                 <form id="trial-option-asp-net-core-spa" name="trial-option-asp-net-core-spa" class="trial-option p-4 border bd-default mb-4">
-                    <input type="radio" data-role="radio" name="frontend" data-caption="Angular" value="angular"/>
+                    <input type="radio" data-role="radio" name="frontend" data-caption="Angular" value="angular" checked/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="React" value="react"/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="Vue" value="vue"/>
-                    <input type="radio" data-role="radio" name="frontend" data-caption="Other" value="other" checked/>
+                    <input type="radio" data-role="radio" name="frontend" data-caption="Other" value="other"/>
                 </form>
+                <form id="trial-option-asp-net-core-blazor" class="trial-option"></form>
                 <form id="trial-option-asp-net-4-mvc" class="trial-option"></form>
                 <form id="trial-option-asp-net-4-webforms" class="trial-option"></form>
                 <form id="trial-option-net-winforms" class="trial-option"></form>
@@ -133,6 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     onclick: async function () {
                         const app = document.getElementById("select-apptype").value;
                         const email = document.getElementById("trial-email").value;
+                        // read the SPA frontend now: closeDialogs() below removes this dialog's forms
+                        const spaForm = document.forms["trial-option-asp-net-core-spa"];
+                        const frontend = spaForm && spaForm.elements.frontend ? spaForm.elements.frontend.value : null;
 
                         closeDialogs();
 
@@ -179,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 grecaptcha
                                                     .execute(reCaptchaSiteKey, { action: "eq_trial" })
                                                     .then(function (token) {
-                                                        return processTrialRequest(app, email, token);
+                                                        return processTrialRequest(app, frontend, email, token);
                                                     })
                                                     .catch(function (error) {
                                                         console.error("reCAPTCHA error:", error);
@@ -188,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             });
                                         } else {
                                             console.warn("grecaptcha is not defined");
-                                            processTrialRequest(app, email, "dummy_token");
+                                            processTrialRequest(app, frontend, email, "dummy_token");
                                         }
                                     }
                                 });
@@ -235,16 +240,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // The samples, by the Uri of their download item on account.korzh.com and the file behind it.
     // The site links through /d/{uri}, which records who downloads a sample and then redirects to
-    // the file; the file itself stays the fallback when the analytics script is not there.
+    // the file stored with that item on account.korzh.com; the file here is only used when the
+    // analytics script is not there. Keep both in step, and create the item there before adding
+    // a sample here: /d/ answers an unknown item with 404.
+    // Each EasyQuery sample is the main branch of its github.com/easyquery/eq-samples-<name> repo.
+    const githubSample = name => `https://github.com/easyquery/eq-samples-${name}/archive/refs/heads/main.zip`;
     const SAMPLES = {
-        'aspnetcore-razor-mvc': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Razor-Mvc.zip',
-        'aspnetcore-angular': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Angular.zip',
-        'aspnetcore-react': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-React.zip',
-        'aspnetcore-vue': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Vue3.zip',
-        'aspnet4-mvc': 'https://cdn.korzh.com/dot-net-samples/AspNet4-Mvc.zip',
-        'aspnet4-webforms': 'https://cdn.korzh.com/dot-net-samples/AspNet4-WebForms.zip',
-        'winforms': 'https://cdn.korzh.com/dot-net-samples/WinForms.zip',
-        'wpf': 'https://cdn.korzh.com/dot-net-samples/Wpf.zip',
+        'aspnetcore-razor-mvc': githubSample('aspnetcore-razor-mvc'),
+        'aspnetcore-angular': githubSample('aspnetcore-angular'),
+        'aspnetcore-blazor': githubSample('aspnetcore-blazor'),
+        'aspnetcore-react': githubSample('aspnetcore-react'),
+        'aspnetcore-vue': githubSample('aspnetcore-vue'),
+        'aspnet4-mvc': githubSample('aspnet4-mvc'),
+        'aspnet4-webforms': githubSample('aspnet4-webforms'),
+        'winforms': githubSample('winforms'),
+        'wpf': githubSample('wpf'),
         'ersk-community': 'https://cdn.korzh.com/download/ersk_community.zip'
     };
 
@@ -257,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
             : fileUrl;
     }
 
-    async function processTrialRequest(apptype, email, token) {
+    async function processTrialRequest(apptype, frontend, email, token) {
         const url = `https://account.korzh.com/api/account/register`;
 
         let nextHref = 'https://korzh.com/easyquery/docs/getting-started';
@@ -267,23 +277,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 downloadUrl = sampleUrl('aspnetcore-razor-mvc');
                 break;
             case 'asp-net-core-spa':
-                const form = document.forms["trial-option-asp-net-core-spa"];
-                if (form && form.elements.frontend) {
-                    const spaType = form.elements.frontend.value;
-                    switch (spaType) {
-                        case 'angular':
-                            downloadUrl = sampleUrl('aspnetcore-angular');
-                            break;
-                        case 'react':
-                            downloadUrl = sampleUrl('aspnetcore-react');
-                            break;
-                        case 'vue':
-                            downloadUrl = sampleUrl('aspnetcore-vue');
-                            break;
-                        case 'other':
-                            break;
-                    }
+                switch (frontend) {
+                    case 'angular':
+                        downloadUrl = sampleUrl('aspnetcore-angular');
+                        break;
+                    case 'react':
+                        downloadUrl = sampleUrl('aspnetcore-react');
+                        break;
+                    case 'vue':
+                        downloadUrl = sampleUrl('aspnetcore-vue');
+                        break;
+                    case 'other':
+                        break;
                 }
+                break;
+            case 'asp-net-core-blazor':
+                downloadUrl = sampleUrl('aspnetcore-blazor');
                 break;
             case 'asp-net-4-mvc':
                 downloadUrl = sampleUrl('aspnet4-mvc');

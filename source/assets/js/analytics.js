@@ -164,7 +164,8 @@
 
     /**
      * The link that records a download before sending the visitor to the file itself.
-     * Falls back to the file when the item is unknown, so a download can never be lost.
+     * The file it redirects to is the one stored with the item on account.korzh.com, not fileUrl;
+     * fileUrl is only used without a uri. An item unknown there answers 404, so create it first.
      */
     function downloadUrl(uri, fileUrl) {
         if (!uri) return fileUrl;
