@@ -83,7 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <select id="select-apptype" class="mt-4 mb-4" data-role="select" data-filter="false">
                 <option value="asp-net-core-razor">ASP.NET Core + MVC or Razor pages</option>
-                <option value="asp-net-core-spa">ASP.NET Core + SPA Frontend (Angular, Razor, Vue, etc)</option>
+                <option value="asp-net-core-spa">ASP.NET Core + SPA Frontend (Angular, React, Vue, etc)</option>
+                <option value="asp-net-core-blazor">ASP.NET Core + Blazor (Server or WebAssembly)</option>
                 <option value="asp-net-4-mvc">ASP.NET 4 MVC</option>
                 <option value="asp-net-4-webforms">ASP.NET 4 WebForms</option>
                 <option value="net-winforms">.NET (Core) Windows Forms</option>
@@ -102,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <input type="radio" data-role="radio" name="frontend" data-caption="Vue" value="vue"/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="Other" value="other"/>
                 </form>
+                <form id="trial-option-asp-net-core-blazor" class="trial-option"></form>
                 <form id="trial-option-asp-net-4-mvc" class="trial-option"></form>
                 <form id="trial-option-asp-net-4-webforms" class="trial-option"></form>
                 <form id="trial-option-net-winforms" class="trial-option"></form>
@@ -238,16 +240,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // The samples, by the Uri of their download item on account.korzh.com and the file behind it.
     // The site links through /d/{uri}, which records who downloads a sample and then redirects to
-    // the file; the file itself stays the fallback when the analytics script is not there.
+    // the file stored with that item on account.korzh.com; the file here is only used when the
+    // analytics script is not there. Keep both in step, and create the item there before adding
+    // a sample here: /d/ answers an unknown item with 404.
+    // Each EasyQuery sample is the main branch of its github.com/easyquery/eq-samples-<name> repo.
+    const githubSample = name => `https://github.com/easyquery/eq-samples-${name}/archive/refs/heads/main.zip`;
     const SAMPLES = {
-        'aspnetcore-razor-mvc': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Razor-Mvc.zip',
-        'aspnetcore-angular': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Angular.zip',
-        'aspnetcore-react': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-React.zip',
-        'aspnetcore-vue': 'https://cdn.korzh.com/dot-net-samples/AspNetCore-Vue3.zip',
-        'aspnet4-mvc': 'https://cdn.korzh.com/dot-net-samples/AspNet4-Mvc.zip',
-        'aspnet4-webforms': 'https://cdn.korzh.com/dot-net-samples/AspNet4-WebForms.zip',
-        'winforms': 'https://cdn.korzh.com/dot-net-samples/WinForms.zip',
-        'wpf': 'https://cdn.korzh.com/dot-net-samples/Wpf.zip',
+        'aspnetcore-razor-mvc': githubSample('aspnetcore-razor-mvc'),
+        'aspnetcore-angular': githubSample('aspnetcore-angular'),
+        'aspnetcore-blazor': githubSample('aspnetcore-blazor'),
+        'aspnetcore-react': githubSample('aspnetcore-react'),
+        'aspnetcore-vue': githubSample('aspnetcore-vue'),
+        'aspnet4-mvc': githubSample('aspnet4-mvc'),
+        'aspnet4-webforms': githubSample('aspnet4-webforms'),
+        'winforms': githubSample('winforms'),
+        'wpf': githubSample('wpf'),
         'ersk-community': 'https://cdn.korzh.com/download/ersk_community.zip'
     };
 
@@ -283,6 +290,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     case 'other':
                         break;
                 }
+                break;
+            case 'asp-net-core-blazor':
+                downloadUrl = sampleUrl('aspnetcore-blazor');
                 break;
             case 'asp-net-4-mvc':
                 downloadUrl = sampleUrl('aspnet4-mvc');
