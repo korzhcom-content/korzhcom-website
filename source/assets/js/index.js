@@ -29,18 +29,38 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(mobileDialogStyle);
 
+    // The EasyQuery samples, one github.com/easyquery/eq-samples-<name> repository per platform, by
+    // app type and SPA frontend (see tools/split-samples/samples.json in EasyQuery.All). Clicks on
+    // them are counted by the trial.dialog.redirected event. Edition: the tab on the licensing section.
+    const EQ_SAMPLES = {
+        'asp-net-core-razor': { name: 'aspnetcore-razor-mvc', solution: 'Samples.AspNetCore.sln', hint: '6 samples, Razor Pages and MVC' },
+        'angular': { name: 'aspnetcore-angular', solution: 'Samples.Angular.sln', hint: '2 samples: Advanced search, Ad-hoc reporting' },
+        'react': { name: 'aspnetcore-react', solution: 'Samples.React.sln', hint: '1 sample: Advanced search' },
+        'vue': { name: 'aspnetcore-vue', solution: 'Samples.Vue.sln', hint: '2 samples, Vue 3 and Vue 2' },
+        'asp-net-core-blazor': { name: 'aspnetcore-blazor', solution: 'Samples.Blazor.sln', hint: '2 samples, Server and WebAssembly' },
+        'asp-net-4-mvc': { name: 'aspnet4-mvc', solution: 'Samples.AspNet4x.MVC.sln', hint: '5 samples' },
+        'asp-net-4-webforms': { name: 'aspnet4-webforms', solution: 'Samples.WebForms.sln', hint: '2 samples, C# and VB.NET' },
+        'net-winforms': { name: 'winforms', solution: 'Samples.WinForms.sln', hint: '3 samples', edition: 'winforms-edition' },
+        'net-wpf': { name: 'wpf', solution: 'Samples.Wpf.sln', hint: '2 samples', edition: 'wpf-edition' }
+    };
+
+    const sampleRepoUrl = sample => `https://github.com/easyquery/eq-samples-${sample.name}`;
+
+    const licenseEditions = ['asp-core-edition', 'asp-net-edition', 'winforms-edition', 'silverlight-edition', 'wpf-edition', 'delphi-edition'];
+
     if (eqAction === 'get-trial') {
         getTrial();
-    } else {
-        const editions = ['asp-core-edition', 'asp-net-edition', 'winforms-edition', 'silverlight-edition', 'wpf-edition', 'delphi-edition'];
-        if (editions.includes(eqAction)) {
-            const licensingEl = document.getElementById("licensing");
-            if (licensingEl) {
-                licensingEl.scrollIntoView();
-            }
-            if (typeof $ !== 'undefined' && typeof Metro !== 'undefined') {
-                Metro.getPlugin("#license-price", 'tabs').open(editions.indexOf(eqAction) + 1);
-            }
+    } else if (licenseEditions.includes(eqAction)) {
+        showLicensing(eqAction);
+    }
+
+    function showLicensing(edition) {
+        const licensingEl = document.getElementById("licensing");
+        if (licensingEl) {
+            licensingEl.scrollIntoView();
+        }
+        if (edition && typeof $ !== 'undefined' && typeof Metro !== 'undefined') {
+            Metro.getPlugin("#license-price", 'tabs').open(licenseEditions.indexOf(edition) + 1);
         }
     }
 
@@ -59,10 +79,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function trialChangeOptions(val) {
+    function trialChangeOptions(val, keepOthers) {
         if (typeof $ !== 'undefined') {
-            $(".trial-sub-options > form").hide();
+            if (!keepOthers) $(".trial-sub-options > form").hide();
             $("#trial-option-" + val).show();
+        }
+    }
+
+    // What the visitor picked in the trial dialog. No sample: the app type has no repository to open.
+    function trialSelection() {
+        const app = document.getElementById("select-apptype").value;
+        const spaForm = document.forms["trial-option-asp-net-core-spa"];
+        const frontend = spaForm.elements.frontend.value;
+
+        return { app, frontend, sample: EQ_SAMPLES[app === "asp-net-core-spa" ? frontend : app] };
+    }
+
+    function updateTrialDialog() {
+        const { app, frontend, sample } = trialSelection();
+        const link = document.getElementById("trial-open-sample");
+        const sendBtn = document.querySelector(".js-get-trial-action-btn");
+        const hint = document.getElementById("trial-sample-hint");
+
+        trialChangeOptions(app);
+        if (app === "asp-net-core-spa" && frontend === "other") {
+            trialChangeOptions("spa-other", true);
+        }
+
+        document.getElementById("trial-email-block").style.display = sample ? "none" : "";
+        hint.style.display = sample ? "" : "none";
+        link.style.display = sample ? "" : "none";
+        sendBtn.style.display = sample ? "none" : "";
+
+        if (sample) {
+            link.href = sampleRepoUrl(sample);
+            hint.innerHTML = `<span class="mif-github pr-1"></span> Opens <b>eq-samples-${sample.name}</b> on GitHub in a new tab — ${sample.hint}.`;
         }
     }
 
@@ -75,11 +126,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         Metro.dialog.create({
-            title: "<span class='mif-magic-wand fg-primary pr-2'></span> Get EasyQuery Trial",
+            title: "<span class='mif-magic-wand fg-primary pr-2'></span> Try EasyQuery",
             content: `
-            <h4 class="text-bold">Select your application type</h4>
             <div class="mb-4 text-leader2" style="font-size: 1.1rem; line-height: 1.6;">
-                EasyQuery framework can be used on different platforms and with different types of applications. So, to give you the most relevant installation instructions we need to know more about your project first.
+                Pick the platform closest to your project. We'll open a ready-to-run sample for it on GitHub.
             </div>
             <select id="select-apptype" class="mt-4 mb-4" data-role="select" data-filter="false">
                 <option value="asp-net-core-razor">ASP.NET Core + MVC or Razor pages</option>
@@ -93,34 +143,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 <option value="other">Any other type of application</option>
             </select>
             <div class="trial-sub-options">
-                <form id="trial-option-asp-net-core-razor" class="trial-option p-4 border bd-default mb-4">
-                    <input type="radio" data-role="radio" name="viewEngine" data-caption="MVC" value="mvc" checked/>
-                    <input type="radio" data-role="radio" name="viewEngine" data-caption="Razor Pages" value="razor-pages"/>
-                </form>
                 <form id="trial-option-asp-net-core-spa" name="trial-option-asp-net-core-spa" class="trial-option p-4 border bd-default mb-4">
                     <input type="radio" data-role="radio" name="frontend" data-caption="Angular" value="angular" checked/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="React" value="react"/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="Vue" value="vue"/>
                     <input type="radio" data-role="radio" name="frontend" data-caption="Other" value="other"/>
                 </form>
-                <form id="trial-option-asp-net-core-blazor" class="trial-option"></form>
-                <form id="trial-option-asp-net-4-mvc" class="trial-option"></form>
-                <form id="trial-option-asp-net-4-webforms" class="trial-option"></form>
-                <form id="trial-option-net-winforms" class="trial-option"></form>
-                <form id="trial-option-net-wpf" class="trial-option"></form>
+                <form id="trial-option-spa-other" class="trial-option p-4 border bd-default mb-4">
+                    <input type="text" data-role="input" name="platform" data-label="Please, specify:"/>
+                </form>
                 <form id="trial-option-webapp-other" class="trial-option p-4 border bd-default mb-4">
-                    <input type="text" data-role="input" name="backend" data-label="Please, specify:"/>
+                    <input type="text" data-role="input" name="platform" data-label="Please, specify:"/>
                 </form>
                 <form id="trial-option-other" class="trial-option p-4 border bd-default mb-4">
-                    <input type="text" data-role="input" name="apptype" data-label="Please, specify:"/>
+                    <input type="text" data-role="input" name="platform" data-label="Please, specify:"/>
                 </form>
             </div>
+            <div id="trial-sample-hint" class="mb-4" style="line-height: 1.5;"></div>
 
-            <h4 class="text-bold mt-4">Enter your email <span class="text-muted text-normal">(optional)</span></h4>
-            <div class="mb-4 text-leader2" style="font-size: 1.1rem; line-height: 1.6;">
-                We will provide the detailed instructions on how to get the things worked.
+            <div id="trial-email-block">
+                <h4 class="text-bold mt-4">Enter your email <span class="text-muted text-normal">(optional)</span></h4>
+                <div class="mb-4 text-leader2" style="font-size: 1.1rem; line-height: 1.6;">
+                    We'll let you know when a sample for your platform is ready.
+                </div>
+                <input id="trial-email" type="email" placeholder="name@example.com" data-role="input" data-prepend="<span class='mif-envelop'></span>" name="email"/>
             </div>
-            <input id="trial-email" type="email" placeholder="name@example.com" data-role="input" data-prepend="<span class='mif-envelop'></span>" name="email"/>
         `,
             clsDialog: "eq-mobile-fullscreen",
             closeButton: true,
@@ -129,76 +176,32 @@ document.addEventListener("DOMContentLoaded", () => {
             overlayClickClose: false,
             customButtons: [
                 {
-                    id: "get-trial-btn-in-dialog",
-                    text: "Get Trial",
+                    text: "Send",
                     cls: "info rounded px-6 js-get-trial-action-btn",
-                    onclick: async function () {
-                        const app = document.getElementById("select-apptype").value;
-                        const email = document.getElementById("trial-email").value;
-                        // read the SPA frontend now: closeDialogs() below removes this dialog's forms
-                        const spaForm = document.forms["trial-option-asp-net-core-spa"];
-                        const frontend = spaForm && spaForm.elements.frontend ? spaForm.elements.frontend.value : null;
+                    onclick: function (button) {
+                        const { app, frontend } = trialSelection();
+                        const optionId = app === "asp-net-core-spa" ? "spa-other" : app;
+                        const platform = document.getElementById("trial-option-" + optionId).elements.platform.value.trim();
+                        const email = document.getElementById("trial-email").value.trim();
 
-                        closeDialogs();
+                        button.disabled = true;
 
-                        setTimeout(() => {
-                            if (typeof Metro !== 'undefined') {
-                                Metro.dialog.create({
-                                    title: "",
-                                    clsDialog: "eq-processing-dialog shadow-large eq-mobile-fullscreen",
-                                    content: `
-                                        <div style="position: relative;">
-                                            <!-- Ghost container to pre-stretch the dialog to exact destination size -->
-                                            <div style="visibility: hidden; pointer-events: none; opacity: 0; padding-top: 2rem; padding-bottom: 1rem;">
-                                                <div class="mx-auto" style="max-width: 400px; padding: 1rem; margin-bottom: 1.5rem; border: none;">
-                                                    <h3 class="text-bold">Your download will start shortly in <span class="fg-green text-leader">5</span> seconds...</h3>
-                                                    <h3 class="mt-2 text-muted">If your download does not start automatically, click here.</h3>
-                                                </div>
-                                            </div>
-
-                                            <div id="eq-processing-state" class="text-center" style="position: absolute; top:0; left:0; right:0; bottom:0; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index: 2;">
-                                                <div class="mb-4">
-                                                    <div data-role="activity" data-type="cycle" data-style="color" style="margin: 0 auto; transform: scale(1.5);"></div>
-                                                </div>
-                                                <h3 class="text-light mt-4 mb-0">Assembling a sample project for you...</h3>
-                                            </div>
-
-                                            <div id="eq-result-state" style="position: absolute; top:0; left:0; right:0; bottom:0; z-index: 3; display:flex; flex-direction:column; justify-content:center; opacity: 0; pointer-events: none; visibility: hidden;"></div>
-                                        </div>
-                                    `,
-                                    closeButton: true,
-                                    defaultActions: false,
-                                    overlay: true,
-                                    overlayClickClose: false,
-                                    customButtons: [
-                                        {
-                                            text: "Close",
-                                            cls: "js-dialog-close flat fg-gray",
-                                            onclick: function () {
-                                            }
-                                        }
-                                    ],
-                                    onOpen: function () {
-                                        if (typeof grecaptcha !== 'undefined') {
-                                            grecaptcha.ready(function () {
-                                                grecaptcha
-                                                    .execute(reCaptchaSiteKey, { action: "eq_trial" })
-                                                    .then(function (token) {
-                                                        return processTrialRequest(app, frontend, email, token);
-                                                    })
-                                                    .catch(function (error) {
-                                                        console.error("reCAPTCHA error:", error);
-                                                        closeDialogs();
-                                                    });
-                                            });
-                                        } else {
-                                            console.warn("grecaptcha is not defined");
-                                            processTrialRequest(app, frontend, email, "dummy_token");
-                                        }
-                                    }
-                                });
-                            }
-                        }, 50);
+                        if (typeof grecaptcha !== 'undefined') {
+                            grecaptcha.ready(function () {
+                                grecaptcha
+                                    .execute(reCaptchaSiteKey, { action: "eq_trial" })
+                                    .then(function (token) {
+                                        return processTrialRequest(app, platform, email, token);
+                                    })
+                                    .catch(function (error) {
+                                        console.error("reCAPTCHA error:", error);
+                                        closeDialogs();
+                                    });
+                            });
+                        } else {
+                            console.warn("grecaptcha is not defined");
+                            processTrialRequest(app, platform, email, "dummy_token");
+                        }
                     }
                 },
                 {
@@ -211,13 +214,116 @@ document.addEventListener("DOMContentLoaded", () => {
             onOpen: function () {
                 const selectApptype = document.getElementById("select-apptype");
                 if (selectApptype) {
-                    selectApptype.addEventListener("change", function () {
-                        trialChangeOptions(this.value);
+                    // A real link rather than one of the dialog's buttons: the click itself opens
+                    // the tab, so no popup blocker interferes, and it works with analytics blocked.
+                    const link = document.createElement("a");
+                    link.id = "trial-open-sample";
+                    link.className = "button info rounded px-6";
+                    link.target = "_blank";
+                    link.rel = "noopener";
+                    link.textContent = "Open the sample on GitHub ↗";
+                    document.querySelector(".js-get-trial-action-btn").before(link);
+
+                    link.addEventListener("click", function () {
+                        const { app, sample } = trialSelection();
+                        if (window.KorzhAnalytics) {
+                            window.KorzhAnalytics.trackEvent('trial.dialog.redirected', { ptag: 'EQN', sample: sample.name, apptype: app });
+                        }
+                        // after the click: the link must still be there when the browser follows it
+                        setTimeout(() => showTrialNextSteps(sample), 0);
                     });
-                    trialChangeOptions(selectApptype.value);
+
+                    selectApptype.addEventListener("change", updateTrialDialog);
+                    document.forms["trial-option-asp-net-core-spa"].addEventListener("change", updateTrialDialog);
+                    updateTrialDialog();
                 }
             }
         });
+    }
+
+    // Switches the open trial dialog to its result. Does nothing if the visitor has closed it.
+    function setTrialResult(title, content) {
+        const selectApptype = document.getElementById("select-apptype");
+        if (!selectApptype) return false;
+
+        const dialog = selectApptype.closest(".dialog");
+        dialog.querySelector(".dialog-title").innerHTML = `<span class='mif-checkmark fg-green pr-2'></span> ${title}`;
+        dialog.querySelector(".dialog-content").innerHTML = content;
+        dialog.querySelector(".dialog-actions").innerHTML = `<button class="button rounded px-6 js-dialog-close">Close</button>`;
+        return true;
+    }
+
+    function showTrialNextSteps(sample) {
+        const keyStep = sample.edition
+            ? `<b>License key:</b> you don't need one to try it. Without a key the sample shows a short reminder that EasyQuery is in trial mode; a purchased license key removes it.`
+            : `<b>License key:</b> you don't need one to start. On the first run the sample shows a <i>No license</i> dialog: enter your email and the code we send to it, and you get a free 30-day trial key.`;
+
+        const licensingHash = "#" + (sample.edition || "licensing");
+        const licensingOnThisPage = !!document.getElementById("license-price");
+
+        const shown = setTrialResult("The sample is open in a new tab", `
+            <div style="font-size: 1.05rem; line-height: 1.6;">
+                <b>eq-samples-${sample.name}</b> on GitHub. If the tab didn't open, <a href="${sampleRepoUrl(sample)}" target="_blank" rel="noopener" class="fg-primary">open it here ↗</a>.
+            </div>
+            <ol class="mt-4 mb-4 ml-5" style="font-size: 1.05rem; line-height: 1.6;">
+                <li class="mb-2"><b>Get the code:</b> <i>Code → Download ZIP</i> on GitHub, or <code>git clone</code> the repository.</li>
+                <li class="mb-2"><b>Run it:</b> open <code>${sample.solution}</code> in Visual Studio and start the sample you want.</li>
+                <li class="mb-2">${keyStep}</li>
+            </ol>
+            <div class="mt-2 text-left">
+                <b>Ready to buy?</b>
+                <a id="trial-licensing-link" href="${licensingOnThisPage ? "" : "/easyquery"}${licensingHash}" class="fg-primary">
+                    <span class="mif-cart-product pr-2"></span> See licensing options
+                </a>
+            </div>
+            <div class="mt-2 text-left">
+                <a href="https://korzh.com/easyquery/docs/getting-started/from-sample-to-your-own-project" target="_blank" class="fg-primary">
+                    <span class="mif-books pr-2"></span> Getting started with the sample
+                </a>
+            </div>
+            <div class="mt-2 text-left">
+                <a href="https://korzh.com/easyquery/docs/getting-started" target="_blank" class="fg-primary">
+                    <span class="mif-books pr-2"></span> EasyQuery documentation
+                </a>
+            </div>
+        `);
+
+        if (shown && licensingOnThisPage) {
+            document.getElementById("trial-licensing-link").addEventListener("click", function (e) {
+                e.preventDefault();
+                closeDialogs();
+                showLicensing(sample.edition);
+            });
+        }
+    }
+
+    function showTrialThanks(email) {
+        const shown = setTrialResult("Thanks — we've noted your platform", `
+            <div class="mb-4" style="font-size: 1.05rem; line-height: 1.6;">
+                There's no ready-made sample for it yet, but EasyQuery's browser UI works with any backend that implements its REST API.
+                <span id="trial-thanks-notify" style="display: none;">We'll let you know at <b id="trial-thanks-email"></b> when there is one.</span>
+            </div>
+            <div class="mt-2 text-left">
+                <a href="https://korzh.com/easyquery/docs/getting-started" target="_blank" class="fg-primary">
+                    <span class="mif-books pr-2"></span> EasyQuery documentation
+                </a>
+            </div>
+            <div class="mt-2 text-left">
+                <a href="https://korzh.com/easyquery/javascript/docs" target="_blank" class="fg-primary">
+                    <span class="mif-books pr-2"></span> EasyQuery.JS documentation
+                </a>
+            </div>
+            <div class="mt-2 text-left">
+                <a href="https://github.com/easyquery" target="_blank" rel="noopener" class="fg-primary">
+                    <span class="mif-github pr-2"></span> All samples on GitHub ↗
+                </a>
+            </div>
+        `);
+
+        if (shown && email) {
+            document.getElementById("trial-thanks-email").textContent = email;
+            document.getElementById("trial-thanks-notify").style.display = "";
+        }
     }
 
     function closeDialogs() {
@@ -238,23 +344,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // The samples, by the Uri of their download item on account.korzh.com and the file behind it.
-    // The site links through /d/{uri}, which records who downloads a sample and then redirects to
-    // the file stored with that item on account.korzh.com; the file here is only used when the
+    // The downloads, by the Uri of their item on account.korzh.com and the file behind it.
+    // The site links through /d/{uri}, which records who downloads it and then redirects to the
+    // file stored with that item on account.korzh.com; the file here is only used when the
     // analytics script is not there. Keep both in step, and create the item there before adding
-    // a sample here: /d/ answers an unknown item with 404.
-    // Each EasyQuery sample is the main branch of its github.com/easyquery/eq-samples-<name> repo.
-    const githubSample = name => `https://github.com/easyquery/eq-samples-${name}/archive/refs/heads/main.zip`;
+    // one here: /d/ answers an unknown item with 404.
     const SAMPLES = {
-        'aspnetcore-razor-mvc': githubSample('aspnetcore-razor-mvc'),
-        'aspnetcore-angular': githubSample('aspnetcore-angular'),
-        'aspnetcore-blazor': githubSample('aspnetcore-blazor'),
-        'aspnetcore-react': githubSample('aspnetcore-react'),
-        'aspnetcore-vue': githubSample('aspnetcore-vue'),
-        'aspnet4-mvc': githubSample('aspnet4-mvc'),
-        'aspnet4-webforms': githubSample('aspnet4-webforms'),
-        'winforms': githubSample('winforms'),
-        'wpf': githubSample('wpf'),
         'ersk-community': 'https://cdn.korzh.com/download/ersk_community.zip'
     };
 
@@ -267,56 +362,14 @@ document.addEventListener("DOMContentLoaded", () => {
             : fileUrl;
     }
 
-    async function processTrialRequest(apptype, frontend, email, token) {
+    async function processTrialRequest(apptype, platform, email, token) {
         const url = `https://account.korzh.com/api/account/register`;
 
-        let nextHref = 'https://korzh.com/easyquery/docs/getting-started';
-        let downloadUrl = null;
-        switch (apptype) {
-            case 'asp-net-core-razor':
-                downloadUrl = sampleUrl('aspnetcore-razor-mvc');
-                break;
-            case 'asp-net-core-spa':
-                switch (frontend) {
-                    case 'angular':
-                        downloadUrl = sampleUrl('aspnetcore-angular');
-                        break;
-                    case 'react':
-                        downloadUrl = sampleUrl('aspnetcore-react');
-                        break;
-                    case 'vue':
-                        downloadUrl = sampleUrl('aspnetcore-vue');
-                        break;
-                    case 'other':
-                        break;
-                }
-                break;
-            case 'asp-net-core-blazor':
-                downloadUrl = sampleUrl('aspnetcore-blazor');
-                break;
-            case 'asp-net-4-mvc':
-                downloadUrl = sampleUrl('aspnet4-mvc');
-                break;
-            case 'asp-net-4-webforms':
-                downloadUrl = sampleUrl('aspnet4-webforms');
-                break;
-            case 'net-winforms':
-                downloadUrl = sampleUrl('winforms');
-                break;
-            case 'net-wpf':
-                downloadUrl = sampleUrl('wpf');
-                break;
-            case 'webapp-other':
-            case 'other':
-                break;
-        }
-
+        const data = { intent: "get-trial", apptype, platform };
         const trialData = {
             email,
             captchaToken: token,
-            data: window.KorzhAnalytics
-                ? window.KorzhAnalytics.requestData({ intent: "get-trial", apptype })
-                : { intent: "get-trial", apptype }
+            data: window.KorzhAnalytics ? window.KorzhAnalytics.requestData(data) : data
         };
 
         try {
@@ -345,80 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("[EQ] API error:", error);
         }
 
-        let dialogContent = '';
-
-        if (downloadUrl) {
-            dialogContent += `
-                <div class="mx-auto">
-                    <div class="p-4 bd-default mb-6">
-                        <h3 id="download-countdown-text" class="text-bold text-center">
-                            The sample project download will start in <span id="download-countdown" class="fg-green text-leader">5</span> seconds...
-                        </h3>
-                        <h4  class="mt-2 text-muted text-center" style="line-height: 1.5;">
-                            <span id="manual-download-text">If the download does not start automatically,</span> <a href="${downloadUrl}" id="manual-download-link" class="fg-primary">click here</a>.
-                        </h4>
-                    </div>
-                </div>
-            `;
-        }
-
-        dialogContent += `
-                <div class="mt-2 text-left">
-                    <a href="https://korzh.com/easyquery/docs/getting-started/from-sample-to-your-own-project" target="_blank" class="fg-primary">
-                        <span class="mif-books pr-2"></span> Getting started with the sample
-                    </a>
-                </div>
-                <div class="mt-2 text-left">
-                    <a href="${nextHref}" target="_blank" class="fg-primary">
-                        <span class="mif-books pr-2"></span> EasyQuery documentation
-                    </a>
-                </div>
-        `;
-
-        const processingState = document.getElementById("eq-processing-state");
-        const resultState = document.getElementById("eq-result-state");
-        let downloadInterval = null;
-
-        if (processingState) processingState.style.display = "none";
-
-        if (resultState) {
-            resultState.innerHTML = dialogContent;
-            resultState.style.opacity = "1";
-            resultState.style.pointerEvents = "auto";
-            resultState.style.visibility = "visible";
-
-            if (downloadUrl) {
-                let count = 5;
-
-                const manualLink = document.getElementById('manual-download-link');
-                if (manualLink) {
-                    manualLink.addEventListener('click', () => {
-                        if (downloadInterval) clearInterval(downloadInterval);
-                        const countdownText = document.getElementById('download-countdown-text');
-                        if (countdownText) countdownText.style.display = 'none';
-                    });
-                }
-
-                downloadInterval = setInterval(() => {
-                    if (!document.getElementById('eq-result-state')) {
-                        clearInterval(downloadInterval);
-                        return;
-                    }
-
-                    count--;
-                    const counterEl = document.getElementById('download-countdown');
-                    if (counterEl) counterEl.innerText = count;
-                    if (count <= 0) {
-                        clearInterval(downloadInterval);
-                        const countdownText = document.getElementById('download-countdown-text');
-                        if (countdownText) countdownText.style.display = 'none';
-                        const manualDownloadText = document.getElementById('manual-download-text');
-                        if (manualDownloadText) manualDownloadText.innerText = 'The sample project download should have started automatically.\nIf not,';
-                        window.location.href = downloadUrl;
-                    }
-                }, 1000);
-            }
-        }
+        showTrialThanks(email);
     }
 
     window.addEventListener("pageshow", function (event) {

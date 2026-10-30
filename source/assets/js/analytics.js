@@ -128,7 +128,8 @@
     }
 
     /**
-     * Reports one of the events the collector accepts: trial.dialog.opened or perk.dialog.opened.
+     * Reports one of the events the collector accepts: trial.dialog.opened,
+     * trial.dialog.redirected or perk.dialog.opened.
      */
     function trackEvent(type, extra) {
         var event = {
