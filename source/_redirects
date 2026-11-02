@@ -132,6 +132,8 @@
 /easyquery/docs/getting-started/sample-webforms-javascript-webservice	/easyquery/docs/getting-started/version-3-x/sample-webforms-javascript-webservice
 /easyquery/docs/query-with-a-subquery	/easyquery/docs/tutorials/common-sql-queries/query-with-a-subquery
 /easyquery/docs/tutorials/version-3-x/javascript-widgets-localization	/easyquery/docs/tutorials/version-3-x-tutorials/javascript-widgets-localization
+/easyquery/docs/getting-started/from-sample-to-your-own-project/connect-to-your-database	/easyquery/docs/getting-started/from-sample-to-your-own-project#connect-the-sample-to-your-database
+/easyquery/docs/getting-started/from-sample-to-your-own-project/copying-the-easyquerys-code-from-sample-to-your-project	/easyquery/docs/getting-started/from-sample-to-your-own-project#copy-the-easyquery-code-to-your-project
 
 # Redierects for old articles placed in the wrong sections
 /easyquery/javascript/docs/api-reference-4-x	/easyquery/javascript/docs/api-reference-old/api-reference-4-x
