@@ -52,13 +52,38 @@ document.addEventListener("DOMContentLoaded", () => {
         getTrial();
     } else if (licenseEditions.includes(eqAction)) {
         showLicensing(eqAction);
+    } else if (eqAction) {
+        scrollToSection(document.getElementById(eqAction));
+    }
+
+    // The stylesheets and the images (which have no sizes) arrive after DOMContentLoaded and move
+    // the sections down, so the browser's own jump to the anchor ends up far from it.
+    // Scroll now and once more when everything has loaded, unless the user has scrolled by then.
+    function scrollToSection(el) {
+        if (!el) {
+            return;
+        }
+        const scroll = () => el.scrollIntoView({ behavior: "instant", block: "start" });
+        scroll();
+        if (document.readyState === "complete") {
+            return;
+        }
+        let userScrolled = false;
+        const onUserScroll = () => (userScrolled = true);
+        const userEvents = ["wheel", "touchstart", "keydown", "mousedown"];
+        userEvents.forEach((type) => window.addEventListener(type, onUserScroll, { once: true, passive: true }));
+        window.addEventListener("load", () => {
+            userEvents.forEach((type) => window.removeEventListener(type, onUserScroll));
+            if (!userScrolled) {
+                scroll();
+            }
+        }, { once: true });
     }
 
     function showLicensing(edition) {
-        const licensingEl = document.getElementById("licensing");
-        if (licensingEl) {
-            licensingEl.scrollIntoView();
-        }
+        // The browser would scroll to the edition's tab, below the section's heading, when the page has loaded
+        history.replaceState(null, "", "#licensing");
+        scrollToSection(document.getElementById("licensing"));
         if (edition && typeof $ !== 'undefined' && typeof Metro !== 'undefined') {
             Metro.getPlugin("#license-price", 'tabs').open(licenseEditions.indexOf(edition) + 1);
         }
