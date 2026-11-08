@@ -6,6 +6,10 @@
  * address and the browser. A visitor id is created only when someone opens the trial or
  * the ERSK dialog, and it lives in sessionStorage, so nothing is stored for people who
  * just read the site and nothing survives the browser session.
+ *
+ * The three documentation sites load this file too, by this path, from their own pages served
+ * under korzh.com (tools/analytics.js in easyquery.net-docs, easyquery.js-docs and ersk-docs).
+ * Moving or renaming it silently stops the docs being counted: change those along with it.
  */
 (function () {
     "use strict";
