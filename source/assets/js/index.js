@@ -46,10 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sampleRepoUrl = sample => `https://github.com/easyquery/eq-samples-${sample.name}`;
 
-    const licenseEditions = ['asp-core-edition', 'asp-net-edition', 'winforms-edition', 'silverlight-edition', 'wpf-edition', 'delphi-edition'];
+    // The platforms of the /easyquery price table: one table, the platform picks the order code.
+    const licenseEditions = ['asp-core-edition', 'asp-net-edition', 'winforms-edition', 'wpf-edition'];
+
+    // Old links to /easyquery: the editions and descriptions that are gone from the page
+    const onEasyQueryHub = !!document.getElementById("license-price");
+    if (onEasyQueryHub && (eqAction === 'delphi-edition' || eqAction === 'delphi-edition-desc')) {
+        window.location.replace("/simple-query#licensing");
+        return;
+    }
+    const oldDescriptions = { 'silverlight-edition': 'licensing', 'asp-core-edition-desc': 'platforms', 'asp-net-edition-desc': 'platforms', 'winforms-edition-desc': 'platforms', 'wpf-edition-desc': 'platforms', 'silverlight-edition-desc': 'platforms', 'reporting': 'scenarios', 'adv-search': 'scenarios', 'filtering': 'scenarios', 'searching': 'scenarios' };
+
+    setupEditionPicker();
 
     if (eqAction === 'get-trial') {
         getTrial();
+    } else if (onEasyQueryHub && oldDescriptions[eqAction]) {
+        history.replaceState(null, "", "#" + oldDescriptions[eqAction]);
+        scrollToSection(document.getElementById(oldDescriptions[eqAction]));
     } else if (licenseEditions.includes(eqAction)) {
         showLicensing(eqAction);
     } else if (eqAction) {
@@ -84,9 +98,33 @@ document.addEventListener("DOMContentLoaded", () => {
         // The browser would scroll to the edition's tab, below the section's heading, when the page has loaded
         history.replaceState(null, "", "#licensing");
         scrollToSection(document.getElementById("licensing"));
-        if (edition && typeof $ !== 'undefined' && typeof Metro !== 'undefined') {
-            Metro.getPlugin("#license-price", 'tabs').open(licenseEditions.indexOf(edition) + 1);
+        if (edition) {
+            selectEdition(edition);
         }
+    }
+
+    // The platform buttons over the /easyquery price table: the prices are the same, the order codes differ
+    function setupEditionPicker() {
+        const picker = document.getElementById("license-price");
+        if (!picker) {
+            return;
+        }
+        picker.querySelectorAll("button[data-edition]").forEach((btn) => {
+            btn.addEventListener("click", () => selectEdition(btn.dataset.edition));
+        });
+    }
+
+    function selectEdition(edition) {
+        const picker = document.getElementById("license-price");
+        const btn = picker && picker.querySelector(`button[data-edition="${edition}"]`);
+        if (!btn) {
+            return;
+        }
+        picker.querySelectorAll("button[data-edition]").forEach((b) => b.classList.toggle("active", b === btn));
+        document.getElementById("license-price-platform").textContent = btn.textContent.toUpperCase();
+        document.querySelectorAll("#licensing a[data-tier]").forEach((a) => {
+            a.href = `https://account.korzh.com/orderform?c=EQN-${btn.dataset.code}-${a.dataset.tier}`;
+        });
     }
 
     // Attach click handler to the "Get Trial" buttons: #btn-get-trial in the hero, [data-get-trial] further down

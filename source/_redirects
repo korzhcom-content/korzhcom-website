@@ -11,11 +11,11 @@
 /purchase.jsp product=:LOCVCL	/localizer#licensing
 /purchase.jsp*	/easyquery#licensing
 /easyquery/screenshots.jsp	/easyquery
-/easyquery/vcl	/easyquery
+/easyquery/vcl	/simple-query	301
 /query-builder-net	/easyquery
 /easyquery/winforms	/easyquery
 /delphi/eq	/easyquery
-/delphi/sq	/easyquery
+/delphi/sq	/simple-query	301
 /easyquery/downloads	/easyquery
 /easyquery/demo1.htm	/easyquery
 /eq/activex	/easyquery
