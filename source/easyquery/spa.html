@@ -1,5 +1,5 @@
 ---
-title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
+title: EasyQuery for SPAs — a query builder for React, Angular, Vue and Blazor >> Korzh.com
 ---
 <style>
     .app-bar .app-bar-menu>li a:hover,
@@ -12,22 +12,18 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
     <div class="container">
         <div class="row">
             <div class="cell-lg-6 d-flex flex-column flex-justify-center">
-                <h1 class="hero-section__header">EASYQUERY.JS</h1>
-                <h2 class="mt-0">Easy way to implements DB features</h2>
+                <h1 class="hero-section__header">EASYQUERY FOR SPAs</h1>
+                <h2 class="mt-0">A query builder for your React, Angular, Vue or Blazor app</h2>
                 <div class="text-leader2">
-                    <div class="mt-1">
-                        <p>
-                            EasyQuery.JS is a JavaScript framework that makes it easy to implement advanced search, data
-                            filtering or adhoc reporting scenarios in your web application.
-                        </p>
-                    </div>
+                    <p class="mt-1">
+                        EasyQuery.JS gives your single-page application a visual query builder, a result grid and charts.
+                        Behind it: the EasyQuery ASP.NET Core backend, or EasyQuery Server on your own servers for any other backend.
+                    </p>
                 </div>
                 <div class="mt-10">
-                    <a href="https://github.com/easyquery/OtherSamples"
-                        class="button fg-white text-bold warning">Samples</a>
-                    <a href="https://demo.korzh.com/"
-                        class="button fg-white text-bold warning">Demo</a>
-                    <a href="#licensing" class="button fg-white text-bold warning">Purchase</a>
+                    <a href="#" id="btn-get-trial" class="button fg-white text-bold warning">Get Trial</a>
+                    <a href="#samples" class="button fg-white text-bold warning">Samples</a>
+                    <a href="#licensing" class="button fg-white text-bold warning outline">Pricing</a>
                 </div>
             </div>
 
@@ -35,7 +31,7 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
 
             <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center hero-images">
                 <div>
-                    <img src="/assets/images/advangle.webp" alt="" class="shadow-3">
+                    <img src="/assets/images/advangle.webp" alt="EasyQuery.JS query builder" class="shadow-3">
                 </div>
             </div>
         </div>
@@ -44,40 +40,25 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
 
 <section class="container-fluid easyjs-features">
     <div class="container pt-10 pb-10">
-        <div class="row">
-            <div class="cell-md-4">
-                <img src="/assets/images/javascript.png" alt="" style="height: 200px;">
-            </div>
-            <div class="cell-md-8 d-flex flex-column flex-justify-center">
-                <div class="text-leader2">
-                    EasyQuery.JS is a JavaScript framework that makes it easy to implement advanced search, data
-                    filtering or adhoc reporting scenarios (like on the screenshots) in your web application.
-                    <p>
-                    <p>So, as you can see EasyQuery.JS gives you a simple to use but powerful user interface to build a
-                        query or a filter to your data. Your end-users will get the power of SQL (even if they can't
-                        pronounce it properly) with the simplicity of the natural language.
-                </div>
-            </div>
-        </div>
-
-        <h2 class="text-center text-bold">MAIN BENEFITS</h2>
+        <h2 class="text-center text-bold">WHAT YOU GET</h2>
 
         <div class="row mt-10">
             <div class="cell-md-6 p-1">
                 <div class="p-10 border bd-default h-100">
-                    <h4>PLATFORM-INDEPENDENT</h4>
+                    <h4>YOUR FRAMEWORK</h4>
                     <p>
-                        EasyQuery.JS can be used with any server-side platform. However, it will be easier to do with
-                        .NET or NodeJS (soon) than with others
+                        The widgets work in React, Angular, Vue, Blazor and plain web components, as well as in classic MVC or Razor pages.
+                        There are ready-to-run samples for each.
                     </p>
                     <span class="mif-checkmark feature-check"></span>
                 </div>
             </div>
             <div class="cell-md-6 p-1">
                 <div class="p-10 border bd-default h-100">
-                    <h4>SPA SUPPORT</h4>
+                    <h4>YOUR BACKEND</h4>
                     <p>
-                        It is suitable for both old-style MVC applications or modern SPA (Angular, Vue, React)
+                        With ASP.NET Core, the EasyQuery backend does all the server work in one <code>MapEasyQuery</code> call.
+                        With any other backend, EasyQuery Server generates the SQL for you.
                     </p>
                     <span class="mif-checkmark feature-check"></span>
                 </div>
@@ -86,8 +67,8 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
                 <div class="p-10 border bd-default h-100">
                     <h4>WRITTEN IN TYPESCRIPT</h4>
                     <p>
-                        EasyQuery.JS is written in TypeScript. So, it gives you even more benefits (like type checking
-                        and intelli-sense) even if you are coding with a pure JavaScript
+                        EasyQuery.JS is written in TypeScript and published on npm (<code>@easyquery/core</code>, <code>@easyquery/ui</code>),
+                        so you get type checking and IntelliSense even in plain JavaScript.
                     </p>
                     <span class="mif-checkmark feature-check"></span>
                 </div>
@@ -96,7 +77,7 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
                 <div class="p-10 border bd-default h-100">
                     <h4>USER-FRIENDLY UI</h4>
                     <p>
-                        All the complexity of SQL is hidden - just simple to use and easy to learn UI.
+                        All the complexity of SQL is hidden: users add columns and conditions in plain language and see the result at once.
                     </p>
                     <span class="mif-checkmark feature-check"></span>
                 </div>
@@ -105,105 +86,86 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
     </div>
 </section>
 
-<section class="container-fluid easyjs-ss">
+<section class="container-fluid">
     <div class="container pt-10 pb-10">
         <div class="row">
-            <div class="cell-lg-5 d-flex flex-column flex-justify-center">
-                <h1 class="text-bold">SCREEN<span>SHOTS</span></h1>
+            <div class="cell-lg-6 p-2">
+                <h3 class="text-bold mt-0">A few lines in your component</h3>
+                <p>From the React sample: the view, the backend endpoint, and that's it.</p>
+<pre class="eq-code"><code>import { AdvancedSearchView } from '@easyquery/ui';
+import '@easyquery/enterprise';
+
+const view = new AdvancedSearchView();
+view.getContext()
+    .useEndpoint('/api/easyquery')
+    .useEnterprise(() =&gt; view.init({
+        loadModelOnStart: true,
+        result: { showChart: true }
+    }));</code></pre>
             </div>
-            <div class="cell-md-1 d-none d-flex-md flex-align-center">
-            </div>
-            <div class="cell-lg-6 easy-report-images">
-                <div class="row" data-role="lightbox" data-cls-close="bg-red fg-white"
-                    data-icon-close="<span class='mif-cross'>">
-                    <div class="cell-6 p-2">
-                        <div class="image-preview h-100 border bd-default">
-                            <img src="/assets/images/asp-net-mvc-thumb.webp" data-original="/assets/images/asp-net-mvc.png"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="cell-6 p-2">
-                        <div class="image-preview h-100 border bd-default">
-                            <img src="/assets/images/reporting-thumb.webp" data-original="/assets/images/reporting.png"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="cell-6 p-2">
-                        <div class="image-preview h-100 border bd-default">
-                            <img src="/assets/images/grid-filtering-thumb.webp"
-                                data-original="/assets/images/grid-filtering.png" alt="">
-                        </div>
-                    </div>
-                    <div class="cell-6 p-2">
-                        <div class="image-preview h-100 border bd-default">
-                            <img src="/assets/images/advangle-thumb.webp" data-original="/assets/images/advangle.png" alt="">
-                        </div>
-                    </div>
-                </div>
+            <div class="cell-lg-6 p-2">
+                <h3 class="text-bold mt-0">And one call on the server</h3>
+                <p>With the ASP.NET Core backend the data model comes from your <code>DbContext</code>:</p>
+<pre class="eq-code"><code>builder.Services.AddEasyQuery()
+    .UseSqlManager();
+...
+app.MapEasyQuery(options =&gt; {
+    options.Endpoint = "/api/easyquery";
+    options.UseDbContext&lt;AppDbContext&gt;();
+});</code></pre>
             </div>
         </div>
     </div>
 </section>
 
-<section class="container-fluid">
+<section class="container-fluid" id="how-it-works">
     <div class="container pt-10 pb-10">
-        <h2 class="text-center text-bold">HOW DOES IT WORK</h2>
+        <h2 class="text-center text-bold">HOW IT WORKS</h2>
 
-        <div class="row mt-20">
+        <div class="row mt-10">
             <div class="cell-md-6">
-                <h4 class="mb-0">Using EasyQuery backend services</h4>
-                <div>/for ASP.NET (Core) and NodeJs/</div>
-                <img src="/assets/images/eqjs-scheme-in.webp" alt="" class="mt-4" style="height: 500px">
+                <h4 class="mb-0">With the EasyQuery backend</h4>
+                <div>for ASP.NET Core, the usual path</div>
+                <img src="/assets/images/eqjs-scheme-in.webp" alt="EasyQuery.JS with the EasyQuery backend in your ASP.NET Core application" class="mt-4 eq-shot" style="max-height: 500px">
 
-                <h4 class="mb-0">Using EasyQuery Server</h4>
-                <div>/for other backend platforms/</div>
-                <img src="/assets/images/eqjs-scheme-out.webp" alt="" class="mt-4" style="height: 500px">
+                <h4 class="mb-0 mt-6">With EasyQuery Server</h4>
+                <div>for any other backend: Java, Node.js, PHP, Python…</div>
+                <img src="/assets/images/eqjs-scheme-out.webp" alt="EasyQuery.JS with EasyQuery Server next to your backend" class="mt-4 eq-shot" style="max-height: 500px">
             </div>
             <div class="cell-md-6">
                 <div class="box">
                     <div class="step-number">1</div>
-
                     <div class="mt-5">
-                        EasyQuery.JS (embedded to some html page) requests the data model from your server-side
-                        application using AJAX request.
+                        EasyQuery.JS (embedded in your page or component) requests the data model from your server-side application.
                     </div>
-
                     <p class="remark info">
                         The data model defines which entities and attributes users can operate with when they build
-                        their queries, and how they related to each other.
-                        <br /><br />.NET version of EasyQuery allows you to build data model at run-time. On other
-                        platforms, you will need to create data model “manually” using a special utility.
+                        their queries, and how they relate to each other.
+                        <br /><br />The ASP.NET Core backend builds the data model at run time from your <code>DbContext</code> or database.
+                        With EasyQuery Server, you create the data model with a special utility.
                     </p>
                 </div>
                 <div class="box">
                     <div class="step-number">2</div>
-
                     <div class="mt-5">
-                        <p>End-user builds some query - adds/changes some columns and conditions using EasyQuery.JS UI.
-                        <p>EasyQuery.JS informs the application that the query has changed and sends the JSON
-                            representation of the query.
-                        <p>In case of using EasyQuery Server, your application transfers the query JSON to the Server.
+                        <p>The user builds a query: adds or changes columns and conditions in the EasyQuery.JS UI.
+                        <p>EasyQuery.JS sends the JSON representation of the query to your application.
+                        <p>With EasyQuery Server, your application passes the query JSON on to the Server.
                     </div>
                 </div>
                 <div class="box">
                     <div class="step-number">3</div>
-
                     <div class="mt-5">
-                        <p>We need to generate a SQL query by the JSON query.
-                        <p>In case of using EasyQuery backend services, EasyQuery code in your application gets the
-                            query JSON and generates a correct SQL query.
-                        <p>In case of using EasyQuery Server, the Server generates a SQL query and sends it back to your
-                            application.
-                        <p>Now the application is able to connect to the database and to run the SQL query on it.
+                        <p>The query JSON becomes SQL.
+                        <p>With the EasyQuery backend, the EasyQuery code in your application does it.
+                        <p>With EasyQuery Server, the Server generates the SQL and sends it back to your application.
+                        <p>Your application runs the SQL against your database, under your own access rules.
                     </div>
                 </div>
                 <div class="box">
                     <div class="step-number">4</div>
-
                     <div class="mt-5">
-                        <p>The application receives the result of SQL query execution.
-                        <p>The (pre-formatted by the application) result tabular data are sent to the EasyQuery.JS to be
-                            visualized.
+                        <p>The application gets the result and sends it to EasyQuery.JS, which shows it in the grid or as a chart.
                     </div>
                 </div>
             </div>
@@ -211,60 +173,50 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
     </div>
 </section>
 
-<section class="container-fluid bg-light">
+<section class="container-fluid bg-light" id="samples">
     <div class="container pt-10 pb-10">
         <h2 class="text-center text-bold">HOW TO START</h2>
 
-        <p class="text-leader2 mt-10">
-            EasyQuery.JS gives you all you need to implement the front-end part - core classes, helpers, UI widgets,
-            etc. However, you still may need some server-side code to support the front-end - give a meta-information
-            about your data (what is called “data model”), handle the requests from the client-side scripts, connect and
-            query your DB, send the results back to front-end.
-            <br><br>The work to be done depends on the stack you use on back-end.
-        </p>
-
-        <div class="bg-white border bd-default mt-4 mb-4 p-10">
-            <h4>.NET</h4>
-
-            <div>
-                <p>If you are a .NET developer - start with <a href="/easyquery">EasyQuery for ASP.NET</a> or <a
-                        href="/easyquery">EasyQuery for ASP.NET Core</a> instead.
-                    These products have a very elaborate server-side part that was specially designed to work with
-                    EasyQuery.JS components. You will not need to write an additional server-side code.
-                <p>EasyQuery.JS is included in both those editions, you don't need to buy it separately. So just start
-                    <a href="/easyquery"> registering your trial version of EasyQuery.NET</a>.
-            </div>
+        <div class="bg-white border bd-default mt-8 mb-4 p-10">
+            <h4>ASP.NET CORE BACKEND</h4>
+            <p>Start from the sample for your frontend. Each one is a complete ASP.NET Core 10 solution that runs as soon as you open it:</p>
+            <ul>
+                <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-react">React</a> — advanced search</li>
+                <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-angular">Angular</a> — advanced search, ad-hoc reporting</li>
+                <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-vue">Vue</a> — Vue 3 and Vue 2</li>
+                <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-blazor">Blazor</a> — Blazor Server and WebAssembly</li>
+                <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-stencil">Web components (Stencil)</a> — advanced search</li>
+            </ul>
+            <p>EasyQuery.JS is included in the EasyQuery for ASP.NET Core license; you don't buy it separately.
+                See the <a href="/easyquery#licensing">EasyQuery prices</a>.</p>
+            <p>Documentation: <a href="/easyquery/docs/getting-started/asp-net-core" slow-loading>getting started with ASP.NET Core</a> ·
+                <a href="/easyquery/javascript/docs" slow-loading>EasyQuery.JS docs</a></p>
         </div>
 
         <div class="bg-white border bd-default mt-4 mb-4 p-10">
-            <h4>ALL OTHER SERVER-SIDE PLATFORMS</h4>
-
-            <div>
-                <p>To support any server-side platform, we provide a small web-service called EasyQuery Server (EQS). It
-                    handles most of the tasks EasyQuery.JS needs to be covered on the back-end.
-                <p>All you need to do in your application is to forward front-end requests to EQS and to forward
-                    responses back to fron-end.
-                <p>There is a public EQS implementation running on <a
-                        href="http://sqlquerybuilder.com/">SqlQueryBuilder.com</a>. It is free, but has some
-                    limitations.
-                <p>Enterprise license owners may also use EasyQuery Server on-premises that we include to the package.
-                    It is written on .NET Core and it can be run on any modern server platform (Linux, Windows, MacOS).
-                <p>The sample projects for NodeJS and PHP are <a
-                        href="https://github.com/easyquery/OtherSamples">available on GitHub</a>. If you need a sample
-                    for your platform of choice - please <a href="/support">contact us</a>.
-            </div>
+            <h4>ANY OTHER BACKEND: EASYQUERY SERVER</h4>
+            <p>EasyQuery Server (EQS) is a small web service that does the server-side work EasyQuery.JS needs: it holds the data model
+                and generates the SQL. Your application only forwards the frontend's requests to EQS and runs the SQL it gets back.
+            <p>EasyQuery Server comes with the EasyQuery.JS Company license, to install on your own servers.
+                It runs on .NET, so on Linux, Windows or macOS, and in Docker.
+            <p>There is also a public EQS instance on <a href="https://sqlquerybuilder.com/">SqlQueryBuilder.com</a>. It is free, but has some limitations.
+            <p>Sample projects for Node.js and PHP are <a href="https://github.com/easyquery/OtherSamples">available on GitHub</a>.
+                If you need a sample for your platform of choice, please <a href="/support">contact us</a>.
         </div>
     </div>
 </section>
 
 <section class="container-fluid" id="licensing">
     <div class="container pt-10 pb-10">
+        <h2 class="text-center text-bold">EASYQUERY.JS <span>PRICE</span></h2>
+        <p class="text-center">For ASP.NET Core, EasyQuery.JS is part of the <a href="/easyquery#licensing">EasyQuery license</a>.
+            The prices below are for EasyQuery.JS with another backend.</p>
         <div class="scrollable-container mt-4">
             <table class="price-table striped table">
                 <tbody>
                     <tr>
                         <td>
-                            <h2 class="text-bold">LICENSE <span>PRICE</span></h2>
+                            <h3>EASYQUERY.JS</h3>
                         </td>
                         <td>
                             <div class="text-leader">Community</div>
@@ -278,8 +230,7 @@ title: EASYQUERY.JS >> Korzh.com - Tools from Developers for Developers
                     <tr>
                         <td><span class="text-leader">Features</span></td>
                         <td><a href="https://github.com/easyquery/OtherSamples" class="button info">GET SAMPLES</a></td>
-                        <td><a href="https://account.korzh.com/orderform?c=EQ-JS-COM" data-ga-page-path="/checkout/EQJS"
-                                class="button info" slow-loading>BUY NOW</a></td>
+                        <td><a href="https://account.korzh.com/orderform?c=EQ-JS-COM" data-ga-page-path="/checkout/EQJS" class="button info" slow-loading>BUY NOW</a></td>
                     </tr>
                     <tr>
                         <td>Number of Developers</td>

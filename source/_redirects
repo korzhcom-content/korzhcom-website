@@ -24,6 +24,10 @@
 /easyquery-release*		/easyquery
 /easyquery-version*		/easyquery
 
+# EasyQuery.JS became the SPA page (2026-11). Exact paths only: /easyquery/javascript/docs/* is a docs rewrite below.
+/easyquery/javascript	/easyquery/spa	301
+/easyquery/javascript.html	/easyquery/spa	301
+
 /ersk*	/easy-report-starter-kit/:splat
 
 /easyquery/release-notes*	/easyquery/docs/release-notes/:splat
