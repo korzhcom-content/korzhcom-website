@@ -1,0 +1,125 @@
+---
+title: Advanced search for your .NET app — EasyQuery >> Korzh.com
+---
+<style>
+    .app-bar .app-bar-menu>li a:hover,
+    .app-bar .app-bar-menu li:not(.no-hover):hover {
+        background-color: rgb(89, 95, 150) !important;
+        color: #ffffff !important;
+    }
+</style>
+
+<section class="container-fluid bg-light easyquery-hero hero-block">
+    <div class="container">
+        <div class="row">
+            <div class="cell-lg-6 d-flex flex-column flex-justify-center">
+                <div class="text-leader2"><a href="/easyquery" class="fg-white">EasyQuery</a> · scenario</div>
+                <h1 class="hero-section__header">ADVANCED SEARCH</h1>
+                <h2 class="mt-0">One query builder instead of a screen full of search fields.</h2>
+                <div class="mt-10">
+                    <a href="https://demo.korzh.com/advanced-search" class="button fg-white text-bold info">See it live</a>
+                    <a href="#" id="btn-get-trial" class="button fg-white text-bold info">Get Trial</a>
+                </div>
+            </div>
+            <div class="cell-lg-1"></div>
+            <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center">
+                <img src="/assets/images/eq-ss-advanced-search.webp" alt="Advanced search with EasyQuery" class="shadow-3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-8 offset-lg-2">
+                <h2 class="text-bold">THE <span>PROBLEM</span></h2>
+                <p class="eq-problem">"Can I search by this field too? And by these two, but only when…"</p>
+                <p>Your users need to search by many different parameters, in various combinations. The usual search form is a mess of
+                    controls, one per database field. It takes the whole screen and still doesn't cover the combinations people ask for,
+                    so each new request means a new field, a new query and a new release.</p>
+                <p>The EasyQuery interface is laconic and intuitive: users build almost any combination of conditions they could wish for,
+                    on any field you allow, and you stop adding search fields.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-light">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-6 p-2">
+                <a href="https://demo.korzh.com/advanced-search"><img src="/assets/images/eq-ss-advanced-search.webp" alt="The advanced search demo" class="eq-shot"></a>
+            </div>
+            <div class="cell-lg-6 p-2 d-flex flex-column flex-justify-center">
+                <h2 class="text-bold mt-0">WHAT YOUR USERS <span>GET</span></h2>
+                <ul>
+                    <li>Conditions in plain language: "Customer country is USA and Order date is in the last quarter"</li>
+                    <li>AND / OR groups, nested as deep as they need</li>
+                    <li>Their choice of result columns, sorting and paging</li>
+                    <li>Export of the result to Excel, PDF or CSV</li>
+                </ul>
+                <div class="mt-4">
+                    <a href="https://demo.korzh.com/advanced-search" class="button info">Open the live demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-6 p-2">
+                <h2 class="text-bold mt-0">HOW IT FITS YOUR <span>STACK</span></h2>
+                <p>EasyQuery reads your Entity Framework <code>DbContext</code> and offers its entities and fields to the users, under the names
+                    you give them. You can hide fields, add lookups, and add hidden conditions of your own to every query.
+                    EasyQuery generates the SQL and runs it on your connection.</p>
+                <p>The UI is EasyQuery.JS in your Razor pages or MVC views, or in a <a href="/easyquery/spa">React, Angular, Vue or Blazor</a> frontend.
+                    There are WinForms and WPF versions too.</p>
+            </div>
+            <div class="cell-lg-6 p-2">
+<pre class="eq-code"><code>builder.Services.AddEasyQuery()
+    .UseSqlManager()
+    .AddDefaultExporters();
+...
+app.MapEasyQuery(options =&gt; {
+    options.DefaultModelId = "nwind";
+    options.ConnectionString = connectionString;
+    options.UseDbContext&lt;AppDbContext&gt;();
+});</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-light">
+    <div class="container pt-10 pb-10">
+        <h2 class="text-bold">RUN THE <span>SAMPLE</span></h2>
+        <p>The same scenario as a project you can open in Visual Studio and run on your machine:</p>
+        <ul>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-razor-mvc/tree/main/Razor.AdvancedSearch">Razor.AdvancedSearch</a> — ASP.NET Core Razor Pages</li>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-react">React</a>, <a href="https://github.com/easyquery/eq-samples-aspnetcore-angular">Angular</a>,
+                <a href="https://github.com/easyquery/eq-samples-aspnetcore-blazor">Blazor Server</a> and
+                <a href="https://github.com/easyquery/eq-samples-aspnetcore-stencil">web components</a> versions</li>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnet4-mvc">ASP.NET 4 MVC</a>, <a href="https://github.com/easyquery/eq-samples-aspnet4-webforms">WebForms</a>, <a href="https://github.com/easyquery/eq-samples-winforms">WinForms</a>
+                and <a href="https://github.com/easyquery/eq-samples-wpf">WPF</a> samples</li>
+        </ul>
+        <p>Step by step: <a href="/easyquery/docs/getting-started/asp-net-core" slow-loading>getting started with ASP.NET Core</a>.</p>
+    </div>
+</section>
+
+<section class="container-fluid easyquery-editions-bg">
+    <div class="container pt-10 pb-10 text-center">
+        <h2 class="text-bold">TRY IT ON YOUR OWN DATA</h2>
+        <p class="text-leader2">Get the sample for your platform, connect it to your database, and search your own tables.</p>
+        <div class="mt-6">
+            <a href="#" data-get-trial class="button info text-bold">Get Trial</a>
+            <a href="/easyquery#licensing" class="button info outline fg-white">Pricing</a>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid more-question">
+    {% include more-questions.html %}
+</section>

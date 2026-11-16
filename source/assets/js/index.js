@@ -89,14 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Attach click handler to "Get Trial" button
-    const getTrialBtn = document.getElementById("btn-get-trial");
-    if (getTrialBtn) {
+    // Attach click handler to the "Get Trial" buttons: #btn-get-trial in the hero, [data-get-trial] further down
+    document.querySelectorAll("#btn-get-trial, [data-get-trial]").forEach((getTrialBtn) => {
         getTrialBtn.addEventListener("click", (e) => {
             e.preventDefault();
             getTrial();
         });
-    }
+    });
 
     if (typeof $ !== 'undefined') {
         $("body").on("click", "a[slow-loading]", function () {

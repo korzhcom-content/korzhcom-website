@@ -1,0 +1,144 @@
+---
+title: Ad-hoc reporting for your .NET app — EasyQuery >> Korzh.com
+---
+<style>
+    .app-bar .app-bar-menu>li a:hover,
+    .app-bar .app-bar-menu li:not(.no-hover):hover {
+        background-color: rgb(89, 95, 150) !important;
+        color: #ffffff !important;
+    }
+</style>
+
+<section class="container-fluid bg-light easyquery-hero hero-block">
+    <div class="container">
+        <div class="row">
+            <div class="cell-lg-6 d-flex flex-column flex-justify-center">
+                <div class="text-leader2"><a href="/easyquery" class="fg-white">EasyQuery</a> · scenario</div>
+                <h1 class="hero-section__header">AD-HOC REPORTING</h1>
+                <h2 class="mt-0">Let your users build their own reports, inside your .NET app.</h2>
+                <div class="mt-10">
+                    <a href="https://demo.korzh.com/adhoc-reporting" class="button fg-white text-bold info">See it live</a>
+                    <a href="#" id="btn-get-trial" class="button fg-white text-bold info">Get Trial</a>
+                </div>
+            </div>
+            <div class="cell-lg-1"></div>
+            <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center">
+                <img src="/assets/images/eq-ss-adhoc-reporting.webp" alt="Ad-hoc reporting with EasyQuery" class="shadow-3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-8 offset-lg-2">
+                <h2 class="text-bold">THE <span>PROBLEM</span></h2>
+                <p class="eq-problem">"We need to change 3 reports and create 5 new."</p>
+                <p>Have you heard that from your customer? Then you know where the time goes: every new report is a ticket,
+                    a query, a page, a release — and next month, another round of changes.</p>
+                <p>With EasyQuery, your users build, change and save the reports themselves: they pick the columns, add the conditions,
+                    group and total the data, see it as a table or a chart, and export it. You build the reporting module once.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-light">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-6 p-2">
+                <a href="https://demo.korzh.com/adhoc-reporting"><img src="/assets/images/eq-ss-adhoc-reporting.webp" alt="The ad-hoc reporting demo" class="eq-shot"></a>
+            </div>
+            <div class="cell-lg-6 p-2 d-flex flex-column flex-justify-center">
+                <h2 class="text-bold mt-0">WHAT YOUR USERS <span>GET</span></h2>
+                <ul>
+                    <li>A list of saved reports, their own and shared ones</li>
+                    <li>A visual editor for columns, conditions, sorting and grouping, in plain language</li>
+                    <li>Totals, charts and export to Excel, PDF or CSV</li>
+                    <li>Only the data you let them see</li>
+                </ul>
+                <div class="mt-4">
+                    <a href="https://demo.korzh.com/adhoc-reporting" class="button info">Open the live demo</a>
+                </div>
+                <p class="text-muted mt-2">The demo asks you to sign in with a demo account; the sign-in page shows it.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-6 p-2">
+                <h2 class="text-bold mt-0">HOW IT FITS YOUR <span>STACK</span></h2>
+                <p>EasyQuery builds the data model from your Entity Framework <code>DbContext</code>, keeps the reports in a store you choose
+                    (your own database table in the sample), and checks every action with your ASP.NET Core authentication:
+                    who may create, change or delete a report is up to you.</p>
+                <p>The UI is EasyQuery.JS in your Razor pages, MVC views, or a React, Angular, Vue or Blazor frontend.</p>
+            </div>
+            <div class="cell-lg-6 p-2">
+<pre class="eq-code"><code>builder.Services.AddEasyQuery()
+    .UseSqlManager()
+    .AddDefaultExporters();
+...
+app.MapEasyQuery(options =&gt; {
+    options.Endpoint = "/api/adhoc-reporting";
+    options.SaveNewQuery = true;
+    options.UseDbContextWithoutIdentity&lt;AppDbContext&gt;();
+    options.UseQueryStore(manager =&gt; new ReportStore(manager.Services));
+    options.UseDefaultAuthProvider();
+});</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-light">
+    <div class="container pt-10 pb-10">
+        <h2 class="text-bold">RUN THE <span>SAMPLE</span></h2>
+        <p>The same scenario as a project you can open in Visual Studio and run on your machine:</p>
+        <ul>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-razor-mvc/tree/main/Razor.AdHocReporting">Razor.AdHocReporting</a> — ASP.NET Core Razor Pages
+                (and <a href="https://github.com/easyquery/eq-samples-aspnetcore-razor-mvc/tree/main/RazorTypeScript.AdHocReporting">a TypeScript version</a>)</li>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-angular">Angular</a> and <a href="https://github.com/easyquery/eq-samples-aspnetcore-blazor">Blazor WebAssembly</a> versions</li>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnet4-mvc">ASP.NET 4 MVC</a> versions</li>
+        </ul>
+        <p>Step by step: <a href="/easyquery/docs/tutorials/adhoc-reporting-in-your-webapp" slow-loading>ad-hoc reporting in your web app</a>.</p>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-7 p-2">
+                <h2 class="text-bold mt-0">OR START FROM A READY <span>APPLICATION</span></h2>
+                <p>Don't want to build the reporting module at all? The <b>EasyReport Starter Kit</b> (ERSK) is a complete ASP.NET Core
+                    reporting application built on EasyQuery, in source code: report management, users and roles, guest access,
+                    data export, scheduled reports, multi-tenancy. Take the code, put your branding on it, connect your database and deploy.</p>
+                <div class="mt-4">
+                    <a href="https://easy.report" class="button info">See ERSK live at easy.report</a>
+                    <a href="/easy-report-starter-kit" class="button info outline">About ERSK</a>
+                </div>
+            </div>
+            <div class="cell-lg-5 p-2 easy-report-images">
+                <img src="/assets/images/easy-report-01.webp" alt="EasyReport Starter Kit" class="eq-shot">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid easyquery-editions-bg">
+    <div class="container pt-10 pb-10 text-center">
+        <h2 class="text-bold">TRY IT ON YOUR OWN DATA</h2>
+        <p class="text-leader2">Get the sample for your platform, connect it to your database, and see your own tables in the report builder.</p>
+        <div class="mt-6">
+            <a href="#" data-get-trial class="button info text-bold">Get Trial</a>
+            <a href="/easyquery#licensing" class="button info outline fg-white">Pricing</a>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid more-question">
+    {% include more-questions.html %}
+</section>
