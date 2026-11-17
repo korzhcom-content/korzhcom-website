@@ -589,6 +589,14 @@ footer {
     line-height: 1.5;
     overflow-x: auto;
     white-space: pre;
+
+    /* Metro styles every <code> as dark text on a light chip: undo it inside the dark block */
+    & code {
+        color: inherit;
+        background: none;
+        padding: 0;
+        font-size: inherit;
+    }
 }
 
 .eq-shot {

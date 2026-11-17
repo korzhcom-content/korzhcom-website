@@ -31,7 +31,7 @@ title: EasyQuery for SPAs — a query builder for React, Angular, Vue and Blazor
 
             <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center hero-images">
                 <div>
-                    <img src="/assets/images/advangle.webp" alt="EasyQuery.JS query builder" class="shadow-3">
+                    <img src="/assets/images/eq-ss-advanced-search.webp" alt="EasyQuery.JS query builder, result grid and chart" class="shadow-3">
                 </div>
             </div>
         </div>
@@ -81,38 +81,6 @@ title: EasyQuery for SPAs — a query builder for React, Angular, Vue and Blazor
                     </p>
                     <span class="mif-checkmark feature-check"></span>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container-fluid">
-    <div class="container pt-10 pb-10">
-        <div class="row">
-            <div class="cell-lg-6 p-2">
-                <h3 class="text-bold mt-0">A few lines in your component</h3>
-                <p>From the React sample: the view, the backend endpoint, and that's it.</p>
-<pre class="eq-code"><code>import { AdvancedSearchView } from '@easyquery/ui';
-import '@easyquery/enterprise';
-
-const view = new AdvancedSearchView();
-view.getContext()
-    .useEndpoint('/api/easyquery')
-    .useEnterprise(() =&gt; view.init({
-        loadModelOnStart: true,
-        result: { showChart: true }
-    }));</code></pre>
-            </div>
-            <div class="cell-lg-6 p-2">
-                <h3 class="text-bold mt-0">And one call on the server</h3>
-                <p>With the ASP.NET Core backend the data model comes from your <code>DbContext</code>:</p>
-<pre class="eq-code"><code>builder.Services.AddEasyQuery()
-    .UseSqlManager();
-...
-app.MapEasyQuery(options =&gt; {
-    options.Endpoint = "/api/easyquery";
-    options.UseDbContext&lt;AppDbContext&gt;();
-});</code></pre>
             </div>
         </div>
     </div>
@@ -178,6 +146,21 @@ app.MapEasyQuery(options =&gt; {
         <h2 class="text-center text-bold">HOW TO START</h2>
 
         <div class="bg-white border bd-default mt-8 mb-4 p-10">
+            <h4>A FEW LINES IN YOUR COMPONENT</h4>
+            <p>From the React sample: the view, the backend endpoint, and that's it. The same with either backend below.</p>
+<pre class="eq-code"><code>import { AdvancedSearchView } from '@easyquery/ui';
+import '@easyquery/enterprise';
+
+const view = new AdvancedSearchView();
+view.getContext()
+    .useEndpoint('/api/easyquery')
+    .useEnterprise(() =&gt; view.init({
+        loadModelOnStart: true,
+        result: { showChart: true }
+    }));</code></pre>
+        </div>
+
+        <div class="bg-white border bd-default mt-4 mb-4 p-10">
             <h4>ASP.NET CORE BACKEND</h4>
             <p>Start from the sample for your frontend. Each one is a complete ASP.NET Core 10 solution that runs as soon as you open it:</p>
             <ul>
@@ -191,6 +174,18 @@ app.MapEasyQuery(options =&gt; {
                 See the <a href="/easyquery#licensing">EasyQuery prices</a>.</p>
             <p>Documentation: <a href="/easyquery/docs/getting-started/asp-net-core" slow-loading>getting started with ASP.NET Core</a> ·
                 <a href="/easyquery/javascript/docs" slow-loading>EasyQuery.JS docs</a></p>
+        </div>
+
+        <div class="bg-white border bd-default mt-4 mb-4 p-10">
+            <h4>AND ONE CALL ON THE SERVER</h4>
+            <p>With the ASP.NET Core backend the data model comes from your <code>DbContext</code>:</p>
+<pre class="eq-code"><code>builder.Services.AddEasyQuery()
+    .UseSqlManager();
+...
+app.MapEasyQuery(options =&gt; {
+    options.Endpoint = "/api/easyquery";
+    options.UseDbContext&lt;AppDbContext&gt;();
+});</code></pre>
         </div>
 
         <div class="bg-white border bd-default mt-4 mb-4 p-10">
