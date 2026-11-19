@@ -543,6 +543,14 @@ footer {
             object-fit: cover;
             object-position: top left;
         }
+
+        /* a diagram rather than a screenshot: show all of it */
+        &.eq-card__image--whole img {
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            padding: 8px 0;
+        }
     }
 
     .eq-card__body {

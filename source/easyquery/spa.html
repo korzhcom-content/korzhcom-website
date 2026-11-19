@@ -162,7 +162,17 @@ view.getContext()
 
         <div class="bg-white border bd-default mt-4 mb-4 p-10">
             <h4>ASP.NET CORE BACKEND</h4>
-            <p>Start from the sample for your frontend. Each one is a complete ASP.NET Core 10 solution that runs as soon as you open it:</p>
+            <p>Setting up the backend is easy: a few lines in <code>Program.cs</code> add the EasyQuery endpoint and connect it to your database
+                through your <code>DbContext</code>. The data model comes from the same <code>DbContext</code>, so there is nothing else to describe.</p>
+<pre class="eq-code"><code>builder.Services.AddEasyQuery()
+    .UseSqlManager();
+...
+app.MapEasyQuery(options =&gt; {
+    options.Endpoint = "/api/easyquery";
+    options.UseDbContext&lt;AppDbContext&gt;();
+});</code></pre>
+            <p class="mt-6">To see it all working together, start from the sample for your frontend. Each one is a complete ASP.NET Core 10 solution,
+                frontend and backend, that runs as soon as you open it:</p>
             <ul>
                 <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-react">React</a> — advanced search</li>
                 <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-angular">Angular</a> — advanced search, ad-hoc reporting</li>
@@ -174,18 +184,6 @@ view.getContext()
                 See the <a href="/easyquery#licensing">EasyQuery prices</a>.</p>
             <p>Documentation: <a href="/easyquery/docs/getting-started/asp-net-core" slow-loading>getting started with ASP.NET Core</a> ·
                 <a href="/easyquery/javascript/docs" slow-loading>EasyQuery.JS docs</a></p>
-        </div>
-
-        <div class="bg-white border bd-default mt-4 mb-4 p-10">
-            <h4>AND ONE CALL ON THE SERVER</h4>
-            <p>With the ASP.NET Core backend the data model comes from your <code>DbContext</code>:</p>
-<pre class="eq-code"><code>builder.Services.AddEasyQuery()
-    .UseSqlManager();
-...
-app.MapEasyQuery(options =&gt; {
-    options.Endpoint = "/api/easyquery";
-    options.UseDbContext&lt;AppDbContext&gt;();
-});</code></pre>
         </div>
 
         <div class="bg-white border bd-default mt-4 mb-4 p-10">
