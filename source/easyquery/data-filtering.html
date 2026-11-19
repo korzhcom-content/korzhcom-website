@@ -1,0 +1,123 @@
+---
+title: Data filtering for your .NET app — EasyQuery >> Korzh.com
+---
+<style>
+    .app-bar .app-bar-menu>li a:hover,
+    .app-bar .app-bar-menu li:not(.no-hover):hover {
+        background-color: rgb(89, 95, 150) !important;
+        color: #ffffff !important;
+    }
+</style>
+
+<section class="container-fluid bg-light easyquery-hero hero-block">
+    <div class="container">
+        <div class="row">
+            <div class="cell-lg-6 d-flex flex-column flex-justify-center">
+                <div class="text-leader2"><a href="/easyquery" class="fg-white">EasyQuery</a> · scenario</div>
+                <h1 class="hero-section__header">DATA FILTERING</h1>
+                <h2 class="mt-0">A filter bar over any list in your .NET app — filters your users set up themselves.</h2>
+                <div class="mt-10">
+                    <a href="https://demo.korzh.com/data-filtering" class="button fg-white text-bold info">See it live</a>
+                    <a href="#" id="btn-get-trial" class="button fg-white text-bold info">Get Trial</a>
+                </div>
+            </div>
+            <div class="cell-lg-1"></div>
+            <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center">
+                <img src="/assets/images/eq-ss-data-filtering.webp" alt="Data filtering with EasyQuery" class="shadow-3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-8 offset-lg-2">
+                <h2 class="text-bold">THE <span>PROBLEM</span></h2>
+                <p class="eq-problem">"Can you add a filter by…?"</p>
+                <p>Whenever you show a grid with more than a few rows, your users need to filter it. Usually you don't know exactly how:
+                    by customer, by date, by amount, by all three at once. So you guess, add a few filter fields, and wait for the next request.</p>
+                <p>Let them use EasyQuery and relax. Users add the conditions they need right above the list, press Apply,
+                    and the list shows what they asked for.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-light">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-6 p-2">
+                <a href="https://demo.korzh.com/data-filtering"><img src="/assets/images/eq-ss-data-filtering.webp" alt="The data filtering demo" class="eq-shot"></a>
+            </div>
+            <div class="cell-lg-6 p-2 d-flex flex-column flex-justify-center">
+                <h2 class="text-bold mt-0">WHAT YOUR USERS <span>GET</span></h2>
+                <ul>
+                    <li>A compact filter bar over the list they already use</li>
+                    <li>Conditions such as "Customer country is USA" or "Freight is greater than 100", in plain language</li>
+                    <li>Any combination of conditions, applied with one click</li>
+                    <li>Paging of the filtered result</li>
+                </ul>
+                <div class="mt-4">
+                    <a href="https://demo.korzh.com/data-filtering" class="button info">Open the live demo</a>
+                    <a href="https://demo.korzh.com/data-filtering2" class="button info outline">A second version</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="container pt-10 pb-10">
+        <div class="row">
+            <div class="cell-lg-6 p-2">
+                <h2 class="text-bold mt-0">HOW IT FITS YOUR <span>STACK</span></h2>
+                <p>The whole server side can be one call. <code>MapEasyQuery</code> adds the EasyQuery API, and <code>UseEntity</code> builds the data
+                    model from your entity class and applies the users' filters to your own Entity Framework <code>IQueryable</code> — so
+                    anything you already restrict in that query stays restricted.</p>
+                <p>No controllers, no SQL: EasyQuery turns the filter into LINQ.</p>
+            </div>
+            <div class="cell-lg-6 p-2">
+<pre class="eq-code"><code class="language-csharp">builder.Services.AddEasyQuery();
+...
+app.MapEasyQuery(options =&gt; {
+    options.Endpoint = "/data-filtering";
+    options.UseEntity(manager =&gt; manager.Services
+        .GetRequiredService&lt;AppDbContext&gt;()
+        .Orders
+        .Include(o =&gt; o.Customer)
+        .AsQueryable());
+});</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-light">
+    <div class="container pt-10 pb-10">
+        <h2 class="text-bold">RUN THE <span>SAMPLE</span></h2>
+        <p>The same scenario as a project you can open in Visual Studio and run on your machine:</p>
+        <ul>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-razor-mvc/tree/main/Razor.DataFiltering">Razor.DataFiltering</a> — ASP.NET Core Razor Pages, the code above</li>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnetcore-razor-mvc/tree/main/Mvc.DataFiltering">Mvc.DataFiltering</a> — the same with an MVC controller
+                (and <a href="https://github.com/easyquery/eq-samples-aspnetcore-razor-mvc/tree/main/Mvc.DataFiltering.Auth">with authentication</a>)</li>
+            <li><a href="https://github.com/easyquery/eq-samples-aspnet4-mvc/tree/main/DataFiltering">DataFiltering</a> — ASP.NET 4 MVC</li>
+        </ul>
+        <p>Step by step: <a href="/easyquery/docs/getting-started/asp-net-core" slow-loading>getting started with ASP.NET Core</a>.</p>
+    </div>
+</section>
+
+<section class="container-fluid easyquery-editions-bg">
+    <div class="container pt-10 pb-10 text-center">
+        <h2 class="text-bold">TRY IT ON YOUR OWN DATA</h2>
+        <p class="text-leader2">Get the sample for your platform, connect it to your database, and filter your own lists.</p>
+        <div class="mt-6">
+            <a href="#" data-get-trial class="button info text-bold">Get Trial</a>
+            <a href="/easyquery#licensing" class="button info outline fg-white">Pricing</a>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid more-question">
+    {% include more-questions.html %}
+</section>

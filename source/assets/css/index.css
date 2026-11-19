@@ -515,3 +515,146 @@ footer {
 .trial-option {
     background-color: #fff;
 }
+/* EasyQuery hub and scenario pages */
+.eq-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 4px 16px rgba(45, 42, 108, 0.18);
+    }
+
+    .eq-card__image {
+        height: 170px;
+        overflow: hidden;
+        border-bottom: 1px solid #efefef;
+
+        img {
+            width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            object-position: top left;
+        }
+    }
+
+    .eq-card__body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 16px 20px 20px;
+    }
+
+    .eq-card__links {
+        margin-top: auto;
+        padding-top: 12px;
+    }
+}
+
+.eq-step {
+    position: relative;
+    height: 100%;
+    padding: 24px 20px 20px;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+}
+
+.eq-platform {
+    height: 100%;
+    padding: 16px 20px;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+
+    ul {
+        padding-left: 20px;
+        margin-bottom: 0;
+    }
+}
+
+.eq-code {
+    background-color: #1e1e2e;
+    color: #e4e4ef;
+    border-radius: 6px;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre;
+
+    /* Metro styles every <code> as dark text on a light chip: undo it inside the dark block */
+    & code {
+        color: inherit;
+        background: none;
+        padding: 0;
+        font-size: inherit;
+    }
+
+    /* highlight.js tokens (index.js loads it on pages with code blocks) */
+    .hljs-keyword, .hljs-built_in, .hljs-literal { color: #cba6f7; }
+    .hljs-title, .hljs-title.function_ { color: #89b4fa; }
+    .hljs-title.class_, .hljs-type { color: #f9e2af; }
+    .hljs-string, .hljs-regexp { color: #a6e3a1; }
+    .hljs-number { color: #fab387; }
+    .hljs-comment { color: #7f849c; font-style: italic; }
+    .hljs-property, .hljs-attr, .hljs-variable { color: #89dceb; }
+    .hljs-operator, .hljs-punctuation { color: #bac2de; }
+    .hljs-meta { color: #f5c2e7; }
+}
+
+/* A plain footnote: not a warning */
+.eq-note {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #6b6f80;
+}
+
+.eq-shot {
+    max-width: 100%;
+    border: 1px solid #e3e3e3;
+}
+
+.eq-edition-picker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    button {
+        border-radius: 20px;
+    }
+
+    .button.active {
+        background-color: #2d2a6c !important;
+        border-color: #2d2a6c !important;
+        color: #fff !important;
+    }
+}
+
+.eq-problem {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    border-left: 4px solid #7980b5;
+    padding-left: 16px;
+}
+
+@media screen and (max-width: 576px) {
+    .price {
+        font-size: 32px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+}

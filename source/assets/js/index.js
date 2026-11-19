@@ -46,10 +46,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sampleRepoUrl = sample => `https://github.com/easyquery/eq-samples-${sample.name}`;
 
-    const licenseEditions = ['asp-core-edition', 'asp-net-edition', 'winforms-edition', 'silverlight-edition', 'wpf-edition', 'delphi-edition'];
+    // The platforms of the /easyquery price table: one table, the platform picks the order code.
+    const licenseEditions = ['asp-core-edition', 'asp-net-edition', 'winforms-edition', 'wpf-edition'];
+
+    // Old links to /easyquery: the editions and descriptions that are gone from the page
+    const onEasyQueryHub = !!document.getElementById("license-price");
+    if (onEasyQueryHub && (eqAction === 'delphi-edition' || eqAction === 'delphi-edition-desc')) {
+        window.location.replace("/simple-query#licensing");
+        return;
+    }
+    const oldDescriptions = { 'silverlight-edition': 'licensing', 'asp-core-edition-desc': 'platforms', 'asp-net-edition-desc': 'platforms', 'winforms-edition-desc': 'platforms', 'wpf-edition-desc': 'platforms', 'silverlight-edition-desc': 'platforms', 'reporting': 'scenarios', 'adv-search': 'scenarios', 'filtering': 'scenarios', 'searching': 'scenarios' };
+
+    setupEditionPicker();
+    highlightCode();
 
     if (eqAction === 'get-trial') {
         getTrial();
+    } else if (onEasyQueryHub && oldDescriptions[eqAction]) {
+        history.replaceState(null, "", "#" + oldDescriptions[eqAction]);
+        scrollToSection(document.getElementById(oldDescriptions[eqAction]));
     } else if (licenseEditions.includes(eqAction)) {
         showLicensing(eqAction);
     } else if (eqAction) {
@@ -84,19 +99,75 @@ document.addEventListener("DOMContentLoaded", () => {
         // The browser would scroll to the edition's tab, below the section's heading, when the page has loaded
         history.replaceState(null, "", "#licensing");
         scrollToSection(document.getElementById("licensing"));
-        if (edition && typeof $ !== 'undefined' && typeof Metro !== 'undefined') {
-            Metro.getPlugin("#license-price", 'tabs').open(licenseEditions.indexOf(edition) + 1);
+        if (edition) {
+            selectEdition(edition);
         }
     }
 
-    // Attach click handler to "Get Trial" button
-    const getTrialBtn = document.getElementById("btn-get-trial");
-    if (getTrialBtn) {
+    // Syntax highlighting for the code blocks (<pre class="eq-code"><code class="language-...">).
+    // highlight.js is loaded only on pages that have one; the colours are in index.css (.eq-code .hljs-*).
+    // Without it the code still shows, just in one colour.
+    function highlightCode() {
+        const blocks = document.querySelectorAll(".eq-code code[class*='language-']");
+        if (blocks.length === 0) return;
+
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js";
+        script.onload = () =>
+            blocks.forEach((block) => {
+                window.hljs.highlightElement(block);
+                markCalls(block);
+            });
+        document.head.appendChild(script);
+    }
+
+    // highlight.js leaves fluent C# such as builder.Services.AddEasyQuery() almost uncoloured:
+    // colour the method names and the generic type arguments in the text it left plain.
+    function markCalls(block) {
+        const escape = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        Array.from(block.childNodes)
+            .filter((node) => node.nodeType === Node.TEXT_NODE)
+            .forEach((node) => {
+                const html = escape(node.textContent)
+                    .replace(/\b([A-Za-z_]\w*)(?=(&lt;\w+&gt;)?\()/g, '<span class="hljs-title function_">$1</span>')
+                    .replace(/&lt;(\w+)&gt;/g, '&lt;<span class="hljs-title class_">$1</span>&gt;');
+                const span = document.createElement("span");
+                span.innerHTML = html;
+                node.replaceWith(...span.childNodes);
+            });
+    }
+
+    // The platform buttons over the /easyquery price table: the prices are the same, the order codes differ
+    function setupEditionPicker() {
+        const picker = document.getElementById("license-price");
+        if (!picker) {
+            return;
+        }
+        picker.querySelectorAll("button[data-edition]").forEach((btn) => {
+            btn.addEventListener("click", () => selectEdition(btn.dataset.edition));
+        });
+    }
+
+    function selectEdition(edition) {
+        const picker = document.getElementById("license-price");
+        const btn = picker && picker.querySelector(`button[data-edition="${edition}"]`);
+        if (!btn) {
+            return;
+        }
+        picker.querySelectorAll("button[data-edition]").forEach((b) => b.classList.toggle("active", b === btn));
+        document.getElementById("license-price-platform").textContent = btn.textContent.toUpperCase();
+        document.querySelectorAll("#licensing a[data-tier]").forEach((a) => {
+            a.href = `https://account.korzh.com/orderform?c=EQN-${btn.dataset.code}-${a.dataset.tier}`;
+        });
+    }
+
+    // Attach click handler to the "Get Trial" buttons: #btn-get-trial in the hero, [data-get-trial] further down
+    document.querySelectorAll("#btn-get-trial, [data-get-trial]").forEach((getTrialBtn) => {
         getTrialBtn.addEventListener("click", (e) => {
             e.preventDefault();
             getTrial();
         });
-    }
+    });
 
     if (typeof $ !== 'undefined') {
         $("body").on("click", "a[slow-loading]", function () {

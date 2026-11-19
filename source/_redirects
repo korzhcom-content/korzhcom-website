@@ -11,11 +11,11 @@
 /purchase.jsp product=:LOCVCL	/localizer#licensing
 /purchase.jsp*	/easyquery#licensing
 /easyquery/screenshots.jsp	/easyquery
-/easyquery/vcl	/easyquery
+/easyquery/vcl	/simple-query	301
 /query-builder-net	/easyquery
 /easyquery/winforms	/easyquery
 /delphi/eq	/easyquery
-/delphi/sq	/easyquery
+/delphi/sq	/simple-query	301
 /easyquery/downloads	/easyquery
 /easyquery/demo1.htm	/easyquery
 /eq/activex	/easyquery
@@ -23,6 +23,10 @@
 /static/easyquery/eq-booklet.pdf	https://cdn.korzh.com/download/eq-booklet.pdf
 /easyquery-release*		/easyquery
 /easyquery-version*		/easyquery
+
+# EasyQuery.JS became the SPA page (2026-11). Exact paths only: /easyquery/javascript/docs/* is a docs rewrite below.
+/easyquery/javascript	/easyquery/spa	301
+/easyquery/javascript.html	/easyquery/spa	301
 
 /ersk*	/easy-report-starter-kit/:splat
 
