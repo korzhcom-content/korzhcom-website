@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const oldDescriptions = { 'silverlight-edition': 'licensing', 'asp-core-edition-desc': 'platforms', 'asp-net-edition-desc': 'platforms', 'winforms-edition-desc': 'platforms', 'wpf-edition-desc': 'platforms', 'silverlight-edition-desc': 'platforms', 'reporting': 'scenarios', 'adv-search': 'scenarios', 'filtering': 'scenarios', 'searching': 'scenarios' };
 
     setupEditionPicker();
+    highlightCode();
 
     if (eqAction === 'get-trial') {
         getTrial();
@@ -101,6 +102,39 @@ document.addEventListener("DOMContentLoaded", () => {
         if (edition) {
             selectEdition(edition);
         }
+    }
+
+    // Syntax highlighting for the code blocks (<pre class="eq-code"><code class="language-...">).
+    // highlight.js is loaded only on pages that have one; the colours are in index.css (.eq-code .hljs-*).
+    // Without it the code still shows, just in one colour.
+    function highlightCode() {
+        const blocks = document.querySelectorAll(".eq-code code[class*='language-']");
+        if (blocks.length === 0) return;
+
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js";
+        script.onload = () =>
+            blocks.forEach((block) => {
+                window.hljs.highlightElement(block);
+                markCalls(block);
+            });
+        document.head.appendChild(script);
+    }
+
+    // highlight.js leaves fluent C# such as builder.Services.AddEasyQuery() almost uncoloured:
+    // colour the method names and the generic type arguments in the text it left plain.
+    function markCalls(block) {
+        const escape = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        Array.from(block.childNodes)
+            .filter((node) => node.nodeType === Node.TEXT_NODE)
+            .forEach((node) => {
+                const html = escape(node.textContent)
+                    .replace(/\b([A-Za-z_]\w*)(?=(&lt;\w+&gt;)?\()/g, '<span class="hljs-title function_">$1</span>')
+                    .replace(/&lt;(\w+)&gt;/g, '&lt;<span class="hljs-title class_">$1</span>&gt;');
+                const span = document.createElement("span");
+                span.innerHTML = html;
+                node.replaceWith(...span.childNodes);
+            });
     }
 
     // The platform buttons over the /easyquery price table: the prices are the same, the order codes differ

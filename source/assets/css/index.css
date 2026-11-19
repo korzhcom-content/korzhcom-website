@@ -543,14 +543,6 @@ footer {
             object-fit: cover;
             object-position: top left;
         }
-
-        /* a diagram rather than a screenshot: show all of it */
-        &.eq-card__image--whole img {
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            padding: 8px 0;
-        }
     }
 
     .eq-card__body {
@@ -605,6 +597,24 @@ footer {
         padding: 0;
         font-size: inherit;
     }
+
+    /* highlight.js tokens (index.js loads it on pages with code blocks) */
+    .hljs-keyword, .hljs-built_in, .hljs-literal { color: #cba6f7; }
+    .hljs-title, .hljs-title.function_ { color: #89b4fa; }
+    .hljs-title.class_, .hljs-type { color: #f9e2af; }
+    .hljs-string, .hljs-regexp { color: #a6e3a1; }
+    .hljs-number { color: #fab387; }
+    .hljs-comment { color: #7f849c; font-style: italic; }
+    .hljs-property, .hljs-attr, .hljs-variable { color: #89dceb; }
+    .hljs-operator, .hljs-punctuation { color: #bac2de; }
+    .hljs-meta { color: #f5c2e7; }
+}
+
+/* A plain footnote: not a warning */
+.eq-note {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #6b6f80;
 }
 
 .eq-shot {
