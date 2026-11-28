@@ -68,7 +68,7 @@
 <li><strong>See it first.</strong> The live demos show the same widgets on a sample database: <a href="https://demo.korzh.com/advanced-search" target="_blank" rel="noopener noreferrer">advanced search</a>, <a href="https://demo.korzh.com/adhoc-reporting" target="_blank" rel="noopener noreferrer">ad-hoc reporting</a> and <a href="https://demo.korzh.com/data-filtering" target="_blank" rel="noopener noreferrer">data filtering</a>.</li>
 <li><strong>Run it on your machine.</strong> There is one sample repository per platform at <a href="https://github.com/easyquery" target="_blank" rel="noopener noreferrer">github.com/easyquery</a>; the <a href="https://github.com/easyquery/eq-samples-aspnetcore-razor-mvc" target="_blank" rel="noopener noreferrer">ASP.NET Core Razor sample</a> is closest to this article, and its README says how to point it at your own database.</li>
 <li><strong>Read more.</strong> <a href="https://korzh.com/easyquery/docs/getting-started/asp-net-core" target="_blank" rel="noopener noreferrer">Getting started with ASP.NET Core</a> in the EasyQuery documentation.</li>
-<li><strong>Try it in your app.</strong> The <a href="https://korzh.com/easyquery" target="_blank" rel="noopener noreferrer">EasyQuery page</a> has the editions and a free trial key.</li>
+<li><strong>Try it in your app.</strong> The <a href="https://korzh.com/easyquery" target="_blank" rel="noopener noreferrer">EasyQuery page</a> has more information on editions and licensing. You can get a trial key the first time you run your app.</li>
 </ul>]]></content>
         <author>
             <name>Serhii Korzh</name>
